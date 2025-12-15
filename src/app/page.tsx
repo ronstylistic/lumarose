@@ -12,7 +12,6 @@ import Hero from "@/components/Hero";
 export default function HomePage() {
   return (
     <>
-      <Navbar />
       <Hero />
       <Services/>
       <Practitioner />
@@ -20,7 +19,7 @@ export default function HomePage() {
       <MembershipPlans />
       <NonMembership />
       <Contact  />
-      <Footer />
+    
     </>
   );
 }

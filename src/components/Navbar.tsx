@@ -23,7 +23,7 @@ export default function Navbar() {
 
         {/* MENU */}
         <nav className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
-          <Link href="/0" className="text-primary">Home</Link>
+          <Link href="/" className="text-primary">Home</Link>
           <Link href="/bio">Bio</Link>
           <Link href="/services">Services</Link>
           <Link href="/contact">Contact</Link>
