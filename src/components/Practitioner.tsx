@@ -32,21 +32,21 @@ export default function Practitioner() {
 
           {/* Text */}
           <div>
-            <h3 className="text-2xl font-semibold text-primary mb-1">
+            <h3 className="text-center md:text-left text-2xl font-semibold text-primary mb-1">
               Dr. Rana Clementer
             </h3>
-            <p className="text-sm text-secondary mb-6">
+            <p className="text-center md:text-left text-sm text-secondary mb-6">
               ND, PA-C
             </p>
 
-            <p className="text-foreground leading-relaxed mb-4">
+            <p className="text-center md:text-left text-foreground leading-relaxed mb-4">
               At LumaRose Health, my passion is integrating{" "}
               <strong>cutting-edge medical technology</strong> with{" "}
               <strong>holistic wellness principles</strong> to help patients
               achieve optimal, sustainable health.
             </p>
 
-            <p className="text-foreground leading-relaxed mb-6">
+            <p className="text-center md:text-left text-foreground leading-relaxed mb-6">
               My practice focuses on{" "}
               <strong>preventative medicine</strong>, personalized nutrient
               planning, and regenerative therapies—always centered around your
@@ -54,7 +54,7 @@ export default function Practitioner() {
             </p>
 
             {/* Contact Box */}
-            <div className="bg-muted/40 rounded-xl p-5 mb-6">
+            <div className="rounded-xl mb-6">
               <p className="text-sm text-muted-foreground mb-2">
                 Official Domain
               </p>
@@ -75,7 +75,7 @@ export default function Practitioner() {
             </div>
 
             {/* CTA */}
-            <Button size="lg" className="bg-primary text-white">
+            <Button size="lg" className="w-full bg-primary text-white">
               Book a Consultation
             </Button>
           </div>

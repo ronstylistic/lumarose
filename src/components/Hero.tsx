@@ -34,10 +34,41 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-10">
-              <Button className="bg-white text-primary hover:bg-secondary/90 text-4xl py-10 px-8 font-bold cursor-pointer transition-all duration-300 uppercase">
+              <Button
+                className="
+                  bg-white
+                  text-primary
+                  hover:bg-secondary/90
+                  font-bold
+                  uppercase
+                  transition-all
+                  duration-300
+                  w-full
+
+                  text-base
+                  py-4
+                  px-6
+
+                  sm:text-lg
+                  sm:py-5
+                  sm:px-8
+                
+
+                  md:text-2xl
+                  md:py-6
+                  md:px-10
+                  md:w-auto
+
+                  lg:text-4xl
+                  lg:py-8
+                  lg:px-12
+                  lg:w-auto
+                "
+              >
                 Book Your Consultation Today
               </Button>
             </div>
+
           </div>
 
           {/* Right column intentionally empty or subtle image focus */}

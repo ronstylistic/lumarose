@@ -22,7 +22,7 @@ export default function ContactForm() {
        className="resize-y min-h-35 primary-field"
       />
 
-      <Button className="bg-primary text-white px-10 py-6 shadow-md hover:bg-primary/90">
+      <Button className="bg-primary text-white px-10 py-6 shadow-md hover:bg-primary/90 w-full md:w-auto">
         SEND MESSAGE
       </Button>
     </form>
