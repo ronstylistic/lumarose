@@ -6,7 +6,7 @@ export default function AboutPage() {
       {/* Page Header */}
       <section className="bg-white py-28 pb-0">
         <div className="max-w-5xl mx-auto px-6 text-center">
-           <h2 className="text-3xl font-semibold text-primary mb-3">
+           <h2 className="text-4xl md:text-5xl font-semibold text-primary mb-3">
              About Us
             </h2>
 
