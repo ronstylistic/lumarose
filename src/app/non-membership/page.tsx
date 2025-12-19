@@ -111,9 +111,10 @@ export default function Page() {
   return (
     <section className="bg-white py-24">
       <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-4xl font-serif italic text-primary text-center mb-16">
-          Add-On / Non-Membership Prices
-        </h2>
+     
+         <h2 className="text-3xl font-semibold text-primary text-center mb-3">
+            Non-Membership Prices
+          </h2>
 
         <div className="space-y-16">
           {sections.map((section) => (

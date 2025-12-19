@@ -73,9 +73,9 @@ export default function MembershipPlans() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl font-serif italic text-primary mb-4">
-            Membership Plans
-          </h2>
+           <h2 className="text-3xl font-semibold text-primary mb-3">
+             Membership Plans
+            </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Simple, transparent pricing designed around your health needs —
             no insurance hassles, no hidden fees.

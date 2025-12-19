@@ -34,7 +34,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="bg-gray-100 py-24">
+    <section className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">

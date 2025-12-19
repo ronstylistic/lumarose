@@ -42,6 +42,9 @@ export default function Navbar() {
             <Link href="/" className="text-primary transition-colors duration-200 hover:text-secondary">Home</Link>
             <Link href="/bio" className="transition-colors duration-200 hover:text-secondary">Bio</Link>
             <Link href="/services" className="transition-colors duration-200 hover:text-secondary">Services</Link>
+            <Link href="/membership" className="transition-colors duration-200 hover:text-secondary">Membership</Link>
+            <Link href="/non-membership" className="transition-colors duration-200 hover:text-secondary">Non-Membership</Link>
+            <Link href="/about" className=" transition-colors duration-200 hover:text-secondary">About Us</Link>
             <Link href="/contact" className=" transition-colors duration-200 hover:text-secondary">Contact</Link>
 
             <Button className="bg-primary text-white hover:bg-secondary px-5 uppercase">
