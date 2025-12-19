@@ -44,7 +44,7 @@ export default function Navbar() {
             <Link href="/membership" className="transition-colors duration-200 hover:text-secondary">Membership</Link>
             <Link href="/non-membership" className="transition-colors duration-200 hover:text-secondary">Non-Membership</Link>
             <Link href="/bio" className="transition-colors duration-200 hover:text-secondary">Bio</Link>
-            <Link href="/about" className=" transition-colors duration-200 hover:text-secondary">About Us</Link>
+            <Link href="/about" className=" transition-colors duration-200 hover:text-secondary">About</Link>
             <Link href="/contact" className=" transition-colors duration-200 hover:text-secondary">Contact</Link>
 
             <Button className="bg-primary text-white hover:bg-secondary px-5 uppercase">
@@ -70,12 +70,27 @@ export default function Navbar() {
             <Link className="transition-colors duration-200 hover:text-secondary" href="/" onClick={() => setOpen(false)}>
               Home
             </Link>
-            <Link className="transition-colors duration-200 hover:text-secondary" href="/bio" onClick={() => setOpen(false)}>
-              Bio
-            </Link>
+           
             <Link className="transition-colors duration-200 hover:text-secondary" href="/services" onClick={() => setOpen(false)}>
               Services
             </Link>
+            <Link className="transition-colors duration-200 hover:text-secondary" href="/membership" onClick={() => setOpen(false)}>
+              Membership
+            </Link>
+
+             <Link className="transition-colors duration-200 hover:text-secondary" href="/non-membership" onClick={() => setOpen(false)}>
+              Non-Membership
+            </Link>
+            
+
+             <Link className="transition-colors duration-200 hover:text-secondary" href="/bio" onClick={() => setOpen(false)}>
+              Bio
+            </Link>
+
+             <Link className="transition-colors duration-200 hover:text-secondary" href="/about" onClick={() => setOpen(false)}>
+              About
+            </Link>
+            
             <Link className="transition-colors duration-200 hover:text-secondary" href="/contact" onClick={() => setOpen(false)}>
               Contact
             </Link>
