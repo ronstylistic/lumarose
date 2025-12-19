@@ -8,11 +8,17 @@ import AboutLumaRose from "@/components/AboutLumaRose";
 import MembershipPlans from "@/components/MembershipPlans";
 import NonMembership from "@/components/NonMembership";
 import Hero from "@/components/Hero";
+import Trust from "@/components/Trust";
+import Provider from "@/components/Provider";
+import FounderWelcome from "@/components/FounderWelcome";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+      <Trust />
+      <Provider />
+      <FounderWelcome />
       <Services/>
       <Practitioner />
       <AboutLumaRose />

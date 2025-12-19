@@ -23,15 +23,28 @@ export default function Hero() {
           {/* Left Content */}
           <div className="text-white">
             <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-6">
-              Personalized Care for <br />
-              Modern, Balanced Living
+              Thoughtful Care. Modern Medicine. Whole-Person Wellness
             </h1>
 
             <p className="text-white/90 text-lg max-w-xl mb-8">
-              Virtual primary care, preventive wellness, and weight management —
-              thoughtfully designed around your lifestyle.
+              Personalized, nurse practitioner–led care designed to support your health, prevent illness, and help you feel your best—at every stage of life.
             </p>
 
+            <p className="text-white/90 text-lg max-w-xl mb-8">
+              Book Your Visit <br/>
+              Explore Our Services
+            </p>
+
+            <p className="text-white/90 text-lg max-w-xl mb-8">
+              Board-Certified Family Nurse Practitioner | 17+ Years of Clinical Experience Virtual care for adults 18+
+            </p>
+
+             <p className="text-white/90 text-lg max-w-xl mb-8">
+              Disclaimer:  Services are individualized and provided based on clinical appropriateness.
+            </p>
+
+          
+    
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-10">
               <Button
