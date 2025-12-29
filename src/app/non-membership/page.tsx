@@ -1,13 +1,11 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   CheckCircle,
   Laptop,
-  Bandage,
+  Stethoscope,
   HeartPulse,
   Brain,
-  Stethoscope,
-  Home,
+  Bandage,
   ArrowRight,
 } from "lucide-react";
 
@@ -15,21 +13,27 @@ export default function NonMembershipPage() {
   return (
     <>
       {/* INTRO */}
-      <section className="bg-white py-28">
+      <section className="bg-muted/40 py-28">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-6">
             Non-Membership Services
           </h1>
 
           <p className="text-lg md:text-xl text-foreground mb-6">
-            Personalized care—when you need it.
+            Personalized Care—On Your Terms
           </p>
 
           <p className="text-muted-foreground max-w-3xl mx-auto">
-            LumaRose offers flexible, pay-per-visit care without a monthly
-            commitment. All services are provided by a board-certified Family
-            Nurse Practitioner with over 17 years of clinical experience through
-            secure virtual visits and select in-home concierge care.
+            LumaRose offers flexible, self-pay medical care without a monthly
+            commitment. These services are ideal for individuals seeking
+            high-quality, professional healthcare on a one-time or occasional
+            basis.
+          </p>
+
+          <p className="text-muted-foreground max-w-3xl mx-auto mt-4">
+            All care is provided by a board-certified Family Nurse Practitioner
+            with over 17 years of clinical experience through secure virtual
+            visits and select in-home concierge services.
           </p>
         </div>
       </section>
@@ -43,14 +47,14 @@ export default function NonMembershipPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {[
-              "Care for a specific or short-term concern",
-              "One-time or occasional visits without subscription",
-              "Exploring LumaRose before joining membership",
-              "Professional care without ongoing commitment",
+              "Seeking care for a specific or short-term concern",
+              "Interested in one-time or occasional visits without a subscription",
+              "Exploring LumaRose before enrolling in a membership",
+              "Looking for professional, high-quality care without ongoing commitment",
             ].map((item) => (
               <div
                 key={item}
-                className="flex items-start gap-3 bg-muted/40 p-5 rounded-xl"
+                className="flex gap-3 bg-muted/40 p-5 rounded-xl"
               >
                 <CheckCircle className="h-5 w-5 text-secondary mt-0.5" />
                 <p>{item}</p>
@@ -59,128 +63,123 @@ export default function NonMembershipPage() {
           </div>
 
           <p className="text-muted-foreground max-w-3xl">
-            We welcome patients of all genders, orientations, identities, and
-            health histories. Care is delivered confidentially, respectfully,
-            and without judgment.
+            We welcome patients of all genders, identities, orientations, and
+            health backgrounds. All care is delivered confidentially,
+            respectfully, and without judgment.
           </p>
         </div>
       </section>
 
       {/* WHAT’S INCLUDED */}
-      <section className="bg-muted/40 py-24">
+      <section className="bg-muted py-24">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-semibold text-primary mb-12">
             What’s Included
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Laptop,
-                title: "Virtual Visits",
-                text: "One-time telehealth visits focused on evaluation, treatment, and education.",
-              },
-              {
-                icon: Stethoscope,
-                title: "Preventive & Acute Care",
-                text: "Support for common concerns, acute symptoms, and preventive guidance.",
-              },
-              {
-                icon: HeartPulse,
-                title: "Chronic Condition Support",
-                text: "Management and follow-up for stable chronic health issues.",
-              },
-              {
-                icon: Brain,
-                title: "Whole-Person Support",
-                text: "Weight management, stress, mood, and overall wellness support.",
-              },
-            ].map(({ icon: Icon, title, text }) => (
-              <div
-                key={title}
-                className="bg-gray-100/40 rounded-2xl p-6 shadow-sm"
-              >
-                <Icon className="h-6 w-6 text-secondary mb-4" />
-                <h3 className="font-semibold mb-2">{title}</h3>
-                <p className="text-sm text-muted-foreground">{text}</p>
-              </div>
-            ))}
+            <ServiceCard
+              icon={Laptop}
+              title="Virtual Visits"
+              text="One-time telehealth appointments focused on evaluation, treatment, and patient education."
+            />
+            <ServiceCard
+              icon={Stethoscope}
+              title="Preventive & Acute Care"
+              text="Support for common acute concerns, symptom evaluation, and preventive health guidance."
+            />
+            <ServiceCard
+              icon={HeartPulse}
+              title="Chronic Condition Support"
+              text="Ongoing management and follow-up for stable chronic health conditions requiring clinical oversight."
+            />
+            <ServiceCard
+              icon={Brain}
+              title="Whole-Person Support"
+              text="Care addressing weight management, stress, mood, and overall wellness—because health is never one-dimensional."
+            />
           </div>
         </div>
       </section>
 
-      {/* SPECIALIZED CARE */}
+      {/* SEXUAL HEALTH */}
       <section className="bg-white py-24">
-        <div className="max-w-6xl mx-auto px-6 space-y-20">
-          {/* Sexual Health */}
-          <div>
-            <h2 className="text-2xl font-semibold text-primary mb-6">
-              Sexual & Reproductive Health
-            </h2>
-            <p className="text-muted-foreground mb-6 max-w-3xl">
-              Confidential, inclusive, judgment-free care for adults of all
-              identities.
-            </p>
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold text-primary mb-4">
+            Sexual & Reproductive Health
+          </h2>
 
-            <ul className="space-y-3">
-              {[
-                "Sexual health risk assessment and counseling",
-                "STD / STI screening coordination",
-                "Evaluation of symptoms or exposure concerns",
-                "Treatment of select STDs/STIs",
-                "Preventive guidance and safer-sex education",
-                "Follow-up care and coordination",
-              ].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <CheckCircle className="h-4 w-4 text-secondary mt-1" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+          <p className="text-muted-foreground mb-6">
+            Confidential, inclusive, judgment-free care for adults of all
+            identities.
+          </p>
 
-            <p className="text-sm text-muted-foreground mt-4">
-              Lab fees are billed separately by third-party laboratories.
-            </p>
-          </div>
+          <ul className="space-y-3">
+            {[
+              "Sexual health risk assessment and counseling",
+              "STD / STI screening coordination",
+              "Evaluation of symptoms or exposure concerns",
+              "Treatment of select STDs/STIs",
+              "Preventive guidance and safer-sex education",
+              "Follow-up care and coordination",
+            ].map((item) => (
+              <li key={item} className="flex gap-3">
+                <CheckCircle className="h-4 w-4 text-secondary mt-1" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
 
-          {/* Wound Care */}
-          <div>
-            <h2 className="text-2xl font-semibold text-primary mb-6">
-              Post-Operative Wound Care Support
-            </h2>
+          <p className="text-sm text-muted-foreground mt-4">
+            Lab fees are billed separately by third-party laboratories.
+          </p>
+        </div>
+      </section>
 
-            <ul className="space-y-3">
-              {[
-                "Virtual or in-home wound assessment",
-                "Monitoring healing progress",
-                "Wound care education and dressing guidance",
-                "Infection prevention support",
-                "Care coordination with your surgeon",
-              ].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <Bandage className="h-4 w-4 text-secondary mt-1" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+      {/* WOUND CARE */}
+      <section className="bg-muted/40 py-24">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold text-primary mb-4">
+            Post-Operative Wound Care Support
+          </h2>
 
-            <p className="text-sm text-muted-foreground mt-4">
-              These services support healing and do not replace surgical follow-up
-              or emergency care.
-            </p>
-          </div>
+          <p className="text-muted-foreground mb-6">
+            Specialized support to promote healing and recovery following
+            surgery, led by an experienced clinician with extensive wound care
+            expertise.
+          </p>
+
+          <ul className="space-y-3">
+            {[
+              "Virtual or in-home wound assessments",
+              "Monitoring of healing progress",
+              "Wound care education and dressing guidance",
+              "Infection prevention support",
+              "Care coordination with your surgical team",
+            ].map((item) => (
+              <li key={item} className="flex gap-3">
+                <Bandage className="h-4 w-4 text-secondary mt-1" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-sm text-muted-foreground mt-4">
+            These services support healing and do not replace surgical follow-up
+            or emergency care.
+          </p>
         </div>
       </section>
 
       {/* PRICING */}
-      <section className="py-24">
+      <section className="bg-white py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-primary mb-8">
-            Transparent Pricing (Self-Pay)
+          <h2 className="text-3xl font-semibold text-primary mb-6">
+            Transparent Self-Pay Pricing
           </h2>
 
           <p className="text-muted-foreground mb-10">
-            Final pricing is reviewed with you prior to your visit.
+            Final pricing is always reviewed with you prior to your visit.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -189,7 +188,7 @@ export default function NonMembershipPage() {
               items={[
                 ["Initial Visit", "$150 – $250"],
                 ["Follow-Up Visit", "$100 – $175"],
-                ["Complex / Chronic Visit", "$175 – $275"],
+                ["Complex or Chronic Care Visit", "$175 – $275"],
               ]}
             />
 
@@ -207,10 +206,10 @@ export default function NonMembershipPage() {
       </section>
 
       {/* CONCIERGE */}
-      <section className="bg-white py-24">
+      <section className="bg-muted/40 py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-primary mb-8">
-            Concierge / In-Home Care
+          <h2 className="text-3xl font-semibold text-primary mb-6">
+            Concierge & In-Home Care
           </h2>
 
           <PricingCard
@@ -225,12 +224,14 @@ export default function NonMembershipPage() {
 
           <p className="text-sm text-muted-foreground mt-4">
             Concierge services are subject to provider availability and location.
+            Availability is limited to ensure focused, one-on-one visits and
+            high-quality care.
           </p>
         </div>
       </section>
 
-      {/* EXPECTATIONS */}
-      <section className="bg-muted/40 py-24">
+      {/* WHAT TO EXPECT */}
+      <section className="bg-white py-24">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-3xl font-semibold text-primary mb-6">
             What to Expect
@@ -238,11 +239,11 @@ export default function NonMembershipPage() {
 
           <ul className="space-y-3">
             {[
-              "Confidential, inclusive, respectful care",
-              "Thoughtful, unhurried visits",
-              "Clear education and communication",
-              "Evidence-based treatment plans",
-              "Secure follow-up guidance",
+              "Confidential, inclusive, and respectful care",
+              "Focused, one-on-one visits that prioritize quality",
+              "Clear communication and patient education",
+              "Evidence-based treatment plans tailored to your needs",
+              "Secure follow-up guidance and care coordination",
             ].map((item) => (
               <li key={item} className="flex gap-3">
                 <CheckCircle className="h-4 w-4 text-secondary mt-1" />
@@ -253,56 +254,51 @@ export default function NonMembershipPage() {
         </div>
       </section>
 
-      {/* MEMBERSHIP BRIDGE */}
-      <section className="bg-white py-24 text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-primary mb-4">
-            Considering Membership Care?
-          </h2>
-
-          <p className="text-muted-foreground mb-6">
-            Membership may offer greater continuity and value if you anticipate
-            ongoing care needs.
-          </p>
-
-          <Link
-            href="/membership"
-            className="inline-flex items-center gap-2 text-secondary font-medium hover:text-primary"
-          >
-            Learn More About Membership Care
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
-
       {/* FINAL CTA */}
       <section className="bg-primary/5 py-28 text-center">
         <h2 className="text-3xl font-semibold text-primary mb-6">
-          Ready to Schedule?
+          Ready to Schedule a Visit?
         </h2>
 
-        <p className="text-muted-foreground mb-8">
-          LumaRose is here to support you—when you need care, without commitment.
+        <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Book online or contact us to determine if non-membership care is right
+          for you.
         </p>
 
         <Button size="lg" className="bg-primary text-white px-10">
           Book a Non-Membership Visit
         </Button>
-      </section>
 
-      {/* FOOTNOTE */}
-      <section className="bg-white py-12">
-        <p className="text-xs text-muted-foreground text-center max-w-4xl mx-auto px-6">
-          All services are provided based on clinical appropriateness. Certain
-          conditions may require in-person evaluation or referral. Emergency
-          care is not provided.
+        <p className="text-xs text-muted-foreground mt-8 max-w-3xl mx-auto">
+          LumaRose does not replace emergency care. If you are experiencing a
+          medical emergency, please call 911 or go to the nearest emergency
+          department.
         </p>
       </section>
     </>
   );
 }
 
-/* Pricing Card */
+/* COMPONENTS */
+
+function ServiceCard({
+  icon: Icon,
+  title,
+  text,
+}: {
+  icon: any;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="bg-gray-100 rounded-2xl p-6 border-primary shadow-sm text-center">
+      <Icon className="h-6 w-6 text-secondary mb-4" />
+      <h3 className="font-semibold mb-2">{title}</h3>
+      <p className="text-sm text-muted-foreground">{text}</p>
+    </div>
+  );
+}
+
 function PricingCard({
   title,
   items,
