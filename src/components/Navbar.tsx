@@ -5,9 +5,37 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+
+const NAV_ITEMS = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Membership", href: "/membership" },
+  { label: "Non-Membership", href: "/non-membership" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+
+  const pathname = usePathname();
+
+  const navLinkClass = (href: string) => {
+  const isActive =
+    pathname === href || pathname.startsWith(`${href}/`);
+
+  return `
+    relative transition-colors duration-200
+    ${
+      isActive
+        ? "text-primary font-semibold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-primary"
+        : "text-gray-700 hover:text-secondary after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-secondary after:transition-all after:duration-300 hover:after:w-full"
+    }
+  `;
+};
+
 
   return (
     <>
@@ -17,7 +45,7 @@ export default function Navbar() {
           {/* LOGO */}
           <Link
             href="/"
-            className="flex items-center gap-2 outline-none focus:outline-none focus:ring-0"
+            className={"flex items-center gap-2 outline-none focus:outline-none focus:ring-0"}
           >
             <Image
               src="/images/logo.png"
@@ -36,16 +64,17 @@ export default function Navbar() {
             </span>
           </Link>
 
-
           {/* DESKTOP MENU */}
           <nav className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
-            <Link href="/" className="text-primary transition-colors duration-200 hover:text-secondary">Home</Link>
-            <Link href="/services" className="transition-colors duration-200 hover:text-secondary">Services</Link>
-            <Link href="/membership" className="transition-colors duration-200 hover:text-secondary">Membership</Link>
-            <Link href="/non-membership" className="transition-colors duration-200 hover:text-secondary">Non-Membership</Link>
-            <Link href="/bio" className="transition-colors duration-200 hover:text-secondary">Bio</Link>
-            <Link href="/about" className=" transition-colors duration-200 hover:text-secondary">About</Link>
-            <Link href="/contact" className=" transition-colors duration-200 hover:text-secondary">Contact</Link>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={navLinkClass(item.href)}
+              >
+                {item.label}
+              </Link>
+            ))}
 
             <Button className="bg-primary text-white hover:bg-secondary px-5 uppercase">
               <Link href="/book">Book Now</Link>
@@ -67,33 +96,16 @@ export default function Navbar() {
       {open && (
         <div className="fixed top-18 inset-x-0 z-9998 bg-white border-b border-gray-100 shadow-lg md:hidden">
           <nav className="flex flex-col px-6 py-6 space-y-4 text-gray-700 font-medium">
-            <Link className="transition-colors duration-200 hover:text-secondary" href="/" onClick={() => setOpen(false)}>
-              Home
-            </Link>
-           
-            <Link className="transition-colors duration-200 hover:text-secondary" href="/services" onClick={() => setOpen(false)}>
-              Services
-            </Link>
-            <Link className="transition-colors duration-200 hover:text-secondary" href="/membership" onClick={() => setOpen(false)}>
-              Membership
-            </Link>
-
-             <Link className="transition-colors duration-200 hover:text-secondary" href="/non-membership" onClick={() => setOpen(false)}>
-              Non-Membership
-            </Link>
-            
-
-             <Link className="transition-colors duration-200 hover:text-secondary" href="/bio" onClick={() => setOpen(false)}>
-              Bio
-            </Link>
-
-             <Link className="transition-colors duration-200 hover:text-secondary" href="/about" onClick={() => setOpen(false)}>
-              About
-            </Link>
-            
-            <Link className="transition-colors duration-200 hover:text-secondary" href="/contact" onClick={() => setOpen(false)}>
-              Contact
-            </Link>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={navLinkClass(item.href)}
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
 
             <Button
               className="bg-primary text-white hover:bg-secondary uppercase w-full"

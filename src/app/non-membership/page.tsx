@@ -13,7 +13,7 @@ export default function NonMembershipPage() {
   return (
     <>
       {/* INTRO */}
-      <section className="bg-muted/40 py-28">
+      <section className="bg-white/40 py-28">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-6">
             Non-Membership Services

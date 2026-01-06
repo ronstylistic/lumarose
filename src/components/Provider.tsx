@@ -19,10 +19,10 @@ export default function Provider() {
           <div className="flex justify-center">
             <div className="relative w-72 h-72 rounded-full border-4 border-secondary/30 overflow-hidden shadow-lg">
               <Image
-                src="/images/logo.png" // replace with actual image path
+                src="/images/founder.jpg" // replace with actual image path
                 alt="Shameka Crump"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           </div>
