@@ -41,7 +41,7 @@ export default function WhatToExpect() {
             What to Expect at LumaRose
           </h2>
 
-          <p className="text-lg md:text-xl text-foreground mb-6">
+          <p className="text-muted-foreground mb-6">
             A care experience designed to feel calm, thoughtful, and centered
             around you.
           </p>

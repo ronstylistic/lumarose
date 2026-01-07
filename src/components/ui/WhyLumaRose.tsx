@@ -43,7 +43,7 @@ export default function WhyChooseLumaRose() {
             Healthcare should feel intentional, personal, and rooted in trust.
           </p>
 
-          <p className="text-muted-foreground leading-relaxed max-w-2xl">
+          <p className="text-muted-foreground leading-relaxed">
             At LumaRose, care is led by experience—not volume. Visits are
             unhurried, plans are individualized, and patients are treated as
             true partners in their health.

@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { label: "Services", href: "/services" },
   { label: "Membership", href: "/membership" },
   { label: "Non-Membership", href: "/non-membership" },
+  { label: "Laboratory", href: "/laboratory" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

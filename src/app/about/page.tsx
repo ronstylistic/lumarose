@@ -1,3 +1,5 @@
+import { ServicesInclude } from "@/components/ServicesIncluded";
+import { CheckCircle } from "lucide-react";
 import Image from "next/image";
 
 export default function AboutPage() {
@@ -59,23 +61,7 @@ export default function AboutPage() {
               </p>
 
               {/* Services List */}
-              <div className="mt-8">
-                <h3 className="font-semibold text-foreground mb-4">
-                  Services Include:
-                </h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• Virtual primary care</li>
-                  <li>
-                    • Chronic disease management (hypertension, diabetes,
-                    obesity, and more)
-                  </li>
-                  <li>• Weight loss & metabolic health programs</li>
-                  <li>• Preventive care & wellness planning</li>
-                  <li>• Sexual health testing & treatment</li>
-                  <li>• Post-operative wound care</li>
-                  <li>• Urgent non-emergency telehealth visits</li>
-                </ul>
-              </div>
+             <ServicesInclude />
             </div>
 
             {/* RIGHT COLUMN — PRACTITIONER BIO */}
@@ -143,3 +129,4 @@ export default function AboutPage() {
     </>
   );
 }
+
