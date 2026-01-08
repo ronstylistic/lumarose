@@ -1,14 +1,10 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { CheckCircle } from "lucide-react";
-import NonMemberServicesPricing from "@/components/NonMemberServicesPricing";
 
 export default function NonMembershipPage() {
   return (
     <>
       {/* HERO */}
       <section className="bg-white py-28">
-        <div className="max-w-5xl mx-auto px-6 text-center">
+        <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-6">
             Non-Membership Services & Pricing
           </h1>
@@ -31,8 +27,6 @@ export default function NonMembershipPage() {
           </p>
         </div>
       </section>
-
-      <NonMemberServicesPricing />
 
       {/* WHO IT’S FOR */}
       {/* <section className="bg-white py-24">

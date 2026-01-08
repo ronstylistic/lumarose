@@ -41,7 +41,7 @@ const services = [
 
 export default function Page() {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-white py-28">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">

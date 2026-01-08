@@ -10,7 +10,7 @@ const MAP_QUERY =
 
 export default function Contact() {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-white py-28">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
