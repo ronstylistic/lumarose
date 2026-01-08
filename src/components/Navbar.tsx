@@ -43,7 +43,7 @@ export default function Navbar() {
     <>
       {/* NAVBAR */}
       <header className="fixed top-0 inset-x-0 z-9999 bg-white shadow-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+        <div className="mx-auto flex justify-between items-center py-4 px-6">
           {/* LOGO */}
           <Link
             href="/"

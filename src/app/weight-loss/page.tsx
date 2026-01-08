@@ -1,109 +1,75 @@
-import { WeightLossPricing } from "@/components/WeightLossPricing";
-import { CheckCircle } from "lucide-react";
+import { Check, CheckCircle } from "lucide-react";
 
 export default function Page() {
   return (
     <section className="bg-white py-28">
-      <div className="max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto mb-12 text-center px-8">
+        <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-3">
+          How Weight Loss Pricing Works
+        </h1>
 
-        <div className="max-w-7xl mb-12 text-center mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-3">
-            Weight Loss & Metabolic Health
-          </h1>
+        <p className="text-muted-foreground max-w-3xl mx-auto">
+          Our weight-loss and metabolic health services are offered as self-pay, non-membership care for patients who want medical guidance without a monthly commitment. Pricing is structured as a range to reflect differences in visit complexity, time, and clinical decision-making.
+        </p>
 
-          <p className="text-muted-foreground max-w-3xl mx-auto">
-            Self-pay, non-membership medical weight-loss care. Pricing reflects
-            visit complexity, time, and clinical decision-making. Final pricing is
-            always reviewed prior to your visit.
-          </p>
+         <p className="text-muted-foreground max-w-3xl mx-auto mt-5">
+          Your final fee is always reviewed and agreed upon before your visit begins.
+        </p>
+      </div>
+
+      {/* Pricing Columns */}
+      <div className="max-w-7xl mx-auto mb-12 px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <WeightLossCard
+            title="Initial Evaluation"
+            price="$175 – $250"
+            description={[
+                "Review of medical history, medications, and weight-loss goals",
+                "Evaluation of metabolic health and contributing factors",
+                "Discussion of treatment options and next steps",
+                "Personalized weight-loss plan based on clinical findings",
+            ]}
+            note="This visit may take more time depending on medical complexity."
+            />
+
+            <WeightLossCard
+            title="Follow-Up Visits"
+            price="$125 – $175"
+            description={[
+                "Progress review",
+                "Plan adjustments",
+                "Ongoing support and education",
+                "Medication review when clinically appropriate",
+            ]}
+            note="Most routine follow-ups fall toward the lower end of the range."
+            />
+
+            <WeightLossCard
+            title="Metabolic / Obesity Management"
+            price="$175 – $275"
+            description={[
+                "Multiple medical conditions affecting weight",
+                "In-depth evaluation or coordination",
+                "Extended time for clinical decision-making",
+            ]}
+            note="Higher complexity visits requiring extended clinical time."
+            />
+
+            <WeightLossCard
+            title="Nutrition & Lifestyle Counseling"
+            price="$100 – $150"
+            description={[
+                "Nutrition guidance",
+                "Lifestyle and behavior support",
+                "Goal setting and accountability",
+            ]}
+            note="May be used alone or alongside medical weight-loss care."
+            />
         </div>
 
-        {/* TWO SERVICE CARDS */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* COLUMN 1 */}
-          <ServiceColumn title="Virtual Care Services">
-            <PriceGroup
-              title="Virtual Primary Care"
-              items={[
-                ["Initial Visit", "$150 – $250"],
-                ["Follow-Up Visit", "$100 – $175"],
-                ["Complex or Chronic Care Visit", "$175 – $275"],
-              ]}
-            />
-
-            <PriceGroup
-              title="Urgent Virtual Care (Non-Emergency)"
-              items={[
-                ["Urgent Visit", "$125 – $200"],
-                ["Extended / Complex Visit", "$175 – $250"],
-              ]}
-              note="Common conditions include infections, rashes, respiratory symptoms, UTIs, GI concerns, and medication-related issues."
-            />
-
-            <PriceGroup
-              title="Prescription Refill Services"
-              items={[
-                ["Single Medication Refill", "$75 – $125"],
-                ["Multiple Medication Review", "$100 – $175"],
-                ["Chronic Medication Management", "$125 – $200"],
-              ]}
-              note="Non-controlled medications only. Controlled substances are not prescribed."
-            />
-
-            <PriceGroup
-              title="Sexual Health Services"
-              items={[
-                ["Evaluation & Testing Coordination", "$150 – $225"],
-                ["Treatment Visit", "$150 – $225"],
-                ["Follow-Up Visit", "$100 – $150"],
-              ]}
-              note="Lab fees are not included and are paid directly to the laboratory if applicable."
-            />
-
-            <PriceGroup
-              title="Preventive Wellness & Reviews"
-              items={[
-                ["Preventive Health Planning", "$125 – $200"],
-                ["Lab Review Visit", "$100 – $175"],
-                ["Complex Lab Review", "$150 – $225"],
-                ["Medication Review / Deprescribing", "$125 – $200"],
-              ]}
-            />
-          </ServiceColumn>
-
-          {/* COLUMN 2 */}
-          <ServiceColumn title="Specialty & Concierge Care">
-            <PriceGroup
-              title="Local Concierge Medical Care (In-Home)"
-              items={[
-                ["≤20 miles", "$200 – $250"],
-                ["Extended Distance", "$250+"],
-                ["Follow-Up Visit", "$175 – $225"],
-                ["Extended Care Planning", "$75 – $125"],
-              ]}
-            />
-
-            <PriceGroup
-              title="Post-Operative Wound Care"
-              items={[
-                ["Initial Wound Evaluation", "$225 – $300"],
-                ["In-Home Wound Visit (≤20 miles)", "$200 – $250"],
-                ["Extended Distance Visit", "$250+"],
-                ["Follow-Up Wound Visit", "$175 – $225"],
-                ["Advanced Wound Care Planning", "$75 – $125"],
-              ]}
-            />
-            <PriceGroup
-              title="Medical Clearance & Documentation"
-              items={[
-                ["Work, School, or Travel Clearance", "$75 – $150"],
-              ]}
-            />
-          </ServiceColumn>
-        </div>
-
-        {/* IMPORTANT NOTES */}
-        <div className="mt-16 mx-auto px-8">
+         {/* IMPORTANT NOTES */}
+        <div className="mt-16 mx-auto">
           <div className="flex items-center gap-3 mb-4">
             <h3 className="font-semibold text-primary text-2xl">
               Important Notes
@@ -112,12 +78,11 @@ export default function Page() {
 
           <ul className="space-y-3 text-sm text-muted-foreground">
             {[
-              "All services are self-pay and non-membership",
-              "Final pricing is reviewed prior to your visit",
-              "Pricing may vary based on medical complexity, time, and distance",
-              "Labs, medications, imaging, and supplies are not included unless stated",
+              "All weight-loss services are self-pay and non-membership",
+              "Medications, labs, and supplements are not included in visit pricing",
+              "Prescriptions are provided only when clinically appropriate",
               "Controlled substances are not prescribed",
-              "Concierge and in-home services are subject to provider availability",
+              "Final pricing is always confirmed before your visit",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <CheckCircle className="h-4 w-4 text-secondary mt-0.5" />
@@ -127,63 +92,48 @@ export default function Page() {
           </ul>
         </div>
       </div>
-
-      <WeightLossPricing />
     </section>
   );
 }
 
-/* ================= COMPONENTS ================= */
 
-function ServiceColumn({
+function WeightLossCard({
   title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="bg-white rounded-2xl p-8 space-y-8">
-      <h1 className="text-3xl font-semibold text-primary flex items-center gap-3">
-        {title}
-      </h1>
-      {children}
-    </div>
-  );
-}
-
-function PriceGroup({
-  title,
-  items,
+  price,
+  description,
   note,
 }: {
   title: string;
-  items: [string, string][];
-  description?: string[];
+  price: string;
+  description: string[];
   note?: string;
 }) {
   return (
     <div className="bg-gray-100/40 shadow-sm rounded-2xl p-6 flex flex-col">
-      <h3 className="font-semibold text-foreground mb-4">
+      {/* Title */}
+      <h3 className="text-lg font-semibold text-primary mb-2">
         {title}
       </h3>
 
-      <div className="space-y-3">
-        {items.map(([label, price]) => (
-          <div
-            key={label}
-            className="flex justify-between border-b border-primary/40 border-dashed"
-          >
-            <span className="text-sm">{label}</span>
-            <span className="font-semibold text-primary">
-              {price}
-            </span>
-          </div>
-        ))}
+      {/* Price */}
+      <div className="text-2xl font-semibold text-foreground mb-4">
+        {price}
       </div>
 
+     
+      {/* Included */}
+      <ul className="space-y-3 flex-1">
+        {description.map((item) => (
+          <li key={item} className="flex gap-3 text-sm">
+            <Check className="h-4 w-4 text-secondary mt-1" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* Note */}
       {note && (
-        <p className="text-xs text-muted-foreground mt-3">
+        <p className="text-xs text-muted-foreground mt-4">
           {note}
         </p>
       )}

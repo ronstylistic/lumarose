@@ -18,12 +18,6 @@ export default function HomePage() {
       <WhatToExpect />
       <MembershipCare />
       <FinalCTA />
-{/*       <Services/>
-      <Practitioner />
-      <AboutLumaRose />
-      <MembershipPlans />
-      <NonMembership />
-      <Contact  /> */}
     
     </>
   );
