@@ -12,7 +12,6 @@ export default function HomePage() {
     <>
       <Hero />
       <Trust />
-      <Provider />
       <FounderWelcome />
       <WhyChooseLumaRose />
       <WhatToExpect />

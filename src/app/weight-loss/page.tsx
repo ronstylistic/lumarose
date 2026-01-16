@@ -6,11 +6,21 @@ export default function Page() {
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-12 text-center px-8">
         <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-3">
-          How Weight Loss Pricing Works
+          Weight Loss Care & Pricing
         </h1>
 
-        <p className="text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-foreground mb-6">
+          Medical weight-loss and metabolic care designed around transparency, clinical
+appropriateness, and personalized support
+        </p>
+
+        <p className="text-muted-foreground max-w-3xl mx-auto mt-5">
           Our weight-loss and metabolic health services are offered as self-pay, non-membership care for patients who want medical guidance without a monthly commitment. Pricing is structured as a range to reflect differences in visit complexity, time, and clinical decision-making.
+        </p>
+
+        <p className="text-muted-foreground max-w-3xl mx-auto mt-5">
+          Prescription medications, including GLP-1–based therapies, are not included in visit pricing
+and are prescribed only when clinically appropriate after evaluation.
         </p>
 
          <p className="text-muted-foreground max-w-3xl mx-auto mt-5">
@@ -28,7 +38,7 @@ export default function Page() {
                 "Review of medical history, medications, and weight-loss goals",
                 "Evaluation of metabolic health and contributing factors",
                 "Discussion of treatment options and next steps",
-                "Personalized weight-loss plan based on clinical findings",
+                "Individualized care plan based on clinical findings and patient goals",
             ]}
             note="This visit may take more time depending on medical complexity."
             />
@@ -50,9 +60,12 @@ export default function Page() {
             price="$175 – $275"
             description={[
                 "Multiple medical conditions affecting weight",
-                "In-depth evaluation or coordination",
+                "In-depth medical evaluation and care coordination when indicated",
                 "Extended time for clinical decision-making",
             ]}
+            disclaimer="Weight-loss outcomes vary by individual. No specific results are guaranteed. All care is
+personalized and based on clinical appropriateness."
+
             note="Higher complexity visits requiring extended clinical time."
             />
 
@@ -101,11 +114,13 @@ function WeightLossCard({
   title,
   price,
   description,
+  disclaimer, 
   note,
 }: {
   title: string;
   price: string;
   description: string[];
+  disclaimer?: string;
   note?: string;
 }) {
   return (
@@ -130,6 +145,13 @@ function WeightLossCard({
           </li>
         ))}
       </ul>
+
+      {/* Disclaimer */}
+      {disclaimer && (
+        <p className="text-xs text-muted-foreground mt-4">
+          <span className="font-bold italic">Disclaimer: </span> {disclaimer}
+        </p>
+      )}
 
       {/* Note */}
       {note && (

@@ -6,8 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
         {/* Center Text */}
         <p className="text-sm text-white/80 text-center w-full md:w-auto md:text-left">
-          © {new Date().getFullYear()} LumaRose Health & Wellness. All Rights
-          Reserved. Domain: lumarosehealth.org
+          © {new Date().getFullYear()} LumaRose Health & Wellness | Patient Portal
         </p>
       </div>
     </footer>

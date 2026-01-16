@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/ContactForm";
 
 const ADDRESS =
-  "123 Wellness Way, Suite 100, MedTech City, CA 90210";
+  "1000 Main Street Suite 2300 Houston, TX 77002";
 
 const MAP_QUERY =
-  "123+Wellness+Way+Suite+100+MedTech+City+CA+90210";
+  "1000+Main+Street+Suite+2300+Houston+TX+77002";
 
 export default function Contact() {
   return (
@@ -40,7 +40,7 @@ export default function Contact() {
               <div className="space-y-5 text-sm">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-secondary" />
-                  <span>info@lumarosehealth.org</span>
+                  <span>care@lumarosewellness.com</span>
                 </div>
 
                 <div className="flex items-center gap-3">

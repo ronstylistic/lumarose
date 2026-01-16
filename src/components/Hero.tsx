@@ -31,24 +31,22 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
-            Personalized, nurse practitioner–led care designed to support your
-            health, prevent illness, and help you feel your best—at every stage
-            of life.
+           Personalized virtual care for busy adults focused on prevention, chronic care, and
+whole-person wellness so you can feel your best at every stage of life.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
             <Button
               size="lg"
-              className="bg-white text-primary hover:bg-secondary hover:text-white transition-colors px-8"
+              className="hover:bg-primary/80 text-white transition-colors px-8"
             >
               <Link href="/book">Book Your Visit</Link>
             </Button>
 
             <Button
               size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10 px-8"
+              className="bg-secondary text-white hover:bg-secondary/80 px-8"
             >
               <Link href="/services">Explore Our Services</Link>
             </Button>

@@ -33,7 +33,7 @@ const expectations = [
 
 export default function WhatToExpect() {
   return (
-    <section className="bg-gray-100 py-28">
+    <section className="bg-white py-28">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="max-w-3xl mb-16 text-center mx-auto">
@@ -54,7 +54,7 @@ export default function WhatToExpect() {
               key={text}
               className="
                 group
-                bg-white/40
+                bg-gray-100/40
                 shadow-sm
                 rounded-2xl
                 p-6

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function MembershipCare() {
   return (
-    <section className="bg-white py-28">
+    <section className="bg-gray-100 py-28">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div
@@ -34,7 +34,7 @@ export default function MembershipCare() {
           {/* Card 1 */}
           <div
             className="
-              bg-gray-100/40 rounded-2xl p-6 shadow-sm
+              bg-white/40 rounded-2xl p-6 shadow-sm
               animate-in fade-in slide-in-from-bottom-4
               duration-700 delay-150
             "

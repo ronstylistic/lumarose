@@ -78,8 +78,12 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <Button className="bg-primary text-white hover:bg-secondary px-5 uppercase">
+            <Button className="bg-primary text-white hover:bg-primary/80 px-5 uppercase">
               <Link href="/book">Book Now</Link>
+            </Button>
+
+             <Button className="bg-secondary text-white hover:bg-secondary/80 px-5 uppercase">
+              <Link href="/book">Patient Portal</Link>
             </Button>
           </nav>
 
@@ -110,10 +114,17 @@ export default function Navbar() {
             ))}
 
             <Button
-              className="bg-primary text-white hover:bg-secondary uppercase w-full"
+              className="bg-primary text-white hover:bg-primary/80 uppercase w-full"
               onClick={() => setOpen(false)}
             >
               Book Now
+            </Button>
+
+            <Button
+              className="bg-secondary text-white hover:bg-secondary/80 uppercase w-full"
+              onClick={() => setOpen(false)}
+            >
+              Patient Portal
             </Button>
           </nav>
         </div>

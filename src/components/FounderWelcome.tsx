@@ -1,6 +1,6 @@
 export default function FounderWelcome() {
   return (
-    <section className="bg-gray-100 py-20">
+    <section className="bg-white py-20">
       <div className="max-w-4xl mx-auto px-6">
         <div className="bg-white border-primary border-2 p-10 md:p-14 text-center">
           {/* Heading */}
@@ -10,9 +10,8 @@ export default function FounderWelcome() {
 
           {/* Message */}
           <p className="text-base md:text-lg text-foreground leading-relaxed max-w-2xl mx-auto mb-8">
-            This practice was created to offer thoughtful, personalized care
-            grounded in experience, trust, and intention. I look forward to
-            partnering with you in your health journey.
+            LumaRose was created to offer thoughtful, personalized care grounded in experience, trust, and
+intention. I look forward to partnering with you in your health journey.
           </p>
 
           {/* Signature */}
