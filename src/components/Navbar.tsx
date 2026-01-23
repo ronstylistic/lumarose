@@ -82,9 +82,6 @@ export default function Navbar() {
               <Link href="/book">Book Now</Link>
             </Button>
 
-             <Button className="bg-secondary text-white hover:bg-secondary/80 px-5 uppercase">
-              <Link href="/book">Patient Portal</Link>
-            </Button>
           </nav>
 
           {/* MOBILE TOGGLE */}
@@ -112,20 +109,12 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-
-            <Button
-              className="bg-primary text-white hover:bg-primary/80 uppercase w-full"
-              onClick={() => setOpen(false)}
-            >
-              Book Now
+            
+            <Button className="bg-primary text-white hover:bg-primary/80 uppercase w-full">
+              <Link href="/book" onClick={() => setOpen(false)}>Book Now</Link>
             </Button>
 
-            <Button
-              className="bg-secondary text-white hover:bg-secondary/80 uppercase w-full"
-              onClick={() => setOpen(false)}
-            >
-              Patient Portal
-            </Button>
+      
           </nav>
         </div>
       )}
