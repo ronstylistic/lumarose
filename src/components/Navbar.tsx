@@ -67,7 +67,7 @@ export default function Navbar() {
           </Link>
 
           {/* DESKTOP MENU */}
-          <nav className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
+          <nav className="hidden gap-2 flex-wrap md:flex items-center md:gap-8 text-gray-700 font-medium">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}

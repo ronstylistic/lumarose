@@ -4,7 +4,8 @@ import ContactForm from "@/components/ContactForm";
 
 const ADDRESS =
   "1000 Main Street Suite 2300 Houston, TX 77002";
-
+const EMAIL_ADDRESS = "care@lumarosewellness.com";
+const PHONE_NUMBER = "+1 346 623 2689";  
 const MAP_QUERY =
   "1000+Main+Street+Suite+2300+Houston+TX+77002";
 
@@ -40,12 +41,12 @@ export default function Contact() {
               <div className="space-y-5 text-sm">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-secondary" />
-                  <span>care@lumarosewellness.com</span>
+                  <span>{EMAIL_ADDRESS}</span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-secondary" />
-                  <span>(979) 446-2551</span>
+                  <span>{PHONE_NUMBER}</span>
                 </div>
 
                 <div className="flex items-start gap-3">
