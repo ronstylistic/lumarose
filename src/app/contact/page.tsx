@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Calendar } from "lucide-react";
+import { Mail, Phone, MapPin, Calendar, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/ContactForm";
 
@@ -6,6 +6,7 @@ const ADDRESS =
   "1000 Main Street Suite 2300 Houston, TX 77002";
 const EMAIL_ADDRESS = "care@lumarosewellness.com";
 const PHONE_NUMBER = "+1 346 623 2689";  
+const FAX_NUMBER = "+1 281 476 7787";
 const MAP_QUERY =
   "1000+Main+Street+Suite+2300+Houston+TX+77002";
 
@@ -47,6 +48,11 @@ export default function Contact() {
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-secondary" />
                   <span>{PHONE_NUMBER}</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Printer className="h-5 w-5 text-secondary" />
+                  <span>{FAX_NUMBER}</span>
                 </div>
 
                 <div className="flex items-start gap-3">
