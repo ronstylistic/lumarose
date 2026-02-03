@@ -8,6 +8,10 @@ export default function Footer() {
         <p className="text-sm text-white/80 text-center w-full md:w-auto md:text-left">
           © {new Date().getFullYear()} LumaRose Health & Wellness | Patient Portal
         </p>
+
+        <p className="text-sm text-white/80 text-center w-full md:w-auto md:text-right">
+          All patient information is protected and handled in accordance with privacy and security standards.
+        </p>
       </div>
     </footer>
   );

@@ -8,14 +8,22 @@ const plans = [
     price: "$149",
     period: "/month",
     description:
-      "Ideal for healthy adults who need occasional access and preventive support.",
+      "Ideal for: Generally healthy adults seeking preventive care and occasional clinical guidance.",
     features: [
       "Virtual visit every 3 months",
-      "Preventive care planning",
-      "Messaging during business hours",
-      "Medication refills",
-      "Chronic condition check-ins",
-      "Member-only lab pricing",
+      "Preventive care planning, which may include",
+      "Review of personal and family health history",
+      "Age-appropriate preventive screening recommendations",
+      "Lifestyle and wellness guidance based on individual health goals",
+      "Review of routine lab results when applicable",
+      "Medication refills (when clinically appropriate)",
+      "Chronic condition check-ins (stable conditions only)",
+      "Secure messaging during business hours",
+      "Access to member-preferred lab pricing"
+    ],
+    notes: [
+      "Additional visits may be scheduled at standard visit rates",
+      "Labs, imaging, and medications are not included in the membership fee"
     ],
   },
   {
@@ -24,15 +32,15 @@ const plans = [
     period: "/month",
     popular: true,
     description:
-      "Designed for patients with ongoing or chronic health needs.",
+      "Ideal for: Patients managing ongoing or chronic health concerns who benefit from regular follow-up.",
     features: [
-      "Everything in Essential",
-      "Monthly virtual visits",
-      "Chronic disease management",
-      "Urgent care (sick visits)",
-      "STD testing & treatment",
-      "Same-day priority messaging",
-      "Direct access to your NP",
+      "Includes everything in Essential Wellness, plus:",
+      "One virtual visit per month",
+      "Chronic disease management (for conditions appropriate for virtual care)",
+      "Urgent virtual visits for acute concerns (sick visits, when clinically appropriate)",
+      "STD testing and treatment visits (labs billed separately)",
+      "Same-day priority messaging during business hours",
+      "Direct clinical access to your nurse practitioner (within the scope of scheduled visits and secure messaging)",
     ],
   },
   {
@@ -40,14 +48,17 @@ const plans = [
     price: "$249",
     period: "/month",
     description:
-      "Comprehensive support for patients focused on sustainable weight loss.",
+      "Ideal for: Patients focused on medically guided weight management and metabolic health.",
     features: [
-      "Everything in Everyday Care",
-      "GLP-1 / peptide programs (if used)",
-      "Monthly weight-loss check-ins",
-      "Nutrition & lifestyle counseling",
-      "Lab interpretation for weight management",
-      "Medication adjustment visits",
+      "Includes everything in Everyday Care, plus:",
+      "Monthly weight-management-focused visits",
+      "Lifestyle and behavior education related to weight goals",
+      "Lab interpretation related to weight management",
+      "Medication adjustment visits (when clinically appropriate)",
+      "GLP-1 or peptide therapy management (when clinically appropriate and prescribed)",
+    ],
+    notes: [
+      "Medications, labs, supplements, and pharmacy fees are billed separately and are not included in membership fees."
     ],
   },
   {
@@ -55,21 +66,22 @@ const plans = [
     price: "$349",
     period: "/month",
     description:
-      "Premium care for executives, busy parents, and high-touch clients.",
+      "Ideal for: Executives, busy parents, and patients seeking a higher-touch care experience.",
     features: [
-      "Everything in Advanced",
-      "24/7 urgent text access",
-      "Up to 2 home visits/year (≤20 miles)",
-      "Same-day telehealth appointments",
+      "Includes everything in Advanced Health + Weight Management, plus:",
+      "24/7 urgent text access (urgent issues only; not for emergencies)",
+      "Same-day telehealth appointments (when available)",
       "Priority scheduling",
-      "Personalized care blueprint",
+      "Up to two home visits per year (within 20 miles of Houston, when clinically appropriate)",
+      "Personalized care blueprint a customized care summary outlining health priorities, preventive focus areas, and recommended follow-up.",
     ],
+    availability: "This tier is available to Houston-area patients only."
   },
 ];
 
 export default function Page() {
   return (
-    <section className="bg-background py-28">
+    <section className="bg-white py-28">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
@@ -83,20 +95,16 @@ export default function Page() {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8">
           {plans.map((plan) => (
             <Card
               key={plan.name}
               className={`
                 relative
                 flex flex-col
-                rounded-2xl
-                border
-                ${
-                  plan.popular
-                    ? "border-primary shadow-lg"
-                    : "border-muted"
-                }
+                bg-gray-100/40
+                shadow-lg
+                border-0
               `}
             >
               {plan.popular && (
@@ -136,7 +144,29 @@ export default function Page() {
                   ))}
                 </ul>
 
-                <Button
+                {plan.notes && (
+                  <><p className="text-xs text-muted-foreground mt-4 mb-2">
+                    Important Notes:
+                  </p><ul className="space-y-3 mb-3">
+                      {plan.notes.map((note) => (
+                        <li key={note} className="flex items-start gap-3">
+                          <Check className="w-5 h-5 text-secondary mt-0.5" />
+                          <span className="text-sm text-foreground">
+                            {note}
+                          </span>
+                        </li>
+                      ))}
+                    </ul></>
+                )}
+
+                {plan.availability && (
+                  <><p className="text-xs text-muted-foreground mt-4 mb-2">
+                    Availability:
+                  </p>
+                  <p className="text-sm text-foreground">{plan.availability}</p>
+                  </>
+                )}
+                {/* <Button
                   className={`
                     mt-auto
                     w-full
@@ -148,7 +178,7 @@ export default function Page() {
                   `}
                 >
                   Choose Plan
-                </Button>
+                </Button> */}
               </CardContent>
             </Card>
           ))}

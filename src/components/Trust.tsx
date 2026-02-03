@@ -1,5 +1,8 @@
 import { Check } from "lucide-react";
 
+
+const MESSAGE = "Providing evidence-based virtual care with expertise in preventive and primary care,chronic disease management, weight management, and whole-person wellness."
+
 export default function Trust() {
   return (
     <section className="bg-gray-100 py-24">
@@ -14,7 +17,7 @@ export default function Trust() {
           </p>
 
           <p className="text-muted-foreground mt-10">
-            Providing evidence-based care with expertise in preventive and primary care, chronic disease management, weight management, wound care, addiction medicine, and mental health support.
+            {MESSAGE}
           </p>
         </div>
 

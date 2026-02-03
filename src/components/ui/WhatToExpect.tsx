@@ -10,11 +10,11 @@ import Link from "next/link";
 
 const expectations = [
   {
-    text: "Personalized, unhurried virtual visits",
+    text: "Personalized virtual visits designed for meaningful care",
     icon: Sparkles,
   },
   {
-    text: "Thoughtful care plans tailored to you",
+    text: "Thoughtful care plans aligned with your health goals",
     icon: ClipboardList,
   },
   {
@@ -22,13 +22,9 @@ const expectations = [
     icon: BookOpen,
   },
   {
-    text: "Ongoing support and follow-up",
+    text: "Ongoing follow-up when clinically appropriate",
     icon: MessageCircle,
-  },
-  {
-    text: "A calm, supportive care experience",
-    icon: HeartHandshake,
-  },
+  }
 ];
 
 export default function WhatToExpect() {
@@ -42,8 +38,7 @@ export default function WhatToExpect() {
           </h2>
 
           <p className="text-muted-foreground mb-6">
-            A care experience designed to feel calm, thoughtful, and centered
-            around you.
+           A calm, thoughtful care experience centered around you.
           </p>
         </div>
 

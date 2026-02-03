@@ -50,7 +50,7 @@ export default function ContactForm() {
       />
 
       <Button type="submit" className="bg-primary text-white px-10 py-6 shadow-md hover:bg-primary/90 w-full md:w-auto" disabled={pending}>
-         {pending ? "Sending..." : "Send Message"}
+         {pending ? "Sending..." : "Send Inquiry"}
       </Button>
 
       {success && (

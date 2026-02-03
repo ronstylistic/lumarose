@@ -12,21 +12,17 @@ const reasons = [
     icon: ShieldCheck,
   },
   {
-    text: "Personalized care plans tailored to your goals and lifestyle",
+    text: "Personalized care plans tailored to your goals",
     icon: UserRound,
   },
   {
-    text: "Expertise across complex and chronic health conditions",
+    text: "Expertise in chronic and complex health conditions",
     icon: Activity,
   },
   {
     text: "Secure, convenient virtual care",
     icon: Laptop,
-  },
-  {
-    text: "Clear communication and ongoing support",
-    icon: MessageCircle,
-  },
+  }
 ];
 
 export default function WhyChooseLumaRose() {
@@ -40,7 +36,7 @@ export default function WhyChooseLumaRose() {
           </h2>
 
           <p className="text-lg md:text-xl text-foreground mb-6">
-            Healthcare should feel intentional, personal, and rooted in trust.
+            Healthcare should feel intentional, personal, and rooted in trust. At LumaRose, care is guided by clinical experience, thoughtful communication, and a patient-centered approach.
           </p>
 
           <p className="text-muted-foreground leading-relaxed">

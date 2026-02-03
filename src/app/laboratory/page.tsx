@@ -11,19 +11,15 @@ export default function Page() {
           </h1>
 
           <p className="text-foreground mb-6">
-            Clear, transparent guidance for self-pay laboratory testing
+           Clear, transparent guidance for self-pay laboratory testing
           </p>
 
           <p className="text-muted-foreground max-w-3xl mx-auto">
-            At LumaRose Health & Wellness, we partner with national laboratories
-            to provide convenient self-pay lab testing when clinically
-            appropriate. Labs are commonly used for preventive care, weight
-            management, sexual health services, and chronic disease monitoring.
+            LumaRose Health & Wellness coordinates laboratory testing when clinically appropriate to support preventive care, weight management, sexual health, and chronic disease monitoring.
           </p>
 
           <p className="text-muted-foreground max-w-3xl mx-auto mt-4">
-            This page is designed to help you understand what to expect. Lab
-            pricing is determined by the laboratory and may vary by location.
+           Lab services are self-pay and billed directly by the laboratory, not by LumaRose Health & Wellness. Pricing is determined by the lab and may vary based on test type and location.
           </p>
         </div>
       </section>
@@ -31,104 +27,110 @@ export default function Page() {
       {/* HOW LAB TESTING WORKS */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-primary mb-8">
-            How Lab Testing Works
-          </h2>
 
-          <ul className="space-y-4">
-            {[
-              "Lab tests are ordered only when clinically appropriate",
-              "Specimens are collected at a participating lab location or approved collection site",
-              "Lab services are billed directly by the laboratory, not LumaRose Health & Wellness",
-              "Payment is handled with the lab at the time of collection or billing",
-              "Final lab pricing is confirmed by the laboratory prior to testing",
-            ].map((item) => (
-              <li key={item} className="flex gap-3">
-                <CheckCircle className="h-5 w-5 text-secondary mt-0.5" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8">
+            
+            <div className="flex flex-col">
+              <h2 className="text-3xl font-semibold text-primary mb-8">
+                  How Lab Testing Works
+              </h2>
 
-          <p className="text-sm text-muted-foreground mt-6">
-            LumaRose Health & Wellness does not mark up or collect payment for
-            lab services.
-          </p>
-        </div>
-      </section>
+              <ul className="space-y-4">
+                {[
+                  "Lab tests are ordered only when clinically appropriate",
+                  "Specimens are collected at a participating lab location or approved collection site",
+                  "Lab services are billed directly by the laboratory",
+                  "Payment is handled with the lab at the time of collection or billing",
+                  "Final pricing is confirmed by the laboratory prior to testing",
+                  "LumaRose does not mark up or collect payment for lab services"
+                ].map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <CheckCircle className="h-5 w-5 text-secondary mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
 
-      {/* ESTIMATED LAB PRICING */}
-      <section className="bg-muted/40 py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-primary mb-4">
-            Estimated Self-Pay Lab Pricing
-          </h2>
+              <p className="text-sm text-muted-foreground mt-6">
+                Patients may use Quest Diagnostics or their preferred laboratory when available.
+    Cash-pay pricing may vary by laboratory, test type, and location.
+              </p>
+            </div>
 
-          <p className="text-muted-foreground mb-12">
-            Ranges shown are estimates only. Final pricing is confirmed by the
-            laboratory prior to testing.
-          </p>
+            <div className="flex flex-col">
+              <h2 className="text-3xl font-semibold text-primary mb-8">
+                  Estimated Self-Pay Lab Pricing
+              </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <LabCard
-              title="Preventive & Routine Labs"
-              range="$25 – $150"
-              items={[
-                "Complete Blood Count (CBC)",
-                "Comprehensive Metabolic Panel (CMP)",
-                "Lipid Panel",
-                "Hemoglobin A1C",
-              ]}
-            />
+              <p className="text-muted-foreground mb-12">
+                Ranges shown are estimates only. Final pricing is confirmed by the
+                laboratory prior to testing.
+              </p>
 
-            <LabCard
-              title="Weight Loss & Metabolic Health Labs"
-              range="$50 – $250"
-              items={[
-                "Thyroid studies",
-                "Fasting insulin",
-                "A1C",
-                "Vitamin D",
-              ]}
-            />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <LabCard
+                  title="Preventive & Routine Labs"
+                  range="$25 – $150"
+                  items={[
+                    "Complete Blood Count (CBC)",
+                    "Comprehensive Metabolic Panel (CMP)",
+                    "Lipid Panel",
+                    "Hemoglobin A1C",
+                  ]}
+                />
 
-            <LabCard
-              title="Sexual Health / STI Testing"
-              range="$50 – $300"
-              items={[
-                "Chlamydia & Gonorrhea",
-                "HIV",
-                "Syphilis",
-                "Hepatitis panels",
-              ]}
-            />
+                <LabCard
+                  title="Weight & Metabolic Health Labs"
+                  range="$50 – $250"
+                  items={[
+                    "Thyroid studies",
+                    "Fasting insulin",
+                    "A1C",
+                    "Vitamin D",
+                  ]}
+                />
 
-            <LabCard
-              title="Hormonal & Nutritional Labs"
-              range="$50 – $300"
-              items={[
-                "Vitamin B12",
-                "Iron studies",
-                "Thyroid testing",
-                "Nutrient levels",
-              ]}
-            />
+                <LabCard
+                  title="Sexual Health / STI Testing"
+                  range="$50 – $300"
+                  items={[
+                    "Chlamydia & Gonorrhea",
+                    "HIV",
+                    "Syphilis",
+                    "Hepatitis panels",
+                  ]}
+                />
 
-            <LabCard
-              title="Inflammatory & Specialty Labs"
-              range="$75 – $400"
-              items={[
-                "CRP",
-                "ESR",
-                "Advanced or specialty panels",
-              ]}
-            />
-          </div>
+                <LabCard
+                  title="Hormonal & Nutritional Labs"
+                  range="$50 – $300"
+                  items={[
+                    "Vitamin B12",
+                    "Iron studies",
+                    "Thyroid testing",
+                    "Nutrient levels",
+                  ]}
+                />
+
+                <LabCard
+                  title="Inflammatory & Specialty Labs"
+                  range="$75 – $400"
+                  items={[
+                    "CRP",
+                    "ESR",
+                    "Advanced or specialty panels",
+                  ]}
+                />
+              </div>
+
+            </div>
+          </div>  
+          
         </div>
       </section>
 
       {/* IMPORTANT NOTES */}
-      <section className="bg-white">
+      <section className="bg-white mt-16">
         <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center gap-3 mb-4">
             <h2 className="font-semibold text-primary text-2xl">
@@ -158,13 +160,13 @@ export default function Page() {
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-6 space-y-12">
           <InfoBlock
-            title="Weight Loss & Lab Testing"
-            text="Lab testing may be recommended as part of weight-loss or metabolic care to ensure safe, appropriate treatment planning. Labs help assess metabolic health, hormone balance, and nutritional status. Lab testing is ordered only when clinically appropriate."
+            title="Weight Management & Labs"
+            text="Lab testing may be recommended as part of weight management or metabolic care to ensure safe, appropriate treatment planning."
           />
 
           <InfoBlock
-            title="Sexual Health & Lab Testing"
-            text="For sexual health services, lab testing may be recommended based on symptoms, risk factors, and clinical guidelines. Testing coordination is included as part of the STD evaluation visit; however, lab fees are paid separately to the laboratory."
+            title="Sexual Health & Labs"
+            text="or sexual health services, lab coordination is included in the evaluation visit. Lab fees are paid separately to the laboratory."
           />
         </div>
       </section>
@@ -183,11 +185,11 @@ export default function Page() {
             />
             <FAQ
               q="Can you tell me the exact lab cost ahead of time?"
-              a="The laboratory will confirm final pricing prior to specimen collection. Estimated ranges are provided for planning purposes."
+              a="The laboratory confirms final pricing prior to specimen collection. Estimated ranges are provided for planning purposes."
             />
             <FAQ
               q="Do I have to use a specific lab?"
-              a="We coordinate with national laboratories. Available locations vary by your location and the tests ordered."
+              a="We coordinate with national laboratories, including Quest Diagnostics, and patient-preferred labs when available."
             />
             <FAQ
               q="Can I use insurance for labs?"
@@ -209,14 +211,11 @@ export default function Page() {
           </h2>
 
           <p className="text-muted-foreground mb-8">
-            All lab testing recommendations are made based on clinical judgment
-            and medical necessity. Patients are informed of expected lab testing
-            and estimated costs before orders are placed.
+            All laboratory recommendations are based on clinical judgment and medical necessity. Patients are informed of expected lab testing and estimated costs before orders are placed.
           </p>
 
           <p className="text-sm text-muted-foreground">
-            Have questions about lab testing? We’re happy to walk you through
-            what’s recommended and why—before anything is ordered.
+            Have questions about lab testing? We’re happy to walk you through what’s recommended — before anything is ordered.
           </p>
         </div>
       </section>

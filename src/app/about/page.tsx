@@ -23,41 +23,27 @@ export default function AboutPage() {
             {/* LEFT COLUMN — ABOUT LUMAROSE */}
             <div className="space-y-6">
               <h2 className="text-2xl md:text-3xl font-semibold text-primary">
-                The LumaRose Approach
+                The LumaRose Experience
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                LumaRose Health & Wellness is a nurse practitioner–led virtual
-                primary care clinic providing personalized, membership-based
-                telehealth services for adults 18 and older. We specialize in
-                preventive care, chronic disease management, weight loss and
-                metabolic health, sexual health services, and urgent virtual
-                visits delivered with intention, continuity, and clinical
-                excellence.
+                At LumaRose Health & Wellness, care is designed to feel supportive, collaborative, and respectful. Patients are listened to, involved in their care decisions, and treated as active participants in their health, not passive recipients.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                Our modern telehealth model offers patients direct access to a
-                consistent provider, longer visit times, and proactive care
-                planning. Unlike traditional primary care, we focus on
-                prevention, education, and long-term health outcomes—not rushed
-                appointments.
+                We believe patients deserve care that is clear, approachable, and never talked over. Medical recommendations are explained in a way that is easy to understand, with time for questions and thoughtful discussion. Nothing is rushed. Nothing is one size fits all.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                What sets LumaRose apart is our advanced clinical foundation.
-                With deep experience in post-acute care, skilled nursing, home
-                health, hospice, and complex wound management, we bring a higher
-                level of clinical insight to virtual primary care. This allows
-                us to recognize early warning signs, manage medically complex
-                patients, and support healing and stabilization across chronic
-                conditions.
+                Our approach is rooted in trust, education, and partnership. We focus on helping patients feel confident in their care plans, informed about their options, and supported through each step of their health journey.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                LumaRose Health & Wellness is designed for individuals seeking
-                accessible online primary care, expert nurse practitioner care,
-                and a trusted healthcare partner who listens.
+                LumaRose is a judgment free space. We meet patients where they are and work together to create realistic, sustainable plans that align with their goals, values, and season of life.
+              </p>
+
+              <p className="text-foreground leading-relaxed">
+                LumaRose is a judgment free space. We meet patients where they are and work together to create realistic, sustainable plans that align with their goals, values, and season of life.
               </p>
 
               {/* Services List */}
@@ -84,42 +70,35 @@ export default function AboutPage() {
               </h2>
 
               <p className="text-secondary text-center font-medium mb-6">
-                Board-Certified Family Nurse Practitioner
+                Founder & Lead Nurse Practitioner
               </p>
 
               <div className="space-y-4 text-foreground leading-relaxed">
                 <p>
-                  Shameka Crump, FNP-C is the founder of LumaRose Health & Wellness,
-                  a virtual, nurse practitioner–led practice focused on
-                  personalized, preventive, and lifestyle-centered care.
+                 Shameka Crump, FNP C is the founder of LumaRose Health & Wellness, a virtual, nurse practitioner led practice dedicated to personalized, preventive, and lifestyle centered care.
                 </p>
 
                 <p>
-                  With over 17 years of clinical experience, she brings extensive
-                  expertise across preventive and primary care, chronic disease
-                  management, weight management, wound care, addiction medicine,
-                  and mental health support. Her background allows her to care
-                  for patients with both medical complexity and compassion.
+                  In addition to her clinical practice, Shameka has served in executive leadership roles, including Vice President positions within a large global healthcare organization, where she helped lead clinical operations, provider teams, and care delivery across multiple settings. This experience gives her a unique perspective, allowing her to understand both the clinical and operational sides of healthcare and thoughtfully navigate care on behalf of her patients.
                 </p>
 
                 <p>
-                  Shameka believes healthcare should feel personal, accessible,
-                  and empowering—not rushed or one-size-fits-all. Every care
-                  plan is thoughtfully tailored to each patient’s goals, health
-                  history, and season of life.
+                  With extensive experience spanning preventive and primary care, chronic disease management, weight management, sexual health, wound care, addiction medicine, and mental health support, Shameka is known for her ability to manage medical complexity while maintaining a compassionate, patient centered approach.
                 </p>
 
                 <p>
-                  At LumaRose, the focus is on building long-term wellness
-                  through clarity, trust, and evidence-based medical care.
+                  She believes healthcare should feel personal, accessible, and empowering rather than rushed or one size fits all. Every care plan is thoughtfully tailored to each patient’s goals, health history, and season of life.
                 </p>
+
+                 <p>
+                  At LumaRose, the focus is on building long term wellness through clarity, trust, and evidence based medical care.
+                  </p>
               </div>
 
               {/* Signature */}
               <div className="mt-8 pt-6 border-t border-border text-center">
                 <p className="italic text-secondary font-medium">
-                  Care rooted in experience. Guided by intention. Designed for
-                  your life.
+                  Care rooted in experience. Guided by intention. Designed for your life.
                 </p>
               </div>
             </div>

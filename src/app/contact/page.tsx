@@ -20,8 +20,7 @@ export default function Contact() {
             Contact Us
           </h2>
           <p className="text-muted-foreground">
-            Visit us in person or connect virtually — we’re here to support your
-            health journey.
+            Connect with us virtually. We are here to support your health journey.
           </p>
         </div>
 
@@ -35,8 +34,7 @@ export default function Contact() {
               </h3>
 
               <p className="text-muted-foreground mb-8">
-                Schedule a consultation or reach out directly. Our care team is
-                happy to assist you.
+                Schedule a consultation or reach out with general questions. Our care team is happy to assist you.
               </p>
 
               <div className="space-y-5 text-sm">
@@ -76,14 +74,44 @@ export default function Contact() {
         </div>
       </div>
 
+      <div className="max-w-7xl mt-16 mx-auto px-6">
+         <div className="text-center mb-16">
+            <h2 className="text-3xl font-semibold text-primary mb-6">
+            What Happens Next
+            </h2>
 
-       <div className="max-w-7xl mt-30 mx-auto px-6">
+            <p className="text-foreground leading-relaxed">
+              After you contact us or schedule a visit, you will receive an invitation to secure messaging through Spruce. This allows you to communicate safely and confidentially with our care team.
+            </p>
+
+            <p className="text-foreground leading-relaxed">
+              You will also receive a patient portal link to complete registration, intake forms, and required consents before your visit.
+            </p>
+
+            <p className="text-foreground leading-relaxed">
+              All communication is secure and designed to keep your care organized, private, and stress free.
+            </p>
+
+            
+            <p className="text-foreground leading-relaxed">
+              Please note: Medical questions and care related communication are handled through secure messaging after registration and not through the contact form.
+            </p>
+        </div>
+      </div>
+      
+       <div className="max-w-7xl mt-20 mx-auto px-6">
 
           <div className="text-center mb-16">
           <h2 className="text-3xl font-semibold text-primary mb-3">
-           Our Location
+           Administrative Location
           </h2>
-        </div>
+        
+
+         <p className="text-foreground leading-relaxed mb-3">
+            This address is used for administrative and correspondence purposes only. All patient visits and care are provided virtually.
+          </p>
+
+          <p className="text-foreground leading-relaxed mb-3 font-bold">{ADDRESS}</p>
 
           {/* Static Google Map */}
           <a
@@ -107,6 +135,7 @@ export default function Contact() {
               Get Directions →
             </div>
           </a>
+        </div>
        </div>
       
     </section>

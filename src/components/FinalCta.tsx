@@ -36,12 +36,11 @@ export default function FinalCTA() {
 
             <Button
               size="lg"
-              variant="outline"
               className="
-                border-primary text-primary
-                hover:bg-primary/10
-                transition-colors
-                px-8
+               bg-secondary text-white
+               hover:bg-primary
+               transition-colors
+               px-8
               "
             >
               <Link href="/membership">

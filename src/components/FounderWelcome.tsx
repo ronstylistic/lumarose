@@ -1,3 +1,6 @@
+
+const MESSAGE = "LumaRose Health & Wellness was created to offer thoughtful, personalized care grounded in experience, trust, and intention. I look forward to partnering with you in your health journey."
+
 export default function FounderWelcome() {
   return (
     <section className="bg-white py-20">
@@ -10,8 +13,7 @@ export default function FounderWelcome() {
 
           {/* Message */}
           <p className="text-base md:text-lg text-foreground leading-relaxed max-w-2xl mx-auto mb-8">
-            LumaRose was created to offer thoughtful, personalized care grounded in experience, trust, and
-intention. I look forward to partnering with you in your health journey.
+           {MESSAGE}
           </p>
 
           {/* Signature */}

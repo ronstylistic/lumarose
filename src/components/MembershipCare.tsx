@@ -1,5 +1,6 @@
 import { Crown, Users, RefreshCcw, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 export default function MembershipCare() {
   return (
@@ -17,16 +18,10 @@ export default function MembershipCare() {
             Membership Care at LumaRose
           </h2>
 
-          <p className="text-lg md:text-xl text-foreground mb-6">
-            A modern approach to healthcare—designed around access, continuity,
-            and meaningful care.
+          <p className="text-muted-foreground leading-relaxed max-w-2xl mb-6">
+           LumaRose offers a membership-based care model designed to support continuity, access, and personalized care over time.
           </p>
 
-          <p className="text-muted-foreground leading-relaxed max-w-2xl">
-            LumaRose offers a membership-based care model created to provide
-            accessible, personalized care without the limitations of traditional
-            healthcare systems.
-          </p>
         </div>
 
         {/* Value Highlights */}
@@ -117,32 +112,24 @@ export default function MembershipCare() {
         {/* Non-Membership Note */}
         <div
           className="
-            max-w-3xl mb-12
+            max-w-3xl mb-6
             animate-in fade-in slide-in-from-bottom-4
             duration-700 delay-700
           "
         >
           <p className="text-muted-foreground leading-relaxed">
-            Prefer flexibility? Non-membership visits and services are also
-            available for patients who choose a pay-per-visit care option.
+            Patients who prefer flexibility may also choose pay-per-visit care options.
           </p>
         </div>
 
         {/* CTA */}
-        <Link
-          href="/membership"
-          className="
-            inline-flex items-center gap-2
-            text-secondary font-medium
-            hover:text-primary
-            transition-colors
-            animate-in fade-in slide-in-from-bottom-4
-            duration-700 delay-900
-          "
-        >
-          Explore Membership Options
-          <ArrowRight className="h-4 w-4" />
-        </Link>
+
+        <Button className="bg-primary text-white hover:bg-secondary">
+           <Link
+            href="/membership">
+              Explore Membership Options
+          </Link>
+        </Button>        
       </div>
     </section>
   );

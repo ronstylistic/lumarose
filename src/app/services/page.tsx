@@ -6,10 +6,6 @@ export const metadata: Metadata = {
 };
 
 import {
-  ShieldPlus,
-  FlaskConical,
-  HeartPulse,
-  Syringe,
   Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,25 +21,18 @@ export default function Page() {
             Our Services
           </h2>
           <p className="text-muted-foreground">
-            Thoughtfully designed care that supports your health at every stage.
+           Personalized, evidence-based virtual care designed to support prevention, chronic health needs, and long-term wellness.
           </p>
         
            <p className="text-muted-foreground mt-4">
-            LumaRose Health & Wellness provides personalized, evidence-based virtual care led by a boardcertified
-Family Nurse Practitioner. Services focus on prevention, chronic condition
-management, weight management, and whole-person wellness — delivered with intention,
-clarity, and respect for your time.
+           LumaRose Health & Wellness provides virtual care led by a board-certified Family Nurse Practitioner, with a focus on preventive care, chronic disease management, weight management, and whole-person wellness.
            </p>
         </div>
 
         <div className="max-w-7xl mx-auto text-center mt-20 px-6">
-          <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-3">
+          <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-6">
             What We Treat & Support
           </h2>
-          <p className="text-muted-foreground mb-6">
-            Attentive, comprehensive care designed to support prevention,
-            long-term health, and focused one-on-one visits.
-          </p>
         </div>
 
 
@@ -134,24 +123,20 @@ clarity, and respect for your time.
           </h3>
 
           <p className="text-muted-foreground mb-6 max-w-3xl">
-            LumaRose offers both membership-based care and non-membership visits,
-            so you can choose the level of continuity and support that fits your
-            needs.
+           LumaRose offers both membership-based care and non-membership visits, allowing you to choose the level of continuity and support that fits your needs.
           </p>
 
           <ul className="space-y-3 mb-8 max-w-3xl">
             <li className="flex gap-3">
               <Check className="h-5 w-5 text-secondary mt-0.5" />
               <span>
-                <strong>Membership Care:</strong> Best for patients seeking
-                ongoing support, continuity, and proactive care.
+                <strong>Membership Care:</strong> Ongoing support and continuity of care
               </span>
             </li>
             <li className="flex gap-3">
               <Check className="h-5 w-5 text-secondary mt-0.5" />
               <span>
-                <strong>Non-Membership Care:</strong> Ideal for one-time or
-                occasional visits without a monthly commitment.
+                <strong>Non-Membership Care:</strong> One-time or occasional visits without a monthly commitment
               </span>
             </li>
           </ul>
