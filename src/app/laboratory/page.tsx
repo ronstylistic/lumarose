@@ -166,7 +166,7 @@ export default function Page() {
 
           <InfoBlock
             title="Sexual Health & Labs"
-            text="or sexual health services, lab coordination is included in the evaluation visit. Lab fees are paid separately to the laboratory."
+            text="For sexual health services, lab coordination is included in the evaluation visit. Lab fees are paid separately to the laboratory."
           />
         </div>
       </section>
