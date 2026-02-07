@@ -59,14 +59,6 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
-            {/* CTAs */}
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-primary text-white w-full">
-                <Calendar className="h-4 w-4 mr-2" />
-                Schedule a Call
-              </Button>
-            </div>
           </div>
 
           {/* Contact Form */}

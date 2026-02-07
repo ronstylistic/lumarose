@@ -9,11 +9,13 @@ import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
   { label: "Membership", href: "/membership" },
+  { label: "College Care", href: "/college-care" },
+  { label: "Care Services", href: "/services" },
   { label: "Non-Membership", href: "/non-membership" },
-  { label: "Weight Loss", href: "/weight-loss" },
-  { label: "Laboratory", href: "/laboratory" },
+  { label: "Weight Management", href: "/weight-management" },
+  { label: "Pay Per-Visit", href: "/pay-per-visit" },
+  { label: "FAQs", href: "/faq" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -79,7 +81,7 @@ export default function Navbar() {
             ))}
 
             <Button className="bg-primary text-white hover:bg-primary/80 px-5 uppercase">
-              <Link href="/book">Book Now</Link>
+              <Link href="/book">Get Started</Link>
             </Button>
 
           </nav>
@@ -111,7 +113,7 @@ export default function Navbar() {
             ))}
             
             <Button className="bg-primary text-white hover:bg-primary/80 uppercase w-full">
-              <Link href="/book" onClick={() => setOpen(false)}>Book Now</Link>
+              <Link href="/book" onClick={() => setOpen(false)}>Get Started</Link>
             </Button>
 
       

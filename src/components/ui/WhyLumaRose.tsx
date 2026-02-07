@@ -1,27 +1,23 @@
 import {
-  ShieldCheck,
-  UserRound,
-  Activity,
-  Laptop,
-  MessageCircle,
+  CircleCheck
 } from "lucide-react";
 
 const reasons = [
   {
-    text: "Led by an experienced, board-certified Family Nurse Practitioner",
-    icon: ShieldCheck,
+    text: "NP-Led, Board-Certified Care is provided by an experienced, board-certified Family Nurse Practitioner.",
+    icon: CircleCheck,
   },
   {
-    text: "Personalized care plans tailored to your goals",
-    icon: UserRound,
+    text: "Expertise in Chronic & Complex Conditions Advanced experience managing long-term and medically complex health concerns",
+    icon: CircleCheck,
   },
   {
-    text: "Expertise in chronic and complex health conditions",
-    icon: Activity,
+    text: "Personalized Care Planning Individualized plans guided by your goals, history, and clinical needs.",
+    icon: CircleCheck,
   },
   {
-    text: "Secure, convenient virtual care",
-    icon: Laptop,
+    text: "Secure, Convenient Virtual Access HIPAA-compliant virtual care designed for ease, privacy, and accessibility.",
+    icon: CircleCheck,
   }
 ];
 
@@ -35,14 +31,8 @@ export default function WhyChooseLumaRose() {
             Why Choose LumaRose
           </h2>
 
-          <p className="text-lg md:text-xl text-foreground mb-6">
+          <p className="text-foreground leading-relaxed mb-6">
             Healthcare should feel intentional, personal, and rooted in trust. At LumaRose, care is guided by clinical experience, thoughtful communication, and a patient-centered approach.
-          </p>
-
-          <p className="text-muted-foreground leading-relaxed">
-            At LumaRose, care is led by experience—not volume. Visits are
-            unhurried, plans are individualized, and patients are treated as
-            true partners in their health.
           </p>
         </div>
 

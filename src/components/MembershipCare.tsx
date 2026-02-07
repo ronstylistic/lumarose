@@ -1,6 +1,23 @@
-import { Crown, Users, RefreshCcw, ArrowRight } from "lucide-react";
+import { CircleCheck } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
+
+
+const reasons = [
+  {
+    text: "Meaningful, unhurried visits that prioritize understanding—not rushed appointments.",
+    icon: CircleCheck,
+  },
+  {
+    text: "Continuity of care that allows for deeper insight into your health over time.",
+    icon: CircleCheck,
+  },
+  {
+    text: "Patients who prefer flexibility may also choose pay-per-visit care options.",
+    icon: CircleCheck,
+  }
+];
+
 
 export default function MembershipCare() {
   return (
@@ -24,70 +41,21 @@ export default function MembershipCare() {
 
         </div>
 
-        {/* Value Highlights */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-14 ">
-          {/* Card 1 */}
-          <div
-            className="
-              bg-white/40 rounded-2xl p-6 shadow-sm
-              animate-in fade-in slide-in-from-bottom-4
-              duration-700 delay-150
-            "
-          >
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center
-                  rounded-xl
-                  bg-secondary/15
-                  text-secondary
-                  shrink-0">
-                <Crown className="h-6 w-6" />
-              </div>
-              <p className="text-foreground leading-relaxed">
-                Meaningful, unhurried visits that prioritize understanding—not
-                rushed appointments.
-              </p>
-            </div>
-
-            
-          </div>
-
-          {/* Card 2 */}
-          <div
-            className="
-              bg-gray-100/40 rounded-2xl p-6 shadow-sm
-              animate-in fade-in slide-in-from-bottom-4
-              duration-700 delay-300
-            "
-          >
-            <div className="flex items-start gap-4">
-              <div className="
-                  flex h-12 w-12 items-center justify-center
-                  rounded-xl
-                  bg-secondary/15
-                  text-secondary
-                  shrink-0
-                ">
-                <Users className="h-6 w-6" />
-              </div>
-              <p className="text-foreground leading-relaxed">
-                Continuity of care that allows for deeper insight into your
-                health over time.
-              </p>
-            </div>
-
-
-          </div>
-
-          {/* Card 3 */}
-          <div
-            className="
-              bg-gray-100/40 rounded-2xl p-6 shadow-sm
-              animate-in fade-in slide-in-from-bottom-4
-              duration-700 delay-500
-            "
-          >
-
-            <div className="flex items-start gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-14">
+          {reasons.map(({ text, icon: Icon }) => (
+            <div
+              key={text}
+              className="
+                group
+                bg-white/40
+                shadow-sm
+                rounded-2xl
+                p-6
+                transition
+                hover:bg-primary/20
+              "
+            >
+              <div className="flex items-start gap-4">
                 {/* Icon */}
                 <div className="
                   flex h-12 w-12 items-center justify-center
@@ -96,17 +64,16 @@ export default function MembershipCare() {
                   text-secondary
                   shrink-0
                 ">
-                  <RefreshCcw className="h-6 w-6" />
+                  <Icon className="h-6 w-6" />
                 </div>
 
                 {/* Text */}
                 <p className="text-foreground leading-relaxed">
-                 Proactive health support focused on prevention, education, and
-                long-term wellness.
+                  {text}
                 </p>
               </div>
-            
-          </div>
+            </div>
+          ))}
         </div>
 
         {/* Non-Membership Note */}

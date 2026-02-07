@@ -63,26 +63,58 @@ export default function NonMembershipPage() {
       </section>
 
       <section className="bg-white py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-primary mb-8">
-            Who Non-Membership Care Is For
-          </h2>
 
-          <ul className="space-y-4">
-            {[
-             "Patients seeking care for a specific or short-term concern",
-              "Individuals who prefer pay-per-visit care",
-              "Those exploring LumaRose before choosing a membership",
-              "Patients who do not require ongoing follow-up or continuous access",
-            ].map((item) => (
-              <li key={item} className="flex gap-3">
-                <CheckCircle className="h-5 w-5 text-secondary mt-0.5" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="max-w-7xl mx-auto px-6 flex mt-10 flex-col lg:flex-row gap-10">
+
+          <div className="flex-1">
+            <h2 className="text-2xl font-semibold text-primary mb-8">
+            Who Non-Membership Care Is For
+            </h2>
+
+            <ul className="space-y-4">
+              {[
+              "Patients seeking care for a specific or short-term concern",
+                "Individuals who prefer pay-per-visit care",
+                "Those exploring LumaRose before choosing a membership",
+                "Patients who do not require ongoing follow-up or continuous access",
+              ].map((item) => (
+                <li key={item} className="flex gap-3">
+                  <CheckCircle className="h-5 w-5 text-secondary mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* IMPORTANT NOTES */}
+          <div className="flex-1">
+            <h3 className="font-semibold text-primary text-2xl mb-8">
+                Important Notes
+            </h3>
+
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              {[
+                "All services are self-pay and non-membership",
+                "Pricing is confirmed prior to your visit",
+                "Labs, imaging, medications, and supplies are not included unless stated",
+                "Non-membership care does not include ongoing access outside the scheduled visit",
+                "Controlled substances are not prescribed",
+                "Concierge and in-home services are subject to availability",
+                "This practice does not replace emergency care"
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-secondary mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+
         </div>
       </section>
+
+      
 
       <section className="bg-white py-8">
         <div className="max-w-7xl mx-auto px-6">
@@ -386,190 +418,10 @@ export default function NonMembershipPage() {
                     </p>
                   </CardContent>
                 </Card>
-                
-              {/* <PriceGroup
-                title="Local Concierge Medical Care (In-Home)"
-                items={[
-                  ["≤20 miles", "$200 – $250"],
-                  ["Extended Distance", "$250+"],
-                  ["Follow-Up Visit", "$175 – $225"],
-                  ["Extended Care Planning", "$75 – $125"],
-                ]}
-              />
-
-              <PriceGroup
-                title="Post-Operative Wound Care"
-                items={[
-                  ["Initial Wound Evaluation", "$225 – $300"],
-                  ["In-Home Wound Visit (≤20 miles)", "$200 – $250"],
-                  ["Extended Distance Visit", "$250+"],
-                  ["Follow-Up Wound Visit", "$175 – $225"],
-                  ["Advanced Wound Care Planning", "$75 – $125"],
-                ]}
-              />
-              <PriceGroup
-                title="Medical Clearance & Documentation"
-                items={[
-                  ["Work, School, or Travel Clearance", "$75 – $150"],
-                ]}
-              /> */}
             </ServiceColumn> 
           </div>
-
-
-          {/* IMPORTANT NOTES */}
-          <div className="mx-auto mt-10">
-            <div className="flex items-center gap-3 mb-4">
-              <h3 className="font-semibold text-primary text-2xl">
-                Important Notes
-              </h3>
-            </div>
-
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              {[
-                "All services are self-pay and non-membership",
-                "Pricing is confirmed prior to your visit",
-                "Labs, imaging, medications, and supplies are not included unless stated",
-                "Non-membership care does not include ongoing access outside the scheduled visit",
-                "Controlled substances are not prescribed",
-                "Concierge and in-home services are subject to availability",
-                "This practice does not replace emergency care"
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle className="h-4 w-4 text-secondary mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </section>
-
-      {/* WHAT’S INCLUDED */}
-      {/* <section className="bg-white py-8 mx-auto">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-primary mb-5">
-            What’s Included
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <IncludedCard
-              title="Virtual Visits"
-              text="One-time telehealth appointments focused on evaluation, treatment, and patient education."
-            />
-            <IncludedCard
-              title="Preventive & Acute Care"
-              text="Support for acute concerns, symptom evaluation, and preventive health guidance."
-            />
-            <IncludedCard
-              title="Chronic Condition Support"
-              text="Ongoing management and follow-up for stable chronic conditions requiring clinical oversight."
-            />
-            <IncludedCard
-              title="Whole-Person Support"
-              text="Care addressing weight, stress, mood, and overall wellness—because health is never one-dimensional."
-            />
-          </div>
-        </div>
-      </section> */}
-
-      {/* SEXUAL HEALTH */}
-      {/* <section className="bg-white py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-primary mb-4">
-            Sexual & Reproductive Health
-          </h2>
-
-          <p className="text-muted-foreground mb-6">
-            Confidential, inclusive, judgment-free care for adults of all
-            identities.
-          </p>
-
-          <ul className="space-y-3">
-            {[
-              "Sexual health risk assessment and counseling",
-              "STD / STI screening coordination",
-              "Evaluation of symptoms or exposure concerns",
-              "Treatment of select STDs / STIs",
-              "Preventive guidance and safer-sex education",
-              "Follow-up care and coordination",
-            ].map((item) => (
-              <li key={item} className="flex gap-3">
-                <CheckCircle className="h-4 w-4 text-secondary mt-1" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <p className="text-sm text-muted-foreground mt-4">
-            Lab fees are billed separately by third-party laboratories.
-          </p>
         </div>
       </section>
- */}
-      {/* WOUND CARE */}
-      {/* <section className="bg-white py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-primary mb-4">
-            Post-Operative Wound Care Support
-          </h2>
-
-          <p className="text-muted-foreground mb-6">
-            Specialized support to promote healing and recovery following
-            surgery, led by an experienced clinician with a strong background in
-            wound care.
-          </p>
-
-          <ul className="space-y-3">
-            {[
-              "Virtual or in-home wound assessments",
-              "Monitoring of healing progress",
-              "Wound care education and dressing guidance",
-              "Infection prevention support",
-              "Care coordination with your surgical team",
-            ].map((item) => (
-              <li key={item} className="flex gap-3">
-                <CheckCircle className="h-4 w-4 text-secondary mt-1" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <p className="text-sm text-muted-foreground mt-4">
-            These services support healing and do not replace surgical follow-up
-            or emergency care.
-          </p>
-        </div>
-      </section> */}
-
-      {/* WHAT TO EXPECT */}
-      {/* <section className="bg-white py-8 mb-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-primary mb-6">
-            What to Expect
-          </h2>
-
-          <ul className="space-y-3">
-            {[
-              "Confidential, inclusive, and respectful care",
-              "Focused, one-on-one visits that prioritize quality",
-              "Clear communication and patient education",
-              "Evidence-based treatment plans tailored to your needs",
-              "Secure follow-up guidance and care coordination",
-            ].map((item) => (
-              <li key={item} className="flex gap-3">
-                <CheckCircle className="h-4 w-4 text-secondary mt-1" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section> */}
 
       {/* CTA */}
       <section className="bg-primary/5 py-28 text-center">

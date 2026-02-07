@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Care Services",
   description: "Explore personalized healthcare services at LumaRose Health.",
 };
 
@@ -18,7 +18,7 @@ export default function Page() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-semibold text-primary mb-3">
-            Our Services
+            Care Services
           </h2>
           <p className="text-muted-foreground">
            Personalized, evidence-based virtual care designed to support prevention, chronic health needs, and long-term wellness.
@@ -93,66 +93,84 @@ export default function Page() {
               "Short-term medical concerns",
             ]}
           />
+
+           <ServiceCard
+            title="Sexual Health & STD Care"
+            description="Suggested copy (tight + professional):"
+            items={[
+              "STD evaluation and counseling",
+              "Routine and symptom-based STD testing",
+              "Treatment when clinically appropriate",
+              "PrEP evaluation and ongoing monitoring (when applicable)",
+              "Confidential, judgment-free care",
+            ]}
+             note="Laboratory testing is billed separately"
+          />
         </div>
 
-        {/* HOW CARE IS DELIVERED */}
-        <div className="max-w-4xl mt-10 mb-16">
-          <h3 className="text-2xl font-semibold text-primary mb-6">
-            How Care Is Delivered
-          </h3>
 
-          <ul className="space-y-3">
-            {[
-              "Secure, HIPAA-compliant virtual visits",
-              "Individualized care plans",
-              "Clear communication and follow-up",
-              "Judgment-free, patient-centered care",
-            ].map((item) => (
-              <li key={item} className="flex gap-3">
-                <Check className="h-5 w-5 text-secondary mt-0.5" />
-                <span className="text-muted-foreground">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <div className="flex flex-col justify-between lg:flex-row mt-10">
+           {/* HOW CARE IS DELIVERED */}
+          <div className="flex-1 mb-10">
+            <h3 className="text-2xl font-semibold text-primary mb-6">
+              How Care Is Delivered
+            </h3>
 
-        {/* CHOOSING CARE OPTION */}
-        <div className="bg-gray-100/40 shadow-sm rounded-2xl p-8 md:p-10">
-          <h3 className="text-2xl font-semibold text-primary mb-4">
-            Choosing Your Care Option
-          </h3>
-
-          <p className="text-muted-foreground mb-6 max-w-3xl">
-           LumaRose offers both membership-based care and non-membership visits, allowing you to choose the level of continuity and support that fits your needs.
-          </p>
-
-          <ul className="space-y-3 mb-8 max-w-3xl">
-            <li className="flex gap-3">
-              <Check className="h-5 w-5 text-secondary mt-0.5" />
-              <span>
-                <strong>Membership Care:</strong> Ongoing support and continuity of care
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <Check className="h-5 w-5 text-secondary mt-0.5" />
-              <span>
-                <strong>Non-Membership Care:</strong> One-time or occasional visits without a monthly commitment
-              </span>
-            </li>
-          </ul>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="bg-primary text-white">
-              <Link href="/membership">Explore Membership Options</Link>
-            </Button>
-
-            <Button className="bg-secondary text-white hover:bg-secondary/80">
-              <Link href="/non-membership">
-                View Non-Membership Services
-              </Link>
-            </Button>
+            <ul className="space-y-3">
+              {[
+                "Secure, HIPAA-compliant virtual visits",
+                "Individualized care plans",
+                "Clear communication and follow-up",
+                "Judgment-free, patient-centered care",
+              ].map((item) => (
+                <li key={item} className="flex gap-3">
+                  <Check className="h-5 w-5 text-secondary mt-0.5" />
+                  <span className="text-muted-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          {/* CHOOSING CARE OPTION */}
+          <div className="bg-white">
+            <h3 className="text-2xl font-semibold text-primary mb-4">
+              Choosing Your Care Option
+            </h3>
+
+            <p className="text-muted-foreground mb-6 max-w-3xl">
+            LumaRose offers both membership-based care and non-membership visits, allowing you to choose the level of continuity and support that fits your needs.
+            </p>
+
+            <ul className="space-y-3 mb-8 max-w-3xl">
+              <li className="flex gap-3">
+                <Check className="h-5 w-5 text-secondary mt-0.5" />
+                <span>
+                  <strong>Membership Care:</strong> Ongoing support and continuity of care
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <Check className="h-5 w-5 text-secondary mt-0.5" />
+                <span>
+                  <strong>Non-Membership Care:</strong> One-time or occasional visits without a monthly commitment
+                </span>
+              </li>
+            </ul>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button className="bg-primary text-white">
+                <Link href="/membership">Explore Membership Options</Link>
+              </Button>
+
+              <Button className="bg-secondary text-white hover:bg-secondary/80">
+                <Link href="/non-membership">
+                  View Non-Membership Services
+                </Link>
+              </Button>
+            </div>
+          </div>
+
         </div>
+       
 
         {/* IMPORTANT NOTE */}
         <p className="text-xs text-muted-foreground max-w-4xl mt-6">
