@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Care Services",
+  title: "Care Services | LumaRose Health & Wellness",
   description: "Explore personalized healthcare services at LumaRose Health.",
 };
 
@@ -96,7 +96,7 @@ export default function Page() {
 
            <ServiceCard
             title="Sexual Health & STD Care"
-            description="Suggested copy (tight + professional):"
+            description="Suggested copy"
             items={[
               "STD evaluation and counseling",
               "Routine and symptom-based STD testing",

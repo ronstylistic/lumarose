@@ -14,7 +14,7 @@ const NAV_ITEMS = [
   { label: "Care Services", href: "/services" },
   { label: "Non-Membership", href: "/non-membership" },
   { label: "Weight Management", href: "/weight-management" },
-  { label: "Pay Per-Visit", href: "/pay-per-visit" },
+  { label: "Laboratory", href: "/laboratory" },
   { label: "FAQs", href: "/faq" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

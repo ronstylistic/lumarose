@@ -53,8 +53,8 @@ const plans = [
   },
    {
     name: "Annual (Split Pay)",
-    price: "$600",
-    period: "/every 6 months",
+    price: "$300",
+    period: "every 6 months",
     features: [
       "$300 now + $300 later",
       "Second payment billed at 6 months",
