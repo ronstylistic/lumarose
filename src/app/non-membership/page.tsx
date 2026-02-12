@@ -62,7 +62,7 @@ export default function NonMembershipPage() {
         </div>
       </section>
 
-      <section className="bg-white py-8">
+      <section className="bg-white">
 
         <div className="max-w-7xl mx-auto px-6 flex mt-10 flex-col lg:flex-row gap-10">
 
@@ -114,8 +114,7 @@ export default function NonMembershipPage() {
         </div>
       </section>
 
-      
-
+    
       <section className="bg-white py-8">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8">
@@ -298,9 +297,10 @@ export default function NonMembershipPage() {
                     bg-gray-100/40
                     shadow-lg
                     border-0
+                    h-117
                   `}
                 >
-                  <CardHeader className="space-y-4">
+                  <CardHeader className="space-y-10">
                     <div className="flex items-end justify-between gap-1">
                       <h3 className="text-lg font-semibold text-primary">
                         Single Medication Refill
@@ -418,7 +418,41 @@ export default function NonMembershipPage() {
                     </p>
                   </CardContent>
                 </Card>
-            </ServiceColumn> 
+
+
+                <Card
+                className={`
+                  relative
+                  flex flex-col
+                  bg-gray-100/40
+                  shadow-lg
+                  border-0
+                `}
+              >
+                <CardHeader className="space-y-4">
+
+                  <h3 className="text-lg font-semibold text-primary">
+                      College Care – Non-Membership
+                  </h3>
+
+                  <div className="flex items-end gap-1">
+                    <span className="text-4xl font-bold text-foreground">
+                      $95
+                    </span>
+                    <span className="text-muted-foreground">
+                      /visit
+                    </span>
+                  </div>
+
+                     
+                  <p className="text-sm text-muted-foreground">
+                    Flat rate for all services (excluding weight management). 
+                    <span className="italic"> Exclusively for currently enrolled college students.</span>
+                  </p>
+                </CardHeader>
+              </Card>
+
+            </ServiceColumn>
           </div>
         </div>
       </section>
