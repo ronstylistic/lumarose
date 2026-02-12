@@ -2,7 +2,7 @@
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendContactEmail(formData: FormData) {
   const name = formData.get("name") as string;
@@ -16,7 +16,7 @@ export async function sendContactEmail(formData: FormData) {
   try {
     await resend.emails.send({
       from: `Contact Us Page <${email}>`,
-      to: [`${process.env.NEXT_PUBLIC_CONTACT_FROM_EMAIL}`],
+      to: [`${process.env.CONTACT_FROM_EMAIL}`],
       replyTo: email,
       subject: `New Contact Message from ${name}`,
       html: `

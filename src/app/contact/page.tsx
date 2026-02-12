@@ -1,5 +1,4 @@
 import { Mail, Phone, MapPin, Calendar, Printer } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/ContactForm";
 
 const ADDRESS =
@@ -113,7 +112,7 @@ export default function Contact() {
             className="relative overflow-hidden bg-gray-100 shadow-sm group"
           >
             <img
-              src={`https://maps.googleapis.com/maps/api/staticmap?center=${MAP_QUERY}&zoom=15&size=800x450&scale=2&maptype=roadmap&markers=color:0x94526E|${MAP_QUERY}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
+              src={`https://maps.googleapis.com/maps/api/staticmap?center=${MAP_QUERY}&zoom=15&size=800x450&scale=2&maptype=roadmap&markers=color:0x94526E|${MAP_QUERY}&key=${process.env.GOOGLE_MAPS_API_KEY}`}
               alt="LumaRose Health & Wellness location map"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
