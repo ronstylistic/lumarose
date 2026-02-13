@@ -15,9 +15,9 @@ export async function sendContactEmail(formData: FormData) {
 
   try {
     await resend.emails.send({
-      from: "LumaRose Wellness <no-reply@lumarosewellnes.com>",
+      from: "LumaRose Wellness <no-reply@lumarosewellness.com>",
 
-      to: [`${process.env.CONTACT_FROM_EMAIL}`],
+      to: process.env.CONTACT_FROM_EMAIL!,
 
       replyTo: email,
 
