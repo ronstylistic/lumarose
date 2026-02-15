@@ -23,24 +23,19 @@ export default function Hero() {
         <div className="max-w-2xl">
 
           {/* SEO H1 */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight mb-6">
-            Personalized Virtual Primary Care & Weight Management
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+           Thoughtful Care Modern Medicine Whole-Person Wellness
           </h1>
 
-          {/* Branding Tagline */}
-          <p className="text-2xl text-secondary font-medium mb-6">
-            Thoughtful Care. Modern Medicine. Whole-Person Wellness.
-          </p>
-
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-10">
+          <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
             Personalized virtual care for busy adults focused on prevention,
             chronic care, and whole-person wellness so you can feel your best
             at every stage of life.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
             <Link href="/book" aria-label="Book a virtual primary care visit">
               <Button
                 size="lg"
