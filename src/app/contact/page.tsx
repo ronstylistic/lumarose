@@ -1,5 +1,11 @@
-import { Mail, Phone, MapPin, Calendar, Printer } from "lucide-react";
+import { Mail, Phone, MapPin, Printer } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
+};
 
 const ADDRESS =
   "1000 Main Street Suite 2300 Houston, TX 77002";

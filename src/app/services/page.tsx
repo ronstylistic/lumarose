@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Care Services | LumaRose Health & Wellness",
-  description: "Explore personalized healthcare services at LumaRose Health.",
+  title: "Care Services",
+  description: "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
 };
+
 
 import {
   Check,

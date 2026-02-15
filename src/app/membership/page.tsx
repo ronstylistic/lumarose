@@ -1,6 +1,11 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Membership",
+  description: "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
+};
 
 const plans = [
   {
@@ -166,19 +171,6 @@ export default function Page() {
                   <p className="text-sm text-foreground">{plan.availability}</p>
                   </>
                 )}
-                {/* <Button
-                  className={`
-                    mt-auto
-                    w-full
-                    ${
-                      plan.popular
-                        ? "bg-primary text-white hover:bg-primary/90"
-                        : "bg-secondary text-white hover:bg-secondary/90"
-                    }
-                  `}
-                >
-                  Choose Plan
-                </Button> */}
               </CardContent>
             </Card>
           ))}

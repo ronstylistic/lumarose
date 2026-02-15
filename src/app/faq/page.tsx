@@ -1,67 +1,9 @@
-import Link from "next/link";
-import { CircleCheck, CheckCircle, XCircle, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Metadata } from "next";
 
-
-const includes = [
-  {
-    text: "Virtual primary care visits",
-    icon: CircleCheck,
-  },
-  {
-    text: "Acute care visits for common student health concerns (colds, sinus infections, uncomplicated UTIs, minor skin conditions)",
-    icon: CircleCheck,
-  },
-  {
-    text: "Birth control management for non-invasive methods only; routine medication refills included",
-    icon: CircleCheck,
-  },
-  {
-    text: "General emotional wellness check-ins as part of primary care support (not therapy or psychiatric care)",
-    icon: CircleCheck,
-  },
-  {
-    text: "Preventive care guidance and health education",
-    icon: CircleCheck,
-  },
-  {
-    text: "Secure messaging with your provider",
-    icon: CircleCheck,
-  }
-];
-
-const plans = [
- {
-    name: "Monthly",
-    price: "$60",
-    period: "/month",
-    features: [
-      "Auto-billed monthly",
-      "Proof of enrollment required"
-    ],
-  },
-  {
-    name: "Annual (Paid in Full)",
-    price: "$600",
-    period: "/year",
-    popular: true,
-    features: [
-      "One-time annual payment",
-      "Equivalent to two months free"
-    ],
-  },
-   {
-    name: "Annual (Split Pay)",
-    price: "$600",
-    period: "/every 6 months",
-    features: [
-      "$300 now + $300 later",
-      "Second payment billed at 6 months",
-      "Membership remains active while payments are current"
-    ],
-  }
-];
+export const metadata: Metadata = {
+  title: "Frequently Asked Questions",
+  description: "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
+};
 
 export default function Page() {
   return (

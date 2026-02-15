@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Check, CheckCircle } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Weight Loss Managment",
+  description: "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
+};
 
 export default function Page() {
   return (

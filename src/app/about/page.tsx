@@ -1,6 +1,11 @@
 import { ServicesInclude } from "@/components/ServicesIncluded";
-import { CheckCircle } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
+};
 
 export default function AboutPage() {
   return (

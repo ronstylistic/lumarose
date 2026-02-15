@@ -2,8 +2,8 @@ import { CheckCircle, Check } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Laboratory Testing | LumaRose Health & Wellness",
-  description: "Explore personalized healthcare services at LumaRose Health.",
+  title: "Laboratory Testing",
+  description: "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
 };
 
 export default function Page() {
@@ -72,33 +72,6 @@ export default function Page() {
                 </ul>
               </div>
 
-{/*               <div className="flex-1 mb-16">
-                <InfoBlock
-                  title="Weight Management & Labs"
-                  text="Lab testing may be recommended as part of weight management or metabolic care to ensure safe, appropriate treatment planning."
-                />
-
-                <InfoBlock
-                  title="Sexual Health & Labs"
-                  text="For sexual health services, lab coordination is included in the evaluation visit. Lab fees are paid separately to the laboratory."
-                />
-              </div>
-
-
-              <div className="flex-1 mb-16">
-                <h2 className="text-2xl font-semibold text-primary mb-4">
-                  Transparency Statement
-                </h2>
-
-                <p className="text-muted-foreground mb-8">
-                  All laboratory recommendations are based on clinical judgment and medical necessity. Patients are informed of expected lab testing and estimated costs before orders are placed.
-                </p>
-
-                <p className="text-sm text-muted-foreground">
-                  Have questions about lab testing? We’re happy to walk you through what’s recommended — before anything is ordered.
-                </p>
-              </div> */}
-
             </div>
 
             <div className="flex flex-col">
@@ -148,10 +121,7 @@ function LabCard({
       <h3 className="font-semibold text-foreground mb-2">
         {title}
       </h3>
-     {/*  <div className="text-xl font-semibold text-primary mb-4">
-        {range}
-      </div>
- */}
+
       <ul className="space-y-2 text-sm text-muted-foreground">
         {items.map((item) => (
           <li key={item} className="flex gap-3">
