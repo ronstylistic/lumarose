@@ -169,7 +169,7 @@ export default function Page() {
                   ].map((item) => (
                     <div
                       key={item}
-                      className="flex gap-3 bg-white border border-border rounded-xl p-5"
+                      className="flex gap-3 bg-gray-100/40 shadow-sm border border-gray-200 rounded-xl p-5"
                     >
                       <XCircle className="h-5 w-5 text-red-500 mt-0.5" />
                       <span>{item}</span>
@@ -210,10 +210,10 @@ export default function Page() {
                 {plans.map((plan) => (
                   <Card
                     key={plan.name}
-                    className={`relative flex flex-col shadow-lg border-0 ${
+                    className={`relative flex flex-col shadow-lg ${
                       plan.popular
-                        ? "bg-primary/5"
-                        : "bg-gray-100/40"
+                        ? "bg-primary/5 border-primary"
+                        : "bg-gray-100/40 border-gray-200"
                     }`}>
                     
                     <CardHeader className="space-y-4">
@@ -280,11 +280,12 @@ function IncludedItem({ text, icon: Icon }: { text: string; icon: any }) {
       key={text}
       className="
         group
-        bg-white/40
+        bg-gray-100/40
         rounded-2xl
         p-6
         shadow-sm
         transition
+        border border-gray-200
       "
     >
       <div className="flex items-start gap-4">
