@@ -31,40 +31,40 @@ export default function FinalCTA() {
         </p>
 
         <div className="mt-12 flex flex-col items-stretch gap-4 sm:mt-14 sm:flex-row sm:justify-center sm:gap-5">
-            <Button
-              size="lg"
-              asChild
-              className={cn(
-                "min-h-12 w-full rounded-full border-0 bg-white px-10 text-base font-semibold text-primary",
-                "shadow-md shadow-black/20 ring-1 ring-white/40",
-                "transition-[box-shadow,background-color] duration-300 motion-reduce:transition-none",
-                "hover:bg-white hover:text-primary hover:shadow-lg hover:shadow-black/25 motion-safe:hover:shadow-xl",
-                "sm:min-w-[13rem] sm:w-auto"
-              )}
+          <Button
+            size="lg"
+            asChild
+            className={cn(
+              "min-h-12 w-full rounded-full border-0 bg-white px-10 text-base font-semibold text-primary",
+              "shadow-md shadow-black/20 ring-1 ring-white/40",
+              "transition-[box-shadow,background-color] duration-300 motion-reduce:transition-none",
+              "hover:bg-white hover:text-primary hover:shadow-lg hover:shadow-black/25 motion-safe:hover:shadow-xl",
+              "sm:min-w-[13rem] sm:w-auto"
+            )}
+          >
+            <Link
+              href="/book"
+              className="text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
             >
-              <Link
-                href="/book"
-                className="text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              >
-                Book your visit
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className={cn(
-                "min-h-12 w-full rounded-full border-2 border-white/50 bg-transparent px-10 text-base font-semibold text-white",
-                "shadow-none transition-[background-color,border-color,box-shadow] duration-300 motion-reduce:transition-none",
-                "hover:border-white/80 hover:bg-white/10 hover:text-white hover:shadow-sm hover:shadow-black/10",
-                "sm:min-w-[13rem] sm:w-auto"
-              )}
+              Book your visit
+            </Link>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            asChild
+            className={cn(
+              "min-h-12 w-full rounded-full border-2 border-white/50 bg-transparent px-10 text-base font-semibold text-white",
+              "shadow-none transition-[background-color,border-color,box-shadow] duration-300 motion-reduce:transition-none",
+              "hover:border-white/80 hover:bg-white/10 hover:text-white hover:shadow-sm hover:shadow-black/10",
+              "sm:min-w-[13rem] sm:w-auto"
+            )}
+          >
+            <Link
+              href="/membership"
+              className="text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
             >
-              <Link
-                href="/membership"
-                className="text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              >
-                Learn more about membership
+              Learn more about membership
             </Link>
           </Button>
         </div>
