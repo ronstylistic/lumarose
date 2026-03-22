@@ -74,7 +74,7 @@ const plans: CollegeCarePlan[] = [
       entryIncludes: "Includes enrollment + your first month",
       ongoingLabel: "After your first month",
       ongoingPrice: "$75",
-      ongoingPeriod: "/ month",
+      ongoingPeriod: "/month",
     },
     features: [
       "Up to 3 visits per month",
@@ -189,11 +189,11 @@ function PlanPriceEquivPanel({
         <span className="text-4xl font-bold tabular-nums tracking-tight text-slate-900 md:text-[2.5rem]">
           {layout.priceMain}
         </span>
-        <span className="text-lg font-semibold text-slate-700 md:text-xl">
+        <span className="text-base text-muted-foreground tabular-nums tracking-tight ">
           {layout.priceCadence}
         </span>
       </p>
-      <p className="text-base leading-snug text-slate-600/70 md:text-lg">
+      <p className="text-base text-muted-foreground tabular-nums tracking-tight ">
         {layout.equivNote}
       </p>
     </div>
@@ -238,7 +238,7 @@ function RichPricingPanel({
           <span className="text-4xl font-bold tabular-nums tracking-tight text-slate-900 md:text-[2.875rem] lg:text-[3rem]">
             {richPricing.ongoingPrice}
           </span>
-          <span className="text-lg font-semibold tabular-nums tracking-tight text-slate-500 md:text-xl">
+          <span className="text-base text-muted-foreground tabular-nums tracking-tight ">
             {richPricing.ongoingPeriod}
           </span>
         </p>
