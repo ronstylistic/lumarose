@@ -1,503 +1,522 @@
+import type { ReactNode } from "react";
+import Link from "next/link";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Check, CheckCircle } from "lucide-react";
+import { revealCard, revealFade, revealPrimary, revealSection, staggerClass } from "@/lib/motion";
+import { cn } from "@/lib/utils";
 import { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Non-Membership",
-  description: "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
+  description:
+    "Self-pay, pay-per-visit virtual care and select concierge services at LumaRose Health & Wellness—transparent pricing without a monthly membership.",
 };
-
 
 const plans = [
   {
     name: "Virtual Primary & General Care",
     price: "$200",
     period: "/visit",
-    description:
-      "Appropriate for:",
+    description: "Appropriate for:",
     features: [
       "General medical concerns",
       "Preventive or wellness visits",
       "Stable chronic condition check-ins",
       "Routine lab review",
       "Medication review (non-controlled)",
-      "Health guidance and education"
+      "Health guidance and education",
     ],
-    notes: "Includes clinical evaluation, treatment planning, and patient education."
+    notes:
+      "Includes clinical evaluation, treatment planning, and patient education.",
   },
   {
     name: "Urgent Virtual Care (Non-Emergency)",
     price: "$175",
     period: "/visit",
-    description:
-      "For short-term or acute concerns, including:",
+    description: "For short-term or acute concerns, including:",
     features: [
       "Cold, flu, or respiratory symptoms",
       "Rashes, UTIs, gastrointestinal concerns",
       "Minor infections",
-      "Medication-related questions"
+      "Medication-related questions",
     ],
-    notes: "This service does not replace emergency or urgent in-person care."
-  }
+    notes:
+      "This service does not replace emergency or urgent in-person care.",
+  },
 ];
 
+const premiumPricingCard = cn(
+  "relative flex flex-col overflow-visible rounded-2xl border border-slate-200/65 bg-gray-100/40",
+  "gap-0 py-0 shadow-none",
+  "shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
+  "transition-shadow duration-300 motion-reduce:transition-none",
+  "hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_18px_48px_-10px_rgba(15,23,42,0.095)] motion-reduce:hover:shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
+  revealCard
+);
+
+const infoPanelClass = cn(
+  "rounded-2xl border border-slate-200/65 bg-gray-100/40 p-6 md:p-8",
+  "shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
+  "transition-shadow duration-300 motion-reduce:transition-none",
+  "hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_18px_48px_-10px_rgba(15,23,42,0.095)] motion-reduce:hover:shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]"
+);
+
+function CheckListRow({
+  children,
+  muted,
+}: {
+  children: ReactNode;
+  muted?: boolean;
+}) {
+  return (
+    <li className="flex gap-3.5">
+      <span
+        className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-secondary/12 text-secondary"
+        aria-hidden
+      >
+        <Check className="h-4 w-4" strokeWidth={2.35} aria-hidden />
+      </span>
+      <span
+        className={cn(
+          "min-w-0 text-base leading-relaxed",
+          muted ? "text-muted-foreground" : "text-foreground"
+        )}
+      >
+        {children}
+      </span>
+    </li>
+  );
+}
+
+function FeatureRow({ children }: { children: ReactNode }) {
+  return (
+    <li className="flex gap-3.5">
+      <span
+        className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-secondary/12 text-secondary"
+        aria-hidden
+      >
+        <Check className="h-4 w-4" strokeWidth={2.35} aria-hidden />
+      </span>
+      <span className="min-w-0 text-sm leading-relaxed text-foreground md:text-base">
+        {children}
+      </span>
+    </li>
+  );
+}
 
 export default function NonMembershipPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="bg-white mt-28">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-6">
-            Non-Membership Services & Pricing
-          </h1>
+      <section
+        className="relative overflow-x-hidden bg-gradient-to-b from-background via-muted/25 to-background py-24 md:py-28"
+        aria-labelledby="non-membership-heading"
+      >
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"
+          aria-hidden
+        />
 
-          <p className="text-foreground mb-6">
-            Flexible care without a monthly commitment.
-          </p>
+        <div className="relative mx-auto max-w-7xl px-6 md:px-8">
+          <header
+            className={cn(
+              "mx-auto mb-16 max-w-3xl text-center md:mb-20",
+              revealPrimary
+            )}
+          >
+            <h1
+              id="non-membership-heading"
+              className="text-balance text-4xl font-semibold tracking-tight text-primary md:text-5xl"
+            >
+              Non-Membership Services &amp; Pricing
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base font-medium leading-relaxed text-foreground md:text-lg">
+              Flexible care without a monthly commitment.
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
+              LumaRose Health &amp; Wellness offers self-pay medical visits for
+              patients seeking one-time or occasional care. This option is ideal
+              for individuals who want high-quality, personalized care without
+              enrolling in a membership plan.
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
+              Visits are provided through secure virtual care and select in-home
+              concierge services.
+            </p>
+          </header>
 
-          <p className="text-muted-foreground max-w-3xl mx-auto">
-            LumaRose Health & Wellness offers self-pay medical visits for patients seeking one-time or occasional care. This option is ideal for individuals who want high-quality, personalized care without enrolling in a membership plan.
-          </p>
-
-          <p className="text-muted-foreground max-w-3xl mx-auto mt-4">
-            Visits are provided through secure virtual care and select in-home concierge services.
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-white">
-
-        <div className="max-w-7xl mx-auto px-6 flex mt-10 flex-col lg:flex-row gap-10">
-
-          <div className="flex-1">
-            <h2 className="text-2xl font-semibold text-primary mb-8">
-            Who Non-Membership Care Is For
-            </h2>
-
-            <ul className="space-y-4">
-              {[
-              "Patients seeking care for a specific or short-term concern",
-                "Individuals who prefer pay-per-visit care",
-                "Those exploring LumaRose before choosing a membership",
-                "Patients who do not require ongoing follow-up or continuous access",
-              ].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <CheckCircle className="h-5 w-5 text-secondary mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          {/* IMPORTANT NOTES */}
-          <div className="flex-1">
-            <h3 className="font-semibold text-primary text-2xl mb-8">
-                Important Notes
-            </h3>
-
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              {[
-                "All services are self-pay and non-membership",
-                "Pricing is confirmed prior to your visit",
-                "Labs, imaging, medications, and supplies are not included unless stated",
-                "Non-membership care does not include ongoing access outside the scheduled visit",
-                "Controlled substances are not prescribed",
-                "Concierge and in-home services are subject to availability",
-                "This practice does not replace emergency care"
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-secondary mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-
-        </div>
-      </section>
-
-    
-      <section className="bg-white py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8">
-            {plans.map((plan) => (
-              <Card
-                key={plan.name}
-                className={`
-                  relative
-                  flex flex-col
-                  bg-gray-100/40
-                  shadow-lg
-                  border-0
-                `}
-              >
-                
-                <CardHeader className="space-y-4">
-                  <h3 className="text-xl font-semibold text-primary">
-                    {plan.name}
-                  </h3>
-
-                  <div className="flex items-end gap-1">
-                    <span className="text-4xl font-bold text-foreground">
-                      {plan.price}
-                    </span>
-                    <span className="text-muted-foreground">
-                      {plan.period}
-                    </span>
-                  </div>
-
-                  <p className="text-sm text-muted-foreground">
-                    {plan.description}
-                  </p>
-                </CardHeader>
-
-                <CardContent className="flex-1 flex flex-col">
-                  <ul className="space-y-3 mb-6">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-secondary mt-0.5" />
-                        <span className="text-sm text-foreground">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {plan.notes && (
-                    <p className="text-sm text-muted-foreground mt-4">
-                      {plan.notes}
-                    </p>
-                  )}
-
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-      <section className="bg-white py-8">        
-        <div className="max-w-7xl mx-auto px-6">
-          <ServiceColumn title="Sexual Health Services"
-            tagline="(Confidential, inclusive care)">
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <Card
-                className={`
-                  relative
-                  flex flex-col
-                  bg-gray-100/40
-                  shadow-lg
-                  border-0
-                `}
-              >
-                <CardHeader className="space-y-4">
-
-                  <h3 className="text-lg font-semibold text-primary">
-                      Sexual Health Visit
-                  </h3>
-
-                  <div className="flex items-end gap-1">
-                    <span className="text-4xl font-bold text-foreground">
-                      $175
-                    </span>
-                    <span className="text-muted-foreground">
-                      /visit
-                    </span>
-                  </div>
-
-                     
-                  <p className="text-sm text-muted-foreground">
-                    Includes:
-                  </p>
-                </CardHeader>
-
-                <CardContent className="flex-1 flex flex-col">
-                  <ul className="space-y-3 mb-6">
-                    {[
-                      "Sexual health risk assessment and counseling",
-                      "Evaluation of symptoms or exposure concerns",
-                      "STD / STI testing coordination",
-                      "Treatment for select STDs / STIs when clinically appropriate",
-                      "Preventive education and guidance",
-                    ].map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-secondary mt-0.5" />
-                        <span className="text-sm text-foreground">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card
-                className={`
-                  relative
-                  flex flex-col
-                  bg-gray-100/40
-                  shadow-lg
-                  border-0
-                `}
-              >
-                <CardHeader className="space-y-4">
-
-                  <h3 className="text-lg font-semibold text-primary">
-                      Follow-Up Sexual Health Visit
-                  </h3>
-
-                  <div className="flex items-end gap-1">
-                    <span className="text-4xl font-bold text-foreground">
-                      $125
-                    </span>
-                    <span className="text-muted-foreground">
-                      /visit
-                    </span>
-                  </div>
-
-                     
-                  <p className="text-sm text-muted-foreground">
-                    Includes:
-                  </p>
-                </CardHeader>
-
-                <CardContent className="flex-1 flex flex-col">
-                  <ul className="space-y-3 mb-6">
-                    {[
-                      "Review of results",
-                      "Treatment follow-up or symptom reassessment",
-                      "Additional counseling as needed"
-                    ].map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-secondary mt-0.5" />
-                        <span className="text-sm text-foreground">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                   <p className="text-sm text-muted-foreground mt-4">
-                  Lab fees are billed separately by third-party laboratories.
-                  </p>
-
-                </CardContent>
-              </Card>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
+            <div className={cn(infoPanelClass, revealSection, "motion-safe:delay-75")}>
+              <h2 className="mb-6 text-2xl font-semibold tracking-tight text-primary md:mb-8 md:text-3xl">
+                Who Non-Membership Care Is For
+              </h2>
+              <ul className="space-y-4">
+                {[
+                  "Patients seeking care for a specific or short-term concern",
+                  "Individuals who prefer pay-per-visit care",
+                  "Those exploring LumaRose before choosing a membership",
+                  "Patients who do not require ongoing follow-up or continuous access",
+                ].map((item) => (
+                  <CheckListRow key={item}>{item}</CheckListRow>
+                ))}
+              </ul>
             </div>
-          </ServiceColumn>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
-            {/* COLUMN 1 */}
-            <ServiceColumn title="Prescription Refill Services"
-              tagline="(Non-Controlled Medications Only)">
-              <Card
-                  className={`
-                    relative
-                    flex flex-col
-                    bg-gray-100/40
-                    shadow-lg
-                    border-0
-                    h-117
-                  `}
+            <div
+              className={cn(
+                infoPanelClass,
+                revealSection,
+                "motion-safe:delay-150"
+              )}
+            >
+              <h2 className="mb-6 text-2xl font-semibold tracking-tight text-primary md:mb-8 md:text-3xl">
+                Important Notes
+              </h2>
+              <ul className="space-y-3.5">
+                {[
+                  "All services are self-pay and non-membership",
+                  "Pricing is confirmed prior to your visit",
+                  "Labs, imaging, medications, and supplies are not included unless stated",
+                  "Non-membership care does not include ongoing access outside the scheduled visit",
+                  "Controlled substances are not prescribed",
+                  "Concierge and in-home services are subject to availability",
+                  "This practice does not replace emergency care",
+                ].map((item) => (
+                  <CheckListRow key={item} muted>
+                    {item}
+                  </CheckListRow>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div
+            className={cn(
+              "mt-20 lg:mt-24",
+              revealSection,
+              "motion-safe:delay-100"
+            )}
+          >
+            <h2 className="mb-10 text-center text-3xl font-semibold tracking-tight text-primary md:mb-12 md:text-4xl">
+              Virtual visit pricing
+            </h2>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-9 lg:gap-10">
+              {plans.map((plan, i) => (
+                <Card
+                  key={plan.name}
+                  className={cn(premiumPricingCard, staggerClass(i))}
                 >
-                  <CardHeader className="space-y-10">
-                    <div className="flex items-end justify-between gap-1">
-                      <h3 className="text-lg font-semibold text-primary">
-                        Single Medication Refill
-                      </h3>
-
-                      <div className="flex items-end gap-1">
-                        <span className="text-4xl font-bold text-foreground">
-                          $100
-                        </span>
-                        <span className="text-muted-foreground">
-                          /visit
-                        </span>
-                      </div>
+                  <CardHeader className="space-y-4 px-6 pb-2 pt-6">
+                    <h3 className="text-xl font-semibold tracking-tight text-primary md:text-[1.35rem]">
+                      {plan.name}
+                    </h3>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-4xl font-bold tabular-nums tracking-tight text-foreground md:text-[2.5rem]">
+                        {plan.price}
+                      </span>
+                      <span className="text-base text-muted-foreground">
+                        {plan.period}
+                      </span>
                     </div>
+                    <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.9375rem]">
+                      {plan.description}
+                    </p>
+                  </CardHeader>
+                  <CardContent className="flex flex-1 flex-col px-6 pb-8 pt-2">
+                    <ul className="mb-6 space-y-3.5">
+                      {plan.features.map((feature) => (
+                        <FeatureRow key={feature}>{feature}</FeatureRow>
+                      ))}
+                    </ul>
+                    {plan.notes && (
+                      <p className="mt-auto border-t border-primary/70 pt-6 text-sm leading-relaxed text-muted-foreground">
+                        {plan.notes}
+                      </p>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
 
-                    <div className="flex items-end justify-between gap-1">
-                      <h3 className="text-lg font-semibold text-primary">
-                        Multiple Medication Review & Refill
-                      </h3>
-
-                      <div className="flex items-end gap-1">
-                        <span className="text-4xl font-bold text-foreground">
-                          $150
-                        </span>
-                        <span className="text-muted-foreground">
-                          /visit
-                        </span>
-                      </div>
+          <div className="mt-20 space-y-20 lg:mt-24 lg:space-y-24">
+            <div className={cn(revealSection, "motion-safe:delay-75")}>
+            <ServiceColumn
+              title="Sexual Health Services"
+              tagline="Confidential, inclusive care"
+            >
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-9">
+                <Card className={cn(premiumPricingCard, staggerClass(0))}>
+                  <CardHeader className="space-y-4 px-6 pb-2 pt-6">
+                    <h3 className="text-lg font-semibold tracking-tight text-primary md:text-xl">
+                      Sexual Health Visit
+                    </h3>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-4xl font-bold tabular-nums tracking-tight text-foreground md:text-[2.5rem]">
+                        $175
+                      </span>
+                      <span className="text-base text-muted-foreground">
+                        /visit
+                      </span>
                     </div>
-                              
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.9375rem]">
                       Includes:
                     </p>
                   </CardHeader>
+                  <CardContent className="flex flex-1 flex-col px-6 pb-8 pt-2">
+                    <ul className="space-y-3.5">
+                      {[
+                        "Sexual health risk assessment and counseling",
+                        "Evaluation of symptoms or exposure concerns",
+                        "STD / STI testing coordination",
+                        "Treatment for select STDs / STIs when clinically appropriate",
+                        "Preventive education and guidance",
+                      ].map((feature) => (
+                        <FeatureRow key={feature}>{feature}</FeatureRow>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
 
-                  <CardContent className="flex-1 flex flex-col">
-                    <ul className="space-y-3 mb-6">
+                <Card className={cn(premiumPricingCard, staggerClass(1))}>
+                  <CardHeader className="space-y-4 px-6 pb-2 pt-6">
+                    <h3 className="text-lg font-semibold tracking-tight text-primary md:text-xl">
+                      Follow-Up Sexual Health Visit
+                    </h3>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-4xl font-bold tabular-nums tracking-tight text-foreground md:text-[2.5rem]">
+                        $125
+                      </span>
+                      <span className="text-base text-muted-foreground">
+                        /visit
+                      </span>
+                    </div>
+                    <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.9375rem]">
+                      Includes:
+                    </p>
+                  </CardHeader>
+                  <CardContent className="flex flex-1 flex-col px-6 pb-8 pt-2">
+                    <ul className="mb-6 space-y-3.5">
+                      {[
+                        "Review of results",
+                        "Treatment follow-up or symptom reassessment",
+                        "Additional counseling as needed",
+                      ].map((feature) => (
+                        <FeatureRow key={feature}>{feature}</FeatureRow>
+                      ))}
+                    </ul>
+                    <p className="mt-auto border-t border-primary/70 pt-6 text-sm leading-relaxed text-muted-foreground">
+                      Lab fees are billed separately by third-party laboratories.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </ServiceColumn>
+            </div>
+
+            <div
+              className={cn(
+                "grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-10",
+                revealSection,
+                "motion-safe:delay-100"
+              )}
+            >
+              <ServiceColumn
+                title="Prescription Refill Services"
+                tagline="Non-controlled medications only"
+              >
+                <Card className={cn(premiumPricingCard, staggerClass(0))}>
+                  <CardHeader className="space-y-6 px-6 pb-2 pt-6">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+                      <h3 className="text-lg font-semibold tracking-tight text-primary md:text-xl">
+                        Single Medication Refill
+                      </h3>
+                      <div className="flex shrink-0 items-baseline gap-1.5">
+                        <span className="text-3xl font-bold tabular-nums text-foreground md:text-4xl">
+                          $100
+                        </span>
+                        <span className="text-base text-muted-foreground">
+                          /visit
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-4 border-t border-primary/70 pt-6 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+                      <h3 className="text-lg font-semibold tracking-tight text-primary md:text-xl">
+                        Multiple Medication Review &amp; Refill
+                      </h3>
+                      <div className="flex shrink-0 items-baseline gap-1.5">
+                        <span className="text-3xl font-bold tabular-nums text-foreground md:text-4xl">
+                          $150
+                        </span>
+                        <span className="text-base text-muted-foreground">
+                          /visit
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.9375rem]">
+                      Includes:
+                    </p>
+                  </CardHeader>
+                  <CardContent className="flex flex-1 flex-col px-6 pb-8 pt-2">
+                    <ul className="mb-6 space-y-3.5">
                       {[
                         "Clinical review of current medication(s)",
                         "Assessment for safety, appropriateness, and ongoing need",
                         "Refill authorization when clinically appropriate",
                       ].map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
-                          <Check className="w-5 h-5 text-secondary mt-0.5" />
-                          <span className="text-sm text-foreground">
-                            {feature}
-                          </span>
-                        </li>
+                        <FeatureRow key={feature}>{feature}</FeatureRow>
                       ))}
                     </ul>
-
-                    <p className="text-sm text-muted-foreground mt-4">
-                    Prescription quantity and duration are determined by clinical judgment.
-  Controlled substances are not prescribed.
+                    <p className="mt-auto border-t border-primary/70 pt-6 text-sm leading-relaxed text-muted-foreground">
+                      Prescription quantity and duration are determined by
+                      clinical judgment. Controlled substances are not
+                      prescribed.
                     </p>
                   </CardContent>
                 </Card>
-            </ServiceColumn>
+              </ServiceColumn>
 
-
-            <ServiceColumn title="In-Home Concierge Medical Visits"
-              tagline="(Houston Area Only)">
-              
-              <Card
-                  className={`
-                    relative
-                    flex flex-col
-                    bg-gray-100/40
-                    shadow-lg
-                    border-0
-                  `}
-                >
-                  <CardHeader className="space-y-4">
-                    <div className="flex items-end justify-between gap-1">
-                      <h3 className="text-lg font-semibold text-primary">
-                        In-Home Medical Visit (≤20 miles)
-                      </h3>
-
-                      <div className="flex items-end gap-1">
-                        <span className="text-4xl font-bold text-foreground">
-                          $250
-                        </span>
-                        <span className="text-muted-foreground">
-                          /visit
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-end justify-between gap-1">
-                      <h3 className="text-lg font-semibold text-primary">
-                        Extended Distance or Complex Visit
-                      </h3>
-
-                      <div className="flex flex-col gap-1">
-                        <div className="flex items-end gap-1">
-                          <span className="text-4xl font-bold text-foreground">
-                            $300
+              <ServiceColumn
+                title="In-Home Concierge Medical Visits"
+                tagline="Houston area only"
+              >
+                <div className="space-y-8">
+                  <Card className={cn(premiumPricingCard, staggerClass(0))}>
+                    <CardHeader className="space-y-6 px-6 pb-2 pt-6">
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+                        <h3 className="text-lg font-semibold tracking-tight text-primary md:text-xl">
+                          In-Home Medical Visit (≤20 miles)
+                        </h3>
+                        <div className="flex shrink-0 items-baseline gap-1.5">
+                          <span className="text-3xl font-bold tabular-nums text-foreground md:text-4xl">
+                            $250
                           </span>
-                          <span className="text-muted-foreground">
+                          <span className="text-base text-muted-foreground">
                             /visit
                           </span>
                         </div>
+                      </div>
+                      <div className="flex flex-col gap-2 border-t border-primary/70 pt-6 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+                        <h3 className="text-lg font-semibold tracking-tight text-primary md:text-xl">
+                          Extended Distance or Complex Visit
+                        </h3>
+                        <div className="flex shrink-0 flex-col items-start gap-1 sm:items-end">
+                          <div className="flex items-baseline gap-1.5">
+                            <span className="text-3xl font-bold tabular-nums text-foreground md:text-4xl">
+                              $300
+                            </span>
+                            <span className="text-base text-muted-foreground">
+                              /visit
+                            </span>
+                          </div>
+                          <span className="text-xs text-muted-foreground">
+                            + (quoted prior to visit)
+                          </span>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="px-6 pb-8 pt-2">
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        In-home services are limited and subject to availability
+                        and clinical appropriateness.
+                      </p>
+                    </CardContent>
+                  </Card>
 
-                        <span className="text-xs text-muted-foreground">
-                          + (quoted prior to visit)
+                  <Card className={cn(premiumPricingCard, staggerClass(1))}>
+                    <CardHeader className="space-y-4 px-6 pb-8 pt-6">
+                      <h3 className="text-lg font-semibold tracking-tight text-primary md:text-xl">
+                        College Care – Non-Membership
+                      </h3>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-4xl font-bold tabular-nums tracking-tight text-foreground md:text-[2.5rem]">
+                          $95
+                        </span>
+                        <span className="text-base text-muted-foreground">
+                          /visit
                         </span>
                       </div>
-                      
-                    </div>
-                  </CardHeader>
-
-                  <CardContent className="flex-1 flex flex-col">
-                    <p className="text-sm text-muted-foreground mt-4">
-                    In-home services are limited and subject to availability and clinical appropriateness.
-                    </p>
-                  </CardContent>
-                </Card>
-
-
-                <Card
-                className={`
-                  relative
-                  flex flex-col
-                  bg-gray-100/40
-                  shadow-lg
-                  border-0
-                `}
-              >
-                <CardHeader className="space-y-4">
-
-                  <h3 className="text-lg font-semibold text-primary">
-                      College Care – Non-Membership
-                  </h3>
-
-                  <div className="flex items-end gap-1">
-                    <span className="text-4xl font-bold text-foreground">
-                      $95
-                    </span>
-                    <span className="text-muted-foreground">
-                      /visit
-                    </span>
-                  </div>
-
-                     
-                  <p className="text-sm text-muted-foreground">
-                    Flat rate for all services (excluding weight management). 
-                    <span className="italic"> Exclusively for currently enrolled college students.</span>
-                  </p>
-                </CardHeader>
-              </Card>
-
-            </ServiceColumn>
+                      <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.9375rem]">
+                        Flat rate for all services (excluding weight management).{" "}
+                        <span className="italic">
+                          Exclusively for currently enrolled college students.
+                        </span>
+                      </p>
+                    </CardHeader>
+                  </Card>
+                </div>
+              </ServiceColumn>
+            </div>
           </div>
+
+          <p
+            className={cn(
+              "mt-16 max-w-4xl border-t border-primary/70 pt-8 text-sm leading-relaxed text-muted-foreground md:mt-20",
+              revealFade,
+              "motion-safe:delay-150"
+            )}
+          >
+            LumaRose Health &amp; Wellness is a virtual, cash-based medical
+            practice. Insurance is not required. Laboratory testing, imaging,
+            and medications ordered through third-party providers are billed
+            separately unless otherwise stated.
+          </p>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-primary/5 py-28 text-center">
-        <h2 className="text-3xl font-semibold text-primary mb-6">
-          Ready to Schedule?
-        </h2>
+      <section
+        className="relative isolate overflow-hidden bg-primary py-16"
+        aria-labelledby="non-membership-cta-heading"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_-10%,rgba(255,255,255,0.14),transparent_55%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/[0.12]"
+          aria-hidden
+        />
 
-        <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Book a non-membership visit online to determine if this care option is right for you.
-        </p>
-
-        <Button size="lg" className="bg-primary text-white px-10">
-          <Link href="/book">Book a Non-Membership Visit</Link>
-        </Button>
+        <div className="relative mx-auto max-w-2xl px-6 text-center">
+          <div
+            className={revealPrimary}
+          >
+            <h2
+              id="non-membership-cta-heading"
+              className="text-balance text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl md:leading-tight"
+            >
+              Ready to Schedule?
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-white/90 md:text-lg">
+              Book a non-membership visit online to determine if this care
+              option is right for you.
+            </p>
+            <div className="mt-10 sm:mt-12">
+              <Button
+                size="lg"
+                asChild
+                className={cn(
+                  "min-h-12 w-full rounded-full border-0 bg-white px-8 text-base font-semibold text-primary",
+                  "shadow-md shadow-black/20 ring-1 ring-white/40",
+                  "transition-[box-shadow,background-color] duration-300 motion-reduce:transition-none",
+                  "hover:bg-white hover:text-primary hover:shadow-lg hover:shadow-black/25 motion-safe:hover:shadow-xl",
+                  "sm:mx-auto sm:w-auto sm:min-w-[min(100%,18rem)] sm:px-10"
+                )}
+              >
+                <Link
+                  href="/book"
+                  className="text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                >
+                  Book a Non-Membership Visit
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
 }
-
-/* ---------- COMPONENT ---------- */
-
-function IncludedCard({
-  title,
-  text,
-}: {
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="bg-gray-100/40 rounded-2xl p-6 shadow-sm">
-      <h3 className="font-semibold mb-2 text-lg text-primary">{title}</h3>
-      <p className="text-sm text-muted-foreground">{text}</p>
-    </div>
-  );
-}
-
 
 function ServiceColumn({
   title,
@@ -509,53 +528,18 @@ function ServiceColumn({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-white rounded-2xl space-y-8">
-      <div className="">
-      <h1 className="text-3xl font-semibold text-primary">
-        {title}
-      </h1>
-      {tagline && <span className="text-sm text-muted-foreground">{tagline}</span>}
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-3xl font-semibold tracking-tight text-primary">
+          {title}
+        </h2>
+        {tagline && (
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+            {tagline}
+          </p>
+        )}
       </div>
       {children}
-    </div>
-  );
-}
-
-function PriceGroup({
-  title,
-  items,
-  note,
-}: {
-  title: string;
-  items: [string, string][];
-  description?: string[];
-  note?: string;
-}) {
-  return (
-    <div className="bg-gray-100/40 shadow-sm rounded-2xl p-6 flex flex-col">
-      <h3 className="font-semibold text-foreground mb-4">
-        {title}
-      </h3>
-
-      <div className="space-y-3">
-        {items.map(([label, price]) => (
-          <div
-            key={label}
-            className="flex justify-between border-b border-primary/40 border-dashed"
-          >
-            <span className="text-sm">{label}</span>
-            <span className="font-semibold text-primary">
-              {price}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {note && (
-        <p className="text-xs text-muted-foreground mt-3">
-          {note}
-        </p>
-      )}
     </div>
   );
 }

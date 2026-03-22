@@ -1,7 +1,10 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { revealCard, revealPrimary, revealSection } from "@/lib/motion";
+import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -62,195 +65,216 @@ const whyPartner = [
   "Houston-based with statewide virtual capability",
 ];
 
+const premiumCardClass = cn(
+  "relative flex flex-col overflow-visible rounded-2xl border border-slate-200/65 bg-gray-100/40",
+  "shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
+  "transition-shadow duration-300 motion-reduce:transition-none",
+  "hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_18px_48px_-10px_rgba(15,23,42,0.095)] motion-reduce:hover:shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
+  revealCard
+);
+
+function CheckListRow({ children }: { children: ReactNode }) {
+  return (
+    <li className="flex gap-3.5">
+      <span
+        className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-secondary/12 text-secondary"
+        aria-hidden
+      >
+        <Check className="h-4 w-4" strokeWidth={2.35} aria-hidden />
+      </span>
+      <span className="min-w-0 text-sm leading-relaxed text-foreground md:text-base">
+        {children}
+      </span>
+    </li>
+  );
+}
+
 export default function Page() {
   return (
     <>
-      {/* HERO */}
-      <section className="bg-white py-28">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-6">
-            Corporate Wellness
-          </h1>
+      <section
+        className="relative overflow-x-hidden bg-gradient-to-b from-background via-muted/25 to-background py-24 md:py-28"
+        aria-labelledby="corporate-wellness-heading"
+      >
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"
+          aria-hidden
+        />
 
-          <p className="text-xl font-medium text-foreground mb-4">
-            Corporate Health Strategy — Simplified.
-          </p>
+        <div className="relative mx-auto max-w-7xl px-6 md:px-8">
+          <header
+            className={cn(
+              "mx-auto mb-16 max-w-3xl text-center md:mb-20",
+              revealPrimary
+            )}
+          >
+            <h1
+              id="corporate-wellness-heading"
+              className="text-balance text-4xl font-semibold tracking-tight text-primary md:text-5xl"
+            >
+              Corporate Wellness
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg font-medium leading-relaxed text-foreground md:text-xl md:leading-relaxed">
+              Corporate Health Strategy — Simplified.
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
+              LumaRose partners with Texas businesses to provide clinically guided
+              preventive and chronic disease support designed to strengthen
+              workforce health, reduce risk, and improve long-term productivity.
+            </p>
+            <div className="mt-10 flex justify-center">
+              <Button
+                size="lg"
+                asChild
+                className="min-h-12 rounded-full bg-primary px-8 font-semibold text-white shadow-md transition-colors duration-200 hover:bg-primary/90 hover:text-white"
+              >
+                <Link
+                  href="/book"
+                  className="text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  Schedule a Corporate Consultation
+                </Link>
+              </Button>
+            </div>
+          </header>
 
-          <p className="text-muted-foreground max-w-3xl mx-auto mb-8">
-            LumaRose partners with Texas businesses to provide clinically guided
-            preventive and chronic disease support designed to strengthen
-            workforce health, reduce risk, and improve long-term productivity.
-          </p>
-
-          <Button size="lg" className="bg-primary text-white hover:bg-primary/90">
-            <Link href="/book">Schedule a Corporate Consultation</Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* OUR CORPORATE SERVICES */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-primary mb-12 text-center">
+          <h2
+            className={cn(
+              "mb-12 text-center text-3xl font-semibold tracking-tight text-primary md:mb-14",
+              revealSection,
+              "motion-safe:delay-75"
+            )}
+          >
             Our Corporate Services
           </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Screening Events */}
-            <Card className="flex flex-col shadow-lg border border-gray-200 bg-gray-100/40">
-              <CardHeader>
-                <h3 className="text-xl font-semibold text-primary">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-9">
+            <Card className={premiumCardClass}>
+              <CardHeader className="space-y-2">
+                <h3 className="text-xl font-semibold tracking-tight text-primary">
                   On-Site or Virtual Wellness Screening Events
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   Structured health screening experiences tailored to your
                   organization.
                 </p>
               </CardHeader>
-              <CardContent className="flex-1 space-y-4">
-                <ul className="space-y-2">
+              <CardContent className="flex flex-1 flex-col space-y-4">
+                <ul className="space-y-3">
                   {screeningFeatures.map((item) => (
-                    <li key={item} className="flex gap-2 items-start">
-                      <Check className="h-4 w-4 text-secondary mt-1 shrink-0" />
-                      <span className="text-sm text-foreground">{item}</span>
-                    </li>
+                    <CheckListRow key={item}>{item}</CheckListRow>
                   ))}
                 </ul>
-                <p className="text-sm font-medium text-primary pt-2">
+                <p className="pt-2 text-sm font-semibold text-primary">
                   Investment begins at $1,500 per event.
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs leading-relaxed text-muted-foreground">
                   Customized proposals available based on company size and needs.
                 </p>
               </CardContent>
             </Card>
 
-            {/* Monthly Partnerships */}
-            <Card className="flex flex-col shadow-lg border border-gray-200 bg-gray-100/40">
-              <CardHeader>
-                <h3 className="text-xl font-semibold text-primary">
+            <Card className={premiumCardClass}>
+              <CardHeader className="space-y-2">
+                <h3 className="text-xl font-semibold tracking-tight text-primary">
                   Monthly Corporate Wellness Partnerships
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   Ongoing clinical partnership to support workforce health and
                   prevention.
                 </p>
               </CardHeader>
-              <CardContent className="flex-1 space-y-4">
-                <ul className="space-y-2">
+              <CardContent className="flex flex-1 flex-col space-y-4">
+                <ul className="space-y-3">
                   {partnershipFeatures.map((item) => (
-                    <li key={item} className="flex gap-2 items-start">
-                      <Check className="h-4 w-4 text-secondary mt-1 shrink-0" />
-                      <span className="text-sm text-foreground">{item}</span>
-                    </li>
+                    <CheckListRow key={item}>{item}</CheckListRow>
                   ))}
                 </ul>
-                <p className="text-xs text-muted-foreground pt-2">
+                <p className="pt-2 text-xs leading-relaxed text-muted-foreground">
                   Monthly partnerships are customized based on workforce size and
                   service scope.
                 </p>
               </CardContent>
             </Card>
 
-            {/* Executive Package */}
-            <Card className="flex flex-col shadow-lg border border-gray-200 bg-gray-100/40">
-              <CardHeader>
-                <h3 className="text-xl font-semibold text-primary">
-                  Executive Health & Performance Package
+            <Card className={premiumCardClass}>
+              <CardHeader className="space-y-2">
+                <h3 className="text-xl font-semibold tracking-tight text-primary">
+                  Executive Health &amp; Performance Package
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   Designed for leadership teams seeking comprehensive health
                   oversight and metabolic clarity.
                 </p>
               </CardHeader>
-              <CardContent className="flex-1 space-y-4">
-                <ul className="space-y-2">
+              <CardContent className="flex flex-1 flex-col space-y-4">
+                <ul className="space-y-3">
                   {executiveFeatures.map((item) => (
-                    <li key={item} className="flex gap-2 items-start">
-                      <Check className="h-4 w-4 text-secondary mt-1 shrink-0" />
-                      <span className="text-sm text-foreground">{item}</span>
-                    </li>
+                    <CheckListRow key={item}>{item}</CheckListRow>
                   ))}
                 </ul>
-                <p className="text-xs text-muted-foreground pt-2">
+                <p className="pt-2 text-xs leading-relaxed text-muted-foreground">
                   Executive packages available upon consultation.
                 </p>
               </CardContent>
             </Card>
           </div>
-        </div>
-      </section>
 
-      {/* THREE COLUMNS: Why Corporate Wellness Matters | Who We Serve | Why Partner */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Why Corporate Wellness Matters */}
-            <Card className="flex flex-col shadow-lg border border-gray-200 bg-gray-100/40">
-              <CardHeader>
-                <h3 className="text-xl font-semibold text-primary">
+          <div className="mt-20 grid grid-cols-1 gap-8 lg:mt-24 lg:grid-cols-3 lg:gap-9">
+            <Card className={premiumCardClass}>
+              <CardHeader className="space-y-3">
+                <h3 className="text-xl font-semibold tracking-tight text-primary">
                   Why Corporate Wellness Matters
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   Employee health directly impacts performance, morale, and
                   operational stability. Chronic conditions such as hypertension,
                   obesity, and diabetes often go unmanaged due to limited
                   preventive oversight.
                 </p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   LumaRose brings structured medical guidance into the workplace
                   — proactively supporting health rather than reacting to
                   complications.
                 </p>
               </CardHeader>
-              <CardContent className="flex-1 space-y-4">
-                <ul className="space-y-2">
+              <CardContent className="flex-1">
+                <ul className="space-y-3">
                   {whyMattersBullets.map((item) => (
-                    <li key={item} className="flex gap-2 items-start">
-                      <Check className="h-4 w-4 text-secondary mt-1 shrink-0" />
-                      <span className="text-sm text-foreground">{item}</span>
-                    </li>
+                    <CheckListRow key={item}>{item}</CheckListRow>
                   ))}
                 </ul>
               </CardContent>
             </Card>
 
-            {/* Who We Serve */}
-            <Card className="flex flex-col shadow-lg border border-gray-200 bg-gray-100/40">
-              <CardHeader>
-                <h3 className="text-xl font-semibold text-primary">
+            <Card className={premiumCardClass}>
+              <CardHeader className="space-y-2">
+                <h3 className="text-xl font-semibold tracking-tight text-primary">
                   Who We Serve
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   LumaRose partners with:
                 </p>
               </CardHeader>
-              <CardContent className="flex-1 space-y-4">
-                <ul className="space-y-2">
+              <CardContent className="flex-1">
+                <ul className="space-y-3">
                   {whoWeServe.map((item) => (
-                    <li key={item} className="flex gap-2 items-start">
-                      <Check className="h-4 w-4 text-secondary mt-1 shrink-0" />
-                      <span className="text-sm text-foreground">{item}</span>
-                    </li>
+                    <CheckListRow key={item}>{item}</CheckListRow>
                   ))}
                 </ul>
               </CardContent>
             </Card>
 
-            {/* Why Partner With LumaRose */}
-            <Card className="flex flex-col shadow-lg border border-gray-200 bg-gray-100/40">
+            <Card className={premiumCardClass}>
               <CardHeader>
-                <h3 className="text-xl font-semibold text-primary">
+                <h3 className="text-xl font-semibold tracking-tight text-primary">
                   Why Partner With LumaRose
                 </h3>
               </CardHeader>
-              <CardContent className="flex-1 space-y-4">
-                <ul className="space-y-2">
+              <CardContent className="flex-1">
+                <ul className="space-y-3">
                   {whyPartner.map((item) => (
-                    <li key={item} className="flex gap-2 items-start">
-                      <Check className="h-4 w-4 text-secondary mt-1 shrink-0" />
-                      <span className="text-sm text-foreground">{item}</span>
-                    </li>
+                    <CheckListRow key={item}>{item}</CheckListRow>
                   ))}
                 </ul>
               </CardContent>
@@ -259,40 +283,70 @@ export default function Page() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-gray-100/40 py-16">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-semibold text-primary mb-4">
-            Let&apos;s Build a Healthier Workforce.
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Schedule a 15-minute consultation to discuss your organization&apos;s
-            goals and explore a customized partnership.
-          </p>
-          <Button
-            size="lg"
-            className="bg-primary text-white hover:bg-primary/90 mb-10"
-          >
-            <Link href="/book">Request Corporate Consultation</Link>
-          </Button>
-          <div className="text-muted-foreground text-sm space-y-1">
-            <p>
-              <a
-                href="mailto:care@lumarosewellness.com"
-                className="text-primary hover:underline"
-              >
-                care@lumarosewellness.com
-              </a>
+      <section
+        className="relative isolate overflow-hidden bg-primary py-16 md:py-20"
+        aria-labelledby="corporate-wellness-cta-heading"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_-10%,rgba(255,255,255,0.14),transparent_55%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/[0.12]"
+          aria-hidden
+        />
+
+        <div className="relative mx-auto max-w-2xl px-6 text-center">
+          <div className={revealPrimary}>
+            <h2
+              id="corporate-wellness-cta-heading"
+              className="text-balance text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl"
+            >
+              Let&apos;s Build a Healthier Workforce.
+            </h2>
+            <p className="mx-auto mt-6 max-w-lg text-pretty text-base leading-relaxed text-white/85 md:text-lg">
+              Schedule a 15-minute consultation to discuss your organization&apos;s
+              goals and explore a customized partnership.
             </p>
-            <p>
-              <a
-                href="tel:+13466232689"
-                className="text-primary hover:underline"
+            <div className="mt-10 sm:mt-12">
+              <Button
+                size="lg"
+                asChild
+                className={cn(
+                  "min-h-12 w-full rounded-full border-0 bg-white px-8 text-base font-semibold text-primary",
+                  "shadow-md shadow-black/20 ring-1 ring-white/40",
+                  "transition-[box-shadow,background-color] duration-300 motion-reduce:transition-none",
+                  "hover:bg-white hover:text-primary hover:shadow-lg hover:shadow-black/25 motion-safe:hover:shadow-xl",
+                  "sm:mx-auto sm:w-auto sm:min-w-[min(100%,16rem)] sm:px-10"
+                )}
               >
-                (346) 623-2689
-              </a>
-            </p>
-            <p>Houston, Texas</p>
+                <Link
+                  href="/book"
+                  className="text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                >
+                  Request Corporate Consultation
+                </Link>
+              </Button>
+            </div>
+            <div className="mt-10 space-y-2 text-sm text-white/85">
+              <p>
+                <a
+                  href="mailto:care@lumarosewellness.com"
+                  className="underline-offset-2 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                >
+                  care@lumarosewellness.com
+                </a>
+              </p>
+              <p>
+                <a
+                  href="tel:+13466232689"
+                  className="underline-offset-2 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                >
+                  (346) 623-2689
+                </a>
+              </p>
+              <p className="text-white/75">Houston, Texas</p>
+            </div>
           </div>
         </div>
       </section>

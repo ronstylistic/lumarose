@@ -97,7 +97,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
             small to mid-size businesses in Texas. Learn more on our{" "}
             <a
               href="/corporate-wellness"
-              className="text-primary hover:underline font-semibold"
+              className="font-semibold text-primary underline-offset-2 transition-colors hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               Corporate Wellness
             </a>{" "}

@@ -1,70 +1,74 @@
-import {
-  CircleCheck
-} from "lucide-react";
+import { Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const reasons = [
+  { id: "same-provider", text: "See the same trusted provider every visit" },
+  { id: "messaging", text: "Direct messaging access when questions come up" },
   {
-    text: "NP-Led, Board-Certified Care is provided by an experienced, board-certified Family Nurse Practitioner.",
-    icon: CircleCheck,
+    id: "heard-addressed",
+    text: "Visits where your concerns are fully heard and thoughtfully addressed",
   },
   {
-    text: "Expertise in Chronic & Complex Conditions Advanced experience managing long-term and medically complex health concerns",
-    icon: CircleCheck,
+    id: "visit-length",
+    text: "Dedicated visit time typically lasting 30 to 45 minutes",
   },
   {
-    text: "Personalized Care Planning Individualized plans guided by your goals, history, and clinical needs.",
-    icon: CircleCheck,
+    id: "scheduling",
+    text: "Flexible scheduling with evening and weekend availability",
   },
   {
-    text: "Secure, Convenient Virtual Access HIPAA-compliant virtual care designed for ease, privacy, and accessibility.",
-    icon: CircleCheck,
-  }
-];
+    id: "ongoing-support",
+    text: "Ongoing support that continues beyond your visit",
+  },
+] as const;
 
 export default function WhyChooseLumaRose() {
   return (
-    <section className="bg-gray-100 py-28">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="max-w-3xl mb-16 text-center mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-6">
-            Why Choose LumaRose
+    <section
+      className="bg-white py-16"
+      aria-labelledby="why-patients-heading"
+    >
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Header — centered stack like reference */}
+        <div className="mx-auto mb-14 max-w-3xl text-center md:mb-16">
+          <h2
+            id="why-patients-heading"
+            className="mb-5 text-3xl font-semibold tracking-tight text-primary md:text-4xl"
+          >
+            Why Patients Choose LumaRose?
           </h2>
 
-          <p className="text-foreground leading-relaxed mb-6">
-            Healthcare should feel intentional, personal, and rooted in trust. At LumaRose, care is guided by clinical experience, thoughtful communication, and a patient-centered approach.
+          <p className="mx-auto max-w-prose text-pretty text-lg font-semibold leading-relaxed text-slate-900">
+            You are not just another appointment here.
+          </p>
+          <p className="mx-auto mt-3 max-w-prose text-pretty text-base leading-relaxed text-slate-600 md:text-[1.0625rem]">
+            At LumaRose, care is personal, accessible, and designed around your
+            life.
           </p>
         </div>
 
-        {/* Value Grid */}
-        <div className="grid grid-cols-1 gap-4 max-w-3xl mx-auto">
-          {reasons.map(({ text, icon: Icon }) => (
+        {/* Benefit cards — full-width column, subtle float shadow */}
+        <div className="mx-auto flex max-w-3xl flex-col gap-6">
+          {reasons.map(({ id, text }) => (
             <div
-              key={text}
-              className="
-                group
-                bg-white/40
-                rounded-2xl
-                p-6
-                shadow-sm
-                transition
-                hover:bg-primary/20
-              "
+              key={id}
+              className={cn(
+                "rounded-xl bg-gray-100/40 p-5 md:rounded-2xl md:p-6",
+                "shadow-[0_1px_2px_rgba(15,23,42,0.04),0_4px_12px_rgba(15,23,42,0.05)]",
+                "transition-shadow duration-200 motion-reduce:transition-none",
+                "hover:shadow-[0_2px_4px_rgba(15,23,42,0.04),0_8px_28px_rgba(15,23,42,0.08)]"
+              )}
             >
-              <div className="flex items-start gap-4">
-                {/* Icon */}
-                <div className="
-                  flex h-12 w-12 items-center justify-center
-                  rounded-xl
-                  bg-secondary/15
-                  text-secondary
-                  shrink-0
-                ">
-                  <Icon className="h-6 w-6" />
+              {/* Icon + label centered as one unit; copy left-aligned for readable wraps */}
+              <div className="flex items-center justify-start gap-4 md:gap-5">
+                <div
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary/15 text-secondary md:h-12 md:w-12 md:rounded-xl"
+                  aria-hidden
+                >
+                  <Check className="h-5 w-5 md:h-6 md:w-6" strokeWidth={2.5} />
                 </div>
 
-                {/* Text */}
-                <p className="text-foreground leading-relaxed">
+                <p className="min-w-0 max-w-md text-left text-base leading-relaxed text-slate-700 sm:max-w-lg md:max-w-xl md:text-[1.0625rem]">
                   {text}
                 </p>
               </div>

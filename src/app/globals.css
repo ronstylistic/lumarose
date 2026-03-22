@@ -48,25 +48,30 @@
 
 :root {
   --radius: 0.625rem;
-  --background: 255 255 255;   
-  --foreground: 51 51 51; 
-  --card: 255 255 255 ;            
-  --card-foreground: 51 51 51;    
-  --popover: 255 255 255;
-  --popover-foreground: 51 51 51;
+  /*
+   * Must be valid CSS <color> values — Tailwind v4 uses them as
+   * `background-color: var(--background)` etc. Raw "255 255 255" triplets are invalid.
+   */
+  --background: #ffffff;
+  --foreground: #333333;
+  --card: #ffffff;
+  --card-foreground: #333333;
+  --popover: #ffffff;
+  --popover-foreground: #333333;
   --primary: oklch(0.5247 0.0943 353.95);      /* #94526E */
-  --primary-foreground: 255 255 255;
+  /* Must be a valid <color> for `color: var(--primary-foreground)` (not raw RGB triplets) */
+  --primary-foreground: oklch(0.99 0 0);
   --secondary: hsl(177, 23%, 45%);          /* #578C89 */
-  --secondary-foreground: 255 255 255;
-  --muted: 247 247 247;          /* Light Blush */
-  --muted-foreground: 115 115 115; /* softer gray */
-  --accent: oklch(1 247 247);
-  --accent-foreground: 51 51 51;
-  --destructive: 190 50 50;
-  --destructive-foreground: 255 255 255;
-  --border: 230 230  230;
-  --input: 230  230  230;
-  --ring: 148 82 110;   
+  --secondary-foreground: oklch(0.99 0 0);
+  --muted: #f7f7f7;
+  --muted-foreground: #737373;
+  --accent: oklch(0.97 0.01 330);
+  --accent-foreground: #333333;
+  --destructive: #be3232;
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: #e6e6e6;
+  --input: #e6e6e6;
+  --ring: #94526e;
   --radius: 0.5rem;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -123,6 +128,11 @@
   }
   html {
     scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
   body {
      @apply bg-background text-foreground antialiased;

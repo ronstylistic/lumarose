@@ -1,44 +1,99 @@
+import type { ReactNode } from "react";
+import Link from "next/link";
+import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { revealCard, revealFade, revealPrimary, revealSection } from "@/lib/motion";
+import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Care Services",
-  description: "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
+  description:
+    "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
 };
 
+const premiumCardClass = cn(
+  "relative flex flex-col overflow-visible rounded-2xl border border-slate-200/65 bg-gray-100/40 p-6 md:p-7",
+  "shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
+  "transition-shadow duration-300 motion-reduce:transition-none",
+  "hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_18px_48px_-10px_rgba(15,23,42,0.095)] motion-reduce:hover:shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
+  revealCard
+);
 
-import {
-  Check,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+function CheckListRow({
+  children,
+  muted,
+}: {
+  children: ReactNode;
+  muted?: boolean;
+}) {
+  return (
+    <li className="flex gap-3.5">
+      <span
+        className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-secondary/12 text-secondary"
+        aria-hidden
+      >
+        <Check className="h-4 w-4" strokeWidth={2.35} aria-hidden />
+      </span>
+      <span
+        className={cn(
+          "min-w-0 text-base leading-relaxed",
+          muted ? "text-muted-foreground" : "text-foreground"
+        )}
+      >
+        {children}
+      </span>
+    </li>
+  );
+}
 
 export default function Page() {
   return (
-    <section className="bg-white py-28">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-semibold text-primary mb-3">
+    <section
+      className="relative overflow-x-hidden bg-gradient-to-b from-background via-muted/25 to-background py-24 md:py-28"
+      aria-labelledby="services-heading"
+    >
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6 md:px-8">
+        <header
+          className={cn(
+            "mx-auto mb-16 max-w-3xl text-center md:mb-20",
+            revealPrimary
+          )}
+        >
+          <h1
+            id="services-heading"
+            className="text-balance text-4xl font-semibold tracking-tight text-primary md:text-5xl"
+          >
             Care Services
-          </h2>
-          <p className="text-muted-foreground">
-           Personalized, evidence-based virtual care designed to support prevention, chronic health needs, and long-term wellness.
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
+            Personalized, evidence-based virtual care designed to support
+            prevention, chronic health needs, and long-term wellness.
           </p>
-        
-           <p className="text-muted-foreground mt-4">
-           LumaRose Health & Wellness provides virtual care led by a board-certified Family Nurse Practitioner, with a focus on preventive care, chronic disease management, weight management, and whole-person wellness.
-           </p>
-        </div>
+          <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
+            LumaRose Health &amp; Wellness provides virtual care led by a
+            board-certified Family Nurse Practitioner, with a focus on preventive
+            care, chronic disease management, weight management, and
+            whole-person wellness.
+          </p>
+        </header>
 
-        <div className="max-w-7xl mx-auto text-center mt-20 px-6">
-          <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-6">
-            What We Treat & Support
-          </h2>
-        </div>
+        <h2
+          className={cn(
+            "mb-10 text-center text-3xl font-semibold tracking-tight text-primary md:mb-12 md:text-4xl",
+            revealSection,
+            "motion-safe:delay-75"
+          )}
+        >
+          What We Treat &amp; Support
+        </h2>
 
-
-        {/* SERVICE CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-9 lg:grid-cols-3 lg:gap-10">
           <ServiceCard
             title="Preventive & Primary Care"
             description="Proactive care focused on early detection, long-term health, and overall wellness."
@@ -95,9 +150,9 @@ export default function Page() {
             ]}
           />
 
-           <ServiceCard
+          <ServiceCard
             title="Sexual Health & STD Care"
-            description="Suggested copy"
+            description="Confidential virtual visits for evaluation, testing guidance, and treatment when clinically appropriate."
             items={[
               "STD evaluation and counseling",
               "Routine and symptom-based STD testing",
@@ -105,18 +160,17 @@ export default function Page() {
               "PrEP evaluation and ongoing monitoring (when applicable)",
               "Confidential, judgment-free care",
             ]}
-             note="Laboratory testing is billed separately"
+            note="Laboratory testing is billed separately"
           />
         </div>
 
-
-        <div className="flex flex-col justify-between lg:flex-row mt-10">
-           {/* HOW CARE IS DELIVERED */}
-          <div className="flex-1 mb-10">
-            <h3 className="text-2xl font-semibold text-primary mb-6">
+        <div className="mt-16 flex flex-col gap-12 lg:mt-20 lg:flex-row lg:gap-16">
+          <div
+            className={cn("flex-1 lg:max-w-xl", revealSection, "motion-safe:delay-100")}
+          >
+            <h2 className="mb-6 text-2xl font-semibold tracking-tight text-primary md:text-3xl">
               How Care Is Delivered
-            </h3>
-
+            </h2>
             <ul className="space-y-3">
               {[
                 "Secure, HIPAA-compliant virtual visits",
@@ -124,68 +178,87 @@ export default function Page() {
                 "Clear communication and follow-up",
                 "Judgment-free, patient-centered care",
               ].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <Check className="h-5 w-5 text-secondary mt-0.5" />
-                  <span className="text-muted-foreground">{item}</span>
-                </li>
+                <CheckListRow key={item} muted>
+                  {item}
+                </CheckListRow>
               ))}
             </ul>
           </div>
 
-          {/* CHOOSING CARE OPTION */}
-          <div className="bg-white">
-            <h3 className="text-2xl font-semibold text-primary mb-4">
+          <div
+            className={cn("flex-1", revealSection, "motion-safe:delay-150")}
+          >
+            <h2 className="mb-4 text-2xl font-semibold tracking-tight text-primary md:mb-6 md:text-3xl">
               Choosing Your Care Option
-            </h3>
-
-            <p className="text-muted-foreground mb-6 max-w-3xl">
-            LumaRose offers both membership-based care and non-membership visits, allowing you to choose the level of continuity and support that fits your needs.
+            </h2>
+            <p className="mb-6 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+              LumaRose offers both membership-based care and non-membership
+              visits, allowing you to choose the level of continuity and support
+              that fits your needs.
             </p>
 
-            <ul className="space-y-3 mb-8 max-w-3xl">
-              <li className="flex gap-3">
-                <Check className="h-5 w-5 text-secondary mt-0.5" />
+            <ul className="mb-8 max-w-3xl space-y-3">
+              <CheckListRow>
                 <span>
-                  <strong>Membership Care:</strong> Ongoing support and continuity of care
+                  <strong className="font-semibold text-foreground">
+                    Membership Care:
+                  </strong>{" "}
+                  Ongoing support and continuity of care
                 </span>
-              </li>
-              <li className="flex gap-3">
-                <Check className="h-5 w-5 text-secondary mt-0.5" />
+              </CheckListRow>
+              <CheckListRow>
                 <span>
-                  <strong>Non-Membership Care:</strong> One-time or occasional visits without a monthly commitment
+                  <strong className="font-semibold text-foreground">
+                    Non-Membership Care:
+                  </strong>{" "}
+                  One-time or occasional visits without a monthly commitment
                 </span>
-              </li>
+              </CheckListRow>
             </ul>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-primary text-white">
-                <Link href="/membership">Explore Membership Options</Link>
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <Button
+                size="lg"
+                asChild
+                className="min-h-12 rounded-full bg-primary px-8 font-semibold text-white shadow-md transition-colors duration-200 hover:bg-primary/90 hover:text-white"
+              >
+                <Link
+                  href="/membership"
+                  className="text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  Explore Membership Options
+                </Link>
               </Button>
-
-              <Button className="bg-secondary text-white hover:bg-secondary/80">
-                <Link href="/non-membership">
+              <Button
+                size="lg"
+                asChild
+                className="min-h-12 rounded-full bg-secondary px-8 font-semibold text-white shadow-md transition-colors duration-200 hover:bg-secondary/90 hover:text-white"
+              >
+                <Link
+                  href="/non-membership"
+                  className="text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
                   View Non-Membership Services
                 </Link>
               </Button>
             </div>
           </div>
-
         </div>
-       
 
-        {/* IMPORTANT NOTE */}
-        <p className="text-xs text-muted-foreground max-w-4xl mt-6">
+        <p
+          className={cn(
+            "mt-10 max-w-4xl text-xs leading-relaxed text-muted-foreground md:mt-12",
+            revealFade,
+            "motion-safe:delay-100"
+          )}
+        >
           All services are provided based on clinical appropriateness. Not all
           services are suitable for every patient.
         </p>
-
       </div>
-    </section>    
+    </section>
   );
-  
 }
-
-
 
 function ServiceCard({
   title,
@@ -199,26 +272,20 @@ function ServiceCard({
   note?: string;
 }) {
   return (
-    <div className="bg-gray-100/40 shadow-sm rounded-2xl p-6 flex flex-col">
-      <h3 className="text-xl font-semibold text-primary mb-2">
+    <div className={premiumCardClass}>
+      <h3 className="mb-2 text-xl font-semibold tracking-tight text-primary">
         {title}
       </h3>
-
-      <p className="text-muted-foreground mb-4">
+      <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:text-base">
         {description}
       </p>
-
-      <ul className="space-y-3 flex-1">
+      <ul className="flex flex-1 flex-col space-y-3">
         {items.map((item) => (
-          <li key={item} className="flex gap-3">
-            <Check className="h-4 w-4 text-secondary mt-1" />
-            <span className="text-sm">{item}</span>
-          </li>
+          <CheckListRow key={item}>{item}</CheckListRow>
         ))}
       </ul>
-
       {note && (
-        <p className="text-xs text-muted-foreground mt-4">
+        <p className="mt-4 border-t border-primary/70 pt-4 text-xs leading-relaxed text-muted-foreground">
           {note}
         </p>
       )}

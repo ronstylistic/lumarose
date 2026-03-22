@@ -46,7 +46,7 @@ export default function FounderLetter() {
           </div>
 
           {/* Signature */}
-          <div className="mt-10 pt-6 border-t border-border">
+          <div className="mt-10 pt-6 border-t border-primary/70">
             <p className="font-medium text-foreground">
               Warmly,
             </p>

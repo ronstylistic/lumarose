@@ -4,7 +4,7 @@ import FAQPageContent from "./FAQPageContent";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Explore transparent membership plans for virtual primary care, preventive medicine, chronic disease management, and weight management at LumaRose Health & Wellness.",
+    "Answers about LumaRose Health & Wellness—virtual care, membership, College Care, corporate wellness, labs, medications, and practice policies.",
 };
 
 export default function FAQPage() {
