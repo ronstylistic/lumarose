@@ -37,7 +37,7 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
+    const mq = window.matchMedia("(min-width: 1280px)");
     const onChange = () => {
       if (mq.matches) setOpen(false);
     };
@@ -101,7 +101,7 @@ export default function Navbar() {
           {logoBlock()}
 
           <nav
-            className="hidden flex-wrap items-center gap-2 text-gray-700 font-medium md:flex md:gap-8"
+            className="hidden shrink-0 flex-nowrap items-center gap-2 text-gray-700 font-medium xl:flex xl:gap-3 2xl:gap-6"
             aria-label="Primary"
           >
             {NAV_ITEMS.map((item) => {
@@ -130,7 +130,7 @@ export default function Navbar() {
             <button
               type="button"
               className={cn(
-                "inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-lg text-gray-700 transition-colors md:hidden",
+                "inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-lg text-gray-700 transition-colors xl:hidden",
                 "outline-none hover:bg-muted focus-visible:ring-[3px] focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                 "aria-expanded:bg-muted/80"
               )}
@@ -148,7 +148,7 @@ export default function Navbar() {
       <Dialog.Portal>
         <Dialog.Overlay
           className={cn(
-            "fixed inset-0 z-[10000] bg-background md:hidden",
+            "fixed inset-0 z-[10000] bg-background xl:hidden",
             "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 duration-200",
             "motion-reduce:data-[state=open]:animate-none motion-reduce:data-[state=closed]:animate-none"
           )}
@@ -156,7 +156,7 @@ export default function Navbar() {
         <Dialog.Content
           id={MOBILE_MENU_ID}
           className={cn(
-            "fixed inset-0 z-[10000] flex max-h-[100dvh] flex-col bg-background md:hidden",
+            "fixed inset-0 z-[10000] flex max-h-[100dvh] flex-col bg-background xl:hidden",
             "outline-none focus:outline-none",
             "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 duration-200",
             "motion-reduce:data-[state=open]:animate-none motion-reduce:data-[state=closed]:animate-none",

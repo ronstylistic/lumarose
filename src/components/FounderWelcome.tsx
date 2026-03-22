@@ -41,10 +41,6 @@ export default function FounderWelcome() {
             {/* Visual anchor — swap /images/founder.jpg when available */}
             <div className="relative aspect-[4/3] min-h-[240px] lg:aspect-auto lg:min-h-[420px]">
               <FounderPortrait />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-card/40"
-                aria-hidden
-              />
             </div>
 
             <div className="flex flex-col justify-center p-8 md:p-10 lg:p-12 lg:pl-10">

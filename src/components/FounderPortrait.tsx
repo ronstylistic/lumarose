@@ -14,7 +14,7 @@ export default function FounderPortrait() {
         role="img"
         aria-label="Shameka Crump, FNP-C, founder of LumaRose Health & Wellness"
       >
-        <span className="flex h-28 w-28 items-center justify-center rounded-full bg-card shadow-[0_12px_40px_-12px_rgba(148,82,110,0.25)] ring-4 ring-white">
+        <span className="flex h-28 w-28 items-center justify-center rounded-full bg-card ring-4 ring-white">
           <UserRound className="h-14 w-14 text-primary/60" strokeWidth={1.25} aria-hidden />
         </span>
       </div>
