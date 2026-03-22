@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import FounderPortrait from "@/components/FounderPortrait";
 import { Award, Clock, Stethoscope } from "lucide-react";
-import { revealPrimary } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 const MESSAGE =
@@ -33,8 +32,7 @@ export default function FounderWelcome() {
         <div
           className={cn(
             "overflow-hidden rounded-2xl bg-card",
-            "shadow-[0_24px_64px_-16px_rgba(148,82,110,0.12),0_12px_24px_-8px_rgba(15,23,42,0.06)]",
-            revealPrimary
+            "shadow-[0_24px_64px_-16px_rgba(148,82,110,0.12),0_12px_24px_-8px_rgba(15,23,42,0.06)]"
           )}
         >
           <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">

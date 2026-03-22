@@ -1,7 +1,6 @@
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { revealCard, revealSection, staggerClass } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 const benefits = [
@@ -32,12 +31,7 @@ export default function MembershipCare() {
       aria-labelledby="membership-care-heading"
     >
       <div className="mx-auto max-w-7xl px-6">
-        <div
-          className={cn(
-            "mx-auto mb-14 max-w-3xl text-center md:mb-16",
-            revealSection
-          )}
-        >
+        <div className="mx-auto mb-14 max-w-3xl text-center md:mb-16">
           <h2
             id="membership-care-heading"
             className="mb-5 text-balance text-3xl font-semibold tracking-tight text-primary md:text-4xl"
@@ -51,16 +45,14 @@ export default function MembershipCare() {
         </div>
 
         <div className="mb-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 md:mb-14">
-          {benefits.map(({ id, title, description }, index) => (
+          {benefits.map(({ id, title, description }) => (
             <article
               key={id}
               className={cn(
                 "rounded-xl bg-gray-100/40 p-6 md:rounded-2xl md:p-7",
                 "shadow-[0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_rgba(15,23,42,0.05)]",
                 "transition-shadow duration-200 motion-reduce:transition-none",
-                "hover:shadow-[0_4px_12px_rgba(15,23,42,0.06),0_8px_24px_rgba(148,82,110,0.06)]",
-                revealCard,
-                staggerClass(index)
+                "hover:shadow-[0_4px_12px_rgba(15,23,42,0.06),0_8px_24px_rgba(148,82,110,0.06)]"
               )}
             >
               <div className="flex items-start gap-4">
@@ -83,13 +75,7 @@ export default function MembershipCare() {
           ))}
         </div>
 
-        <div
-          className={cn(
-            "flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center",
-            revealSection,
-            "motion-safe:delay-100"
-          )}
-        >
+        <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center">
           <Button
             size="lg"
             asChild

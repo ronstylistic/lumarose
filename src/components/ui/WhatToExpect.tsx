@@ -2,8 +2,6 @@ import type { ReactNode } from "react";
 
 import { Check } from "lucide-react";
 
-import { revealCard, revealSection, staggerClass } from "@/lib/motion";
-
 import { cn } from "@/lib/utils";
 
 
@@ -172,17 +170,7 @@ export default function WhatToExpect() {
 
       <div className="mx-auto max-w-7xl px-6">
 
-        <div
-
-          className={cn(
-
-            "mx-auto mb-14 max-w-3xl text-center md:mb-16",
-
-            revealSection
-
-          )}
-
-        >
+        <div className="mx-auto mb-14 max-w-3xl text-center md:mb-16">
 
           <h2
 
@@ -232,8 +220,6 @@ export default function WhatToExpect() {
 
               },
 
-              index
-
             ) => (
 
               <article
@@ -244,15 +230,7 @@ export default function WhatToExpect() {
 
                 aria-labelledby={`what-to-expect-${id}`}
 
-                className={cn(
-
-                  whyStyleCardClass,
-
-                  revealCard,
-
-                  staggerClass(index)
-
-                )}
+                className={whyStyleCardClass}
 
               >
 

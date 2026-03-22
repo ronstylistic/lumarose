@@ -4,6 +4,9 @@ import { cn } from "@/lib/utils";
  * Site-wide scroll/enter animations. All use `motion-safe:` so
  * `prefers-reduced-motion` disables them (ui-ux-pro-max).
  *
+ * Use `reveal*` on first paint (e.g. hero) or via `ScrollReveal` when the
+ * block enters the viewport—not on static mount for below-the-fold sections.
+ *
  * - **Primary** (700ms, slide 4): page headers, hero titles, primary CTA bands
  * - **Card** (500ms, slide 3): pricing/service cards, info panels, section blocks
  * - **Item** (500ms, slide 2): dense list rows (included/excluded cells)

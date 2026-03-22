@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { revealPrimary } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 export default function FinalCTA() {
@@ -20,19 +19,18 @@ export default function FinalCTA() {
       />
 
       <div className="relative mx-auto max-w-2xl px-6 text-center">
-        <div className={revealPrimary}>
-          <h2
-            id="final-cta-heading"
-            className="text-balance text-[1.75rem] font-semibold leading-tight tracking-tight text-white sm:text-4xl md:text-[2.5rem] md:leading-[1.15]"
-          >
-            Ready to get started?
-          </h2>
-          <p className="mx-auto mt-6 max-w-md text-pretty text-base font-normal leading-relaxed text-white/85 md:max-w-lg md:text-lg md:leading-relaxed">
-            Take the next step toward personalized, intentional care—on your
-            schedule.
-          </p>
+        <h2
+          id="final-cta-heading"
+          className="text-balance text-[1.75rem] font-semibold leading-tight tracking-tight text-white sm:text-4xl md:text-[2.5rem] md:leading-[1.15]"
+        >
+          Ready to get started?
+        </h2>
+        <p className="mx-auto mt-6 max-w-md text-pretty text-base font-normal leading-relaxed text-white/85 md:max-w-lg md:text-lg md:leading-relaxed">
+          Take the next step toward personalized, intentional care—on your
+          schedule.
+        </p>
 
-          <div className="mt-12 flex flex-col items-stretch gap-4 sm:mt-14 sm:flex-row sm:justify-center sm:gap-5">
+        <div className="mt-12 flex flex-col items-stretch gap-4 sm:mt-14 sm:flex-row sm:justify-center sm:gap-5">
             <Button
               size="lg"
               asChild
@@ -67,9 +65,8 @@ export default function FinalCTA() {
                 className="text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
               >
                 Learn more about membership
-              </Link>
-            </Button>
-          </div>
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
