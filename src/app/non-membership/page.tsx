@@ -145,51 +145,6 @@ export default function NonMembershipPage() {
             </p>
           </header>
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
-            <div className={cn(infoPanelClass, revealSection, "motion-safe:delay-75")}>
-              <h2 className="mb-6 text-2xl font-semibold tracking-tight text-primary md:mb-8 md:text-3xl">
-                Who Non-Membership Care Is For
-              </h2>
-              <ul className="space-y-4">
-                {[
-                  "Patients seeking care for a specific or short-term concern",
-                  "Individuals who prefer pay-per-visit care",
-                  "Those exploring LumaRose before choosing a membership",
-                  "Patients who do not require ongoing follow-up or continuous access",
-                ].map((item) => (
-                  <CheckListRow key={item}>{item}</CheckListRow>
-                ))}
-              </ul>
-            </div>
-
-            <div
-              className={cn(
-                infoPanelClass,
-                revealSection,
-                "motion-safe:delay-150"
-              )}
-            >
-              <h2 className="mb-6 text-2xl font-semibold tracking-tight text-primary md:mb-8 md:text-3xl">
-                Important Notes
-              </h2>
-              <ul className="space-y-3.5">
-                {[
-                  "All services are self-pay and non-membership",
-                  "Pricing is confirmed prior to your visit",
-                  "Labs, imaging, medications, and supplies are not included unless stated",
-                  "Non-membership care does not include ongoing access outside the scheduled visit",
-                  "Controlled substances are not prescribed",
-                  "Concierge and in-home services are subject to availability",
-                  "This practice does not replace emergency care",
-                ].map((item) => (
-                  <CheckListRow key={item} muted>
-                    {item}
-                  </CheckListRow>
-                ))}
-              </ul>
-            </div>
-          </div>
-
           <div
             className={cn(
               "mt-20 lg:mt-24",
@@ -198,7 +153,7 @@ export default function NonMembershipPage() {
             )}
           >
             <h2 className="mb-10 text-center text-3xl font-semibold tracking-tight text-primary md:mb-12 md:text-4xl">
-              Virtual visit pricing
+              Virtual Visit Pricing
             </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-9 lg:gap-10">
               {plans.map((plan, i) => (
@@ -446,6 +401,51 @@ export default function NonMembershipPage() {
                   </Card>
                 </div>
               </ServiceColumn>
+            </div>
+          </div>
+
+          <div className="mt-20 lg:mt-24 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
+            <div className={cn(infoPanelClass, revealSection, "motion-safe:delay-75")}>
+              <h2 className="mb-6 text-2xl font-semibold tracking-tight text-primary md:mb-8 md:text-3xl">
+                Who Non-Membership Care Is For
+              </h2>
+              <ul className="space-y-4">
+                {[
+                  "Patients seeking care for a specific or short-term concern",
+                  "Individuals who prefer pay-per-visit care",
+                  "Those exploring LumaRose before choosing a membership",
+                  "Patients who do not require ongoing follow-up or continuous access",
+                ].map((item) => (
+                  <CheckListRow key={item}>{item}</CheckListRow>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              className={cn(
+                infoPanelClass,
+                revealSection,
+                "motion-safe:delay-150"
+              )}
+            >
+              <h2 className="mb-6 text-2xl font-semibold tracking-tight text-primary md:mb-8 md:text-3xl">
+                Important Notes
+              </h2>
+              <ul className="space-y-3.5">
+                {[
+                  "All services are self-pay and non-membership",
+                  "Pricing is confirmed prior to your visit",
+                  "Labs, imaging, medications, and supplies are not included unless stated",
+                  "Non-membership care does not include ongoing access outside the scheduled visit",
+                  "Controlled substances are not prescribed",
+                  "Concierge and in-home services are subject to availability",
+                  "This practice does not replace emergency care",
+                ].map((item) => (
+                  <CheckListRow key={item} muted>
+                    {item}
+                  </CheckListRow>
+                ))}
+              </ul>
             </div>
           </div>
 

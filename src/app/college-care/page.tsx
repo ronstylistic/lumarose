@@ -283,7 +283,225 @@ export default function Page() {
             </p>
           </header>
 
-          <div className="flex flex-col justify-between gap-12 md:flex-row md:gap-10">
+          <div
+            className={cn(
+              "mt-20 lg:mt-24",
+              revealSection,
+              "motion-safe:delay-75"
+            )}
+          >
+            <h2 className="mb-10 text-center text-3xl font-semibold tracking-tight text-primary md:mb-12 md:text-4xl">
+              Pricing Options
+            </h2>
+
+            <div className="grid grid-cols-1 gap-8 pt-5 md:grid-cols-3 md:gap-9 md:pt-6 lg:gap-10">
+              {plans.map((plan, planIndex) => {
+                const premiumMonthly = Boolean(plan.richPricing);
+                const sixMonthRich = Boolean(plan.sixMonthLayout);
+                const annualRich = Boolean(plan.annualPaidFullLayout);
+                const premiumCard = premiumMonthly || sixMonthRich || annualRich;
+                const cta =
+                  plan.cta ??
+                  plan.sixMonthLayout?.cta ??
+                  plan.annualPaidFullLayout?.cta;
+                return (
+                  <Card
+                    key={plan.name}
+                    role="article"
+                    aria-labelledby={`college-pricing-${planIndex}`}
+                    className={cn(
+                      "relative flex flex-col rounded-2xl border border-slate-200/65 bg-gray-100/40",
+                      "transition-[box-shadow] duration-300 ease-out motion-reduce:transition-none",
+                      "shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
+                      "hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_18px_48px_-10px_rgba(15,23,42,0.095)] motion-reduce:hover:shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
+                      "overflow-visible",
+                      revealCard,
+                      staggerClass(planIndex),
+                      plan.popular &&
+                        !premiumMonthly &&
+                        !annualRich &&
+                        cn(
+                          "z-[1] border-2 border-primary/55",
+                          "shadow-[0_2px_6px_rgba(148,82,110,0.07),0_16px_46px_-10px_rgba(148,82,110,0.20),0_10px_28px_-12px_rgba(15,23,42,0.07)]",
+                          "hover:shadow-[0_3px_8px_rgba(148,82,110,0.09),0_20px_52px_-10px_rgba(148,82,110,0.22),0_12px_30px_-12px_rgba(15,23,42,0.08)] motion-reduce:hover:shadow-[0_2px_6px_rgba(148,82,110,0.07),0_16px_46px_-10px_rgba(148,82,110,0.20),0_10px_28px_-12px_rgba(15,23,42,0.07)]"
+                        )
+                    )}
+                  >
+                    {plan.popular && (
+                      <span
+                        className="absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-0 bg-primary px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_4px_14px_rgba(148,82,110,0.45),0_2px_6px_rgba(15,23,42,0.12)] outline-none ring-0"
+                        aria-hidden
+                      >
+                        Most Popular
+                      </span>
+                    )}
+
+                    {sixMonthRich && plan.sixMonthLayout?.headerBadge ? (
+                      <span className="absolute left-1/2 top-0 z-20 max-w-[min(calc(100%-2rem),18rem)] -translate-x-1/2 -translate-y-1/2 rounded-full border-0 bg-primary px-4 py-1.5 text-center text-sm font-semibold uppercase leading-snug tracking-wide text-white text-balance shadow-[0_4px_14px_rgba(148,82,110,0.45),0_2px_6px_rgba(15,23,42,0.12)] outline-none ring-0">
+                        {plan.sixMonthLayout.headerBadge}
+                      </span>
+                    ) : null}
+
+                    <CardHeader
+                      className={cn(
+                        "relative z-10 space-y-4 px-6 pb-2 pt-6",
+                        (plan.popular ||
+                          (sixMonthRich && plan.sixMonthLayout?.headerBadge)) &&
+                          "pt-8"
+                      )}
+                    >
+                      <h3
+                        id={`college-pricing-${planIndex}`}
+                        className="text-xl font-semibold tracking-tight text-primary md:text-[1.35rem]"
+                      >
+                        {plan.name}
+                      </h3>
+
+                      {plan.richPricing ? (
+                        <RichPricingPanel richPricing={plan.richPricing} />
+                      ) : plan.sixMonthLayout ? (
+                        <PlanPriceEquivPanel layout={plan.sixMonthLayout} />
+                      ) : plan.annualPaidFullLayout ? (
+                        <PlanPriceEquivPanel layout={plan.annualPaidFullLayout} />
+                      ) : plan.price && plan.period ? (
+                        <StandardPlanPrice
+                          price={plan.price}
+                          period={plan.period}
+                        />
+                      ) : null}
+                    </CardHeader>
+
+                    <CardContent
+                      className={cn(
+                        "relative z-10 flex flex-1 flex-col px-6 pb-8 pt-2",
+                        premiumCard && "pt-1"
+                      )}
+                    >
+                      <ul
+                        className={cn(
+                          "mb-8 space-y-3.5",
+                          premiumCard && "space-y-4"
+                        )}
+                      >
+                        {plan.features.map((feature) => (
+                          <CheckListRow
+                            key={feature}
+                            textClassName={
+                              premiumCard
+                                ? "text-base leading-[1.65] text-foreground md:text-[1.0625rem]"
+                                : "text-sm md:text-base"
+                            }
+                            iconBoxClassName={
+                              premiumCard
+                                ? "h-8 w-8 rounded-lg md:h-9 md:w-9 md:rounded-xl"
+                                : undefined
+                            }
+                          >
+                            {feature}
+                          </CheckListRow>
+                        ))}
+                      </ul>
+
+                      {plan.tagline && !premiumMonthly ? (
+                        <p className="mb-5 text-sm font-semibold tracking-tight text-primary md:text-base">
+                          {plan.tagline}
+                        </p>
+                      ) : null}
+
+                      {plan.sixMonthLayout?.closingLine ? (
+                        <div className="mb-5 flex justify-start md:mb-6">
+                          <span className="inline-block max-w-full rounded-full border-0 bg-secondary px-4 py-1.5 text-left text-sm font-semibold uppercase leading-snug tracking-wide text-secondary-foreground text-balance shadow-md shadow-slate-900/12 dark:shadow-black/35 outline-none ring-0">
+                            {plan.sixMonthLayout.closingLine}
+                          </span>
+                        </div>
+                      ) : null}
+
+                      {premiumMonthly && plan.tagline ? (
+                        <div className="mb-5 flex justify-start md:mb-6">
+                          <span className="inline-block max-w-full rounded-full border-0 bg-secondary px-4 py-1.5 text-left text-sm font-semibold uppercase leading-snug tracking-wide text-secondary-foreground text-balance shadow-md shadow-slate-900/12 dark:shadow-black/35 outline-none ring-0">
+                            {plan.tagline}
+                          </span>
+                        </div>
+                      ) : null}
+
+                      {plan.annualPaidFullLayout?.valueLine ? (
+                        <div className="mb-5 flex justify-start md:mb-6">
+                          <span className="inline-block max-w-full rounded-full border-0 bg-secondary px-4 py-1.5 text-left text-sm font-semibold uppercase leading-snug tracking-wide text-secondary-foreground text-balance shadow-md shadow-slate-900/12 dark:shadow-black/35 outline-none ring-0">
+                            {plan.annualPaidFullLayout.valueLine}
+                          </span>
+                        </div>
+                      ) : null}
+
+                      {cta ? (
+                        <div className="mt-auto">
+                          <Button
+                            asChild
+                            className={cn(
+                              "w-full cursor-pointer font-semibold",
+                              premiumCard
+                                ? cn(
+                                    "min-h-12 rounded-xl border-0 bg-primary px-4 py-3.5 text-primary-foreground",
+                                    "text-balance text-[0.9375rem] leading-snug sm:min-h-12 sm:text-base",
+                                    "shadow-md shadow-primary/30",
+                                    "transition-[box-shadow,background-color] duration-200 ease-out",
+                                    "hover:bg-[#7f445c] hover:shadow-lg hover:shadow-primary/35",
+                                    "motion-reduce:transition-colors motion-reduce:hover:shadow-md"
+                                  )
+                                : "h-12 rounded-lg text-base"
+                            )}
+                          >
+                            <Link
+                              href={cta.href}
+                              className={cn(
+                                "inline-flex min-h-12 w-full items-center justify-center text-center",
+                                premiumCard &&
+                                  "rounded-[inherit] px-1 outline-none focus-visible:ring-[3px] focus-visible:ring-white/95 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                              )}
+                            >
+                              {cta.label}
+                            </Link>
+                          </Button>
+                        </div>
+                      ) : null}
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-20 flex flex-col justify-between gap-12 md:flex-row md:gap-10 lg:mt-24">
+            <div className={cn("flex-2", revealSection, "motion-safe:delay-75")}>
+              <h2 className="mb-10 text-3xl font-semibold tracking-tight text-primary md:mb-12">
+                What’s Included
+              </h2>
+
+              <div className="grid grid-cols-1 gap-4 md:gap-5">
+                {includes.map((text, i) => (
+                  <IncludedItem key={text} text={text} staggerIndex={i} />
+                ))}
+              </div>
+            </div>
+
+            <div className={cn("flex-1", revealSection, "motion-safe:delay-150")}>
+              <h2 className="mb-8 text-3xl font-semibold tracking-tight text-primary">
+                Services Not Included
+              </h2>
+
+              <div className="grid grid-cols-1 gap-4">
+                {[
+                  "Weight-loss programs",
+                  "GLP-1 medications",
+                  "Complex chronic disease management",
+                  "In-person or procedural services",
+                ].map((item, i) => (
+                  <ExcludedItem key={item} text={item} staggerIndex={i} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-20 flex flex-col justify-between gap-12 md:flex-row md:gap-10 lg:mt-24">
             <div className={cn("flex-2", revealSection, "motion-safe:delay-100")}>
               <h2 className="mb-8 text-3xl font-semibold tracking-tight text-primary">
                 Eligibility Requirements
@@ -323,37 +541,6 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="mt-20 flex flex-col justify-between gap-12 md:flex-row md:gap-10 lg:mt-24">
-            <div className={cn("flex-2", revealSection, "motion-safe:delay-75")}>
-              <h2 className="mb-10 text-3xl font-semibold tracking-tight text-primary md:mb-12">
-                What’s Included
-              </h2>
-
-              <div className="grid grid-cols-1 gap-4 md:gap-5">
-                {includes.map((text, i) => (
-                  <IncludedItem key={text} text={text} staggerIndex={i} />
-                ))}
-              </div>
-            </div>
-
-            <div className={cn("flex-1", revealSection, "motion-safe:delay-150")}>
-              <h2 className="mb-8 text-3xl font-semibold tracking-tight text-primary">
-                Services Not Included
-              </h2>
-
-              <div className="grid grid-cols-1 gap-4">
-                {[
-                  "Weight-loss programs",
-                  "GLP-1 medications",
-                  "Complex chronic disease management",
-                  "In-person or procedural services",
-                ].map((item, i) => (
-                  <ExcludedItem key={item} text={item} staggerIndex={i} />
-                ))}
-              </div>
-            </div>
-          </div>
-
           <div
             className={cn(
               "mt-20 max-w-3xl text-left lg:mt-24",
@@ -377,185 +564,6 @@ export default function Page() {
               medical care. Students requiring more comprehensive care may be
               recommended to transition to a standard adult membership plan.
             </p>
-          </div>
-
-          <div className={cn("mt-20 lg:mt-24", revealSection, "motion-safe:delay-75")}>
-            <h2 className="mb-10 text-center text-3xl font-semibold tracking-tight text-primary md:mb-12 md:text-4xl">
-              Pricing Options
-            </h2>
-
-            <div className="grid grid-cols-1 gap-8 pt-5 md:grid-cols-3 md:gap-9 md:pt-6 lg:gap-10">
-              {plans.map((plan, planIndex) => {
-                const premiumMonthly = Boolean(plan.richPricing);
-                const sixMonthRich = Boolean(plan.sixMonthLayout);
-                const annualRich = Boolean(plan.annualPaidFullLayout);
-                const premiumCard =
-                  premiumMonthly || sixMonthRich || annualRich;
-                const cta =
-                  plan.cta ??
-                  plan.sixMonthLayout?.cta ??
-                  plan.annualPaidFullLayout?.cta;
-                return (
-                <Card
-                  key={plan.name}
-                  role="article"
-                  aria-labelledby={`college-pricing-${planIndex}`}
-                  className={cn(
-                    "relative flex flex-col rounded-2xl border border-slate-200/65 bg-gray-100/40",
-                    "transition-[box-shadow] duration-300 ease-out motion-reduce:transition-none",
-                    "shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
-                    "hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_18px_48px_-10px_rgba(15,23,42,0.095)] motion-reduce:hover:shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
-                    "overflow-visible",
-                    revealCard,
-                    staggerClass(planIndex),
-                    plan.popular &&
-                      !premiumMonthly &&
-                      !annualRich &&
-                      cn(
-                        "z-[1] border-2 border-primary/55",
-                        "shadow-[0_2px_6px_rgba(148,82,110,0.07),0_16px_46px_-10px_rgba(148,82,110,0.20),0_10px_28px_-12px_rgba(15,23,42,0.07)]",
-                        "hover:shadow-[0_3px_8px_rgba(148,82,110,0.09),0_20px_52px_-10px_rgba(148,82,110,0.22),0_12px_30px_-12px_rgba(15,23,42,0.08)] motion-reduce:hover:shadow-[0_2px_6px_rgba(148,82,110,0.07),0_16px_46px_-10px_rgba(148,82,110,0.20),0_10px_28px_-12px_rgba(15,23,42,0.07)]"
-                      )
-                  )}
-                >
-                  {plan.popular && (
-                    <span
-                      className="absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-0 bg-primary px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_4px_14px_rgba(148,82,110,0.45),0_2px_6px_rgba(15,23,42,0.12)] outline-none ring-0"
-                      aria-hidden
-                    >
-                      Most Popular
-                    </span>
-                  )}
-
-                  {sixMonthRich && plan.sixMonthLayout?.headerBadge ? (
-                    <span className="absolute left-1/2 top-0 z-20 max-w-[min(calc(100%-2rem),18rem)] -translate-x-1/2 -translate-y-1/2 rounded-full border-0 bg-primary px-4 py-1.5 text-center text-sm font-semibold uppercase leading-snug tracking-wide text-white text-balance shadow-[0_4px_14px_rgba(148,82,110,0.45),0_2px_6px_rgba(15,23,42,0.12)] outline-none ring-0">
-                      {plan.sixMonthLayout.headerBadge}
-                    </span>
-                  ) : null}
-
-                  <CardHeader
-                    className={cn(
-                      "relative z-10 space-y-4 px-6 pb-2 pt-6",
-                      (plan.popular ||
-                        (sixMonthRich && plan.sixMonthLayout?.headerBadge)) &&
-                        "pt-8"
-                    )}
-                  >
-                    <h3
-                      id={`college-pricing-${planIndex}`}
-                      className="text-xl font-semibold tracking-tight text-primary md:text-[1.35rem]"
-                    >
-                      {plan.name}
-                    </h3>
-
-                    {plan.richPricing ? (
-                      <RichPricingPanel richPricing={plan.richPricing} />
-                    ) : plan.sixMonthLayout ? (
-                      <PlanPriceEquivPanel layout={plan.sixMonthLayout} />
-                    ) : plan.annualPaidFullLayout ? (
-                      <PlanPriceEquivPanel layout={plan.annualPaidFullLayout} />
-                    ) : plan.price && plan.period ? (
-                      <StandardPlanPrice price={plan.price} period={plan.period} />
-                    ) : null}
-                  </CardHeader>
-
-                  <CardContent
-                    className={cn(
-                      "relative z-10 flex flex-1 flex-col px-6 pb-8 pt-2",
-                      premiumCard && "pt-1"
-                    )}
-                  >
-                    <ul
-                      className={cn(
-                        "mb-8 space-y-3.5",
-                        premiumCard && "space-y-4"
-                      )}
-                    >
-                      {plan.features.map((feature) => (
-                        <CheckListRow
-                          key={feature}
-                          textClassName={
-                            premiumCard
-                              ? "text-base leading-[1.65] text-foreground md:text-[1.0625rem]"
-                              : "text-sm md:text-base"
-                          }
-                          iconBoxClassName={
-                            premiumCard
-                              ? "h-8 w-8 rounded-lg md:h-9 md:w-9 md:rounded-xl"
-                              : undefined
-                          }
-                        >
-                          {feature}
-                        </CheckListRow>
-                      ))}
-                    </ul>
-
-                    {plan.tagline && !premiumMonthly ? (
-                      <p className="mb-5 text-sm font-semibold tracking-tight text-primary md:text-base">
-                        {plan.tagline}
-                      </p>
-                    ) : null}
-
-                    {plan.sixMonthLayout?.closingLine ? (
-                      <div className="mb-5 flex justify-start md:mb-6">
-                        <span className="inline-block max-w-full rounded-full border-0 bg-secondary px-4 py-1.5 text-left text-sm font-semibold uppercase leading-snug tracking-wide text-secondary-foreground text-balance shadow-md shadow-slate-900/12 dark:shadow-black/35 outline-none ring-0">
-                          {plan.sixMonthLayout.closingLine}
-                        </span>
-                      </div>
-                    ) : null}
-
-                    {premiumMonthly && plan.tagline ? (
-                      <div className="mb-5 flex justify-start md:mb-6">
-                        <span className="inline-block max-w-full rounded-full border-0 bg-secondary px-4 py-1.5 text-left text-sm font-semibold uppercase leading-snug tracking-wide text-secondary-foreground text-balance shadow-md shadow-slate-900/12 dark:shadow-black/35 outline-none ring-0">
-                          {plan.tagline}
-                        </span>
-                      </div>
-                    ) : null}
-
-                    {plan.annualPaidFullLayout?.valueLine ? (
-                      <div className="mb-5 flex justify-start md:mb-6">
-                        <span className="inline-block max-w-full rounded-full border-0 bg-secondary px-4 py-1.5 text-left text-sm font-semibold uppercase leading-snug tracking-wide text-secondary-foreground text-balance shadow-md shadow-slate-900/12 dark:shadow-black/35 outline-none ring-0">
-                          {plan.annualPaidFullLayout.valueLine}
-                        </span>
-                      </div>
-                    ) : null}
-
-                    {cta ? (
-                      <div className="mt-auto">
-                        <Button
-                          asChild
-                          className={cn(
-                            "w-full cursor-pointer font-semibold",
-                            premiumCard
-                              ? cn(
-                                  "min-h-12 rounded-xl border-0 bg-primary px-4 py-3.5 text-primary-foreground",
-                                  "text-balance text-[0.9375rem] leading-snug sm:min-h-12 sm:text-base",
-                                  "shadow-md shadow-primary/30",
-                                  "transition-[box-shadow,background-color] duration-200 ease-out",
-                                  "hover:bg-[#7f445c] hover:shadow-lg hover:shadow-primary/35",
-                                  "motion-reduce:transition-colors motion-reduce:hover:shadow-md"
-                                )
-                              : "h-12 rounded-lg text-base"
-                          )}
-                        >
-                          <Link
-                            href={cta.href}
-                            className={cn(
-                              "inline-flex min-h-12 w-full items-center justify-center text-center",
-                              premiumCard &&
-                                "rounded-[inherit] px-1 outline-none focus-visible:ring-[3px] focus-visible:ring-white/95 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-                            )}
-                          >
-                            {cta.label}
-                          </Link>
-                        </Button>
-                      </div>
-                    ) : null}
-                  </CardContent>
-                </Card>
-                );
-              })}
-            </div>
           </div>
 
           <p
