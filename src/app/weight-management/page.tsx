@@ -1,9 +1,18 @@
 import type { ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import {
+  Briefcase,
+  Check,
+  Clock,
+  Download,
+  LayoutGrid,
+  Plus,
+  Star,
+  User,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  revealFade,
   revealPrimary,
   revealSection,
   revealCard,
@@ -11,31 +20,150 @@ import {
 } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
+import { FeatureCheckGrid } from "./FeatureCheckGrid";
 
 export const metadata: Metadata = {
   title: "Weight Management",
   description:
-    "Self-pay medical weight and metabolic care at LumaRose Health & Wellness—transparent visit pricing, clinical evaluation, and optional membership for ongoing support.",
+    "Virtual medical weight and metabolic care at LumaRose—membership options for ongoing support, transparent self-pay program and visit pricing, medications when appropriate, and a personalized, evidence-informed approach.",
 };
 
-const premiumTierShell = cn(
-  "relative overflow-visible rounded-2xl border border-slate-200/65 bg-gray-100/40",
-  "p-6 md:p-7",
-  "shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
-  "transition-shadow duration-300 motion-reduce:transition-none",
-  "hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_18px_48px_-10px_rgba(15,23,42,0.095)] motion-reduce:hover:shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]"
+/** Static plan labels—compact row, left-aligned; width follows content. */
+const membershipPlanNameTile = cn(
+  "flex min-h-[3rem] w-fit max-w-full items-center rounded-none border border-primary bg-white px-5 py-3.5 text-left text-sm font-normal leading-snug text-primary sm:px-6"
 );
 
-const infoPanelClass = cn(
-  "rounded-2xl border border-slate-200/65 bg-gray-100/40 p-6 md:p-8",
-  "shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]",
-  "transition-shadow duration-300 motion-reduce:transition-none",
-  "hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_18px_48px_-10px_rgba(15,23,42,0.095)] motion-reduce:hover:shadow-[0_1px_2px_rgba(15,23,42,0.045),0_14px_42px_-10px_rgba(15,23,42,0.085)]"
-);
+/** Shown inline (reference layout); only Advanced features are listed in the grid below. */
+const membershipPlanStripLabels = [
+  "Advanced Health + Weight Management",
+  "Concierge Advanced VIP",
+] as const;
 
-function FeatureRow({ children }: { children: ReactNode }) {
+const membershipWeightFeatures = [
+  "Monthly weight management visits",
+  "Personalized weight loss plan",
+  "Lifestyle and nutrition guidance",
+  "Medication management when appropriate",
+  "GLP-1 support when prescribed",
+  "Ongoing monitoring & adjustments",
+  "Annual labs included",
+  "Supplement recommendations included",
+] as const;
+
+const nonMemberProgramFeatures = [
+  "Comprehensive weight management evaluation",
+  "Personalized weight loss plan",
+  "Lifestyle & nutrition guidance",
+  "Medication evaluation when appropriate",
+  "Initial labs included",
+  "3 total visits included",
+  "Up to 3 prescription refills when appropriate",
+  "Supplement recommendations & ongoing guidance",
+];
+
+const singleVisitFeatures = [
+  "Weight management consultation",
+  "Medical history & goals review",
+  "Personalized recommendations",
+  "Lifestyle & nutrition guidance",
+  "Medication evaluation when appropriate",
+  "Prescription provided when appropriate",
+  "Supplement recommendations included",
+  "Labs ordered if needed (billed separately)",
+];
+
+const followUpItems = [
+  "Progress review",
+  "Plan adjustments",
+  "Medication management when appropriate",
+  "Prescription refills when appropriate",
+  "Continued weight loss guidance",
+];
+
+const medicationItems = [
+  "GLP-1 medications",
+  "Tirzepatide-based therapy",
+  "Semaglutide-based therapy",
+  "Oral weight management",
+  "Metabolic support",
+  "Vitamin support",
+];
+
+const differentiators: {
+  icon: LucideIcon;
+  text: string;
+  fullWidth?: boolean;
+}[] = [
+  {
+    icon: User,
+    text: "Personalized care — not cookie-cutter treatment",
+  },
+  {
+    icon: Star,
+    text: "Medical evaluation before starting treatment",
+  },
+  {
+    icon: LayoutGrid,
+    text: "Flexible options — membership or single visit",
+  },
+  {
+    icon: Download,
+    text: "Ongoing provider support throughout your journey",
+  },
+  {
+    icon: Clock,
+    text: "Focus on long-term, sustainable success",
+  },
+  {
+    icon: Plus,
+    text: "Labs & monitoring included with membership",
+  },
+  {
+    icon: Briefcase,
+    text: "Transparent pricing — no hidden fees or surprises",
+    fullWidth: true,
+  },
+];
+
+function MembershipPlanNameStrip() {
   return (
-    <li className="flex gap-3.5">
+    <div
+      className="flex flex-col items-start gap-4 sm:flex-row sm:items-stretch sm:gap-5"
+      role="group"
+      aria-label="Membership weight management plan names"
+    >
+      {membershipPlanStripLabels.map((label) => (
+        <div key={label} className={membershipPlanNameTile}>
+          {label}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+
+function Eyebrow({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <p
+      className={cn(
+        "text-xs font-semibold uppercase tracking-widest text-secondary",
+        className
+      )}
+    >
+      {children}
+    </p>
+  );
+}
+
+function MedicationCell({ children }: { children: ReactNode }) {
+  return (
+    <li className="flex gap-3.5 rounded-lg border border-slate-200/65 bg-white px-4 py-4 shadow-sm md:px-5 md:py-5">
       <span
         className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-secondary/12 text-secondary"
         aria-hidden
@@ -49,19 +177,36 @@ function FeatureRow({ children }: { children: ReactNode }) {
   );
 }
 
-function NoteRow({ children }: { children: ReactNode }) {
+function ApproachCard({
+  icon: Icon,
+  text,
+  fullWidth,
+  staggerIndex,
+}: {
+  icon: LucideIcon;
+  text: string;
+  fullWidth?: boolean;
+  staggerIndex: number;
+}) {
   return (
-    <li className="flex gap-3.5">
-      <span
-        className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-secondary/12 text-secondary"
+    <div
+      className={cn(
+        "flex gap-4 rounded-lg border border-slate-200/65 bg-white p-5 shadow-sm md:gap-5 md:p-6",
+        fullWidth && "md:col-span-2",
+        revealCard,
+        staggerClass(staggerIndex)
+      )}
+    >
+      <div
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary md:h-12 md:w-12"
         aria-hidden
       >
-        <Check className="h-4 w-4" strokeWidth={2.35} aria-hidden />
-      </span>
-      <span className="min-w-0 text-base leading-relaxed text-muted-foreground">
-        {children}
-      </span>
-    </li>
+        <Icon className="h-5 w-5 md:h-6 md:w-6" strokeWidth={1.75} />
+      </div>
+      <p className="min-w-0 self-center text-left text-base font-normal leading-snug text-foreground md:text-[1.0625rem]">
+        {text}
+      </p>
+    </div>
   );
 }
 
@@ -80,7 +225,7 @@ export default function Page() {
         <div className="relative mx-auto max-w-7xl px-6 md:px-8">
           <header
             className={cn(
-              "mx-auto mb-16 max-w-3xl text-center md:mb-20",
+              "mx-auto mb-14 max-w-3xl text-center md:mb-16",
               revealPrimary
             )}
           >
@@ -88,155 +233,170 @@ export default function Page() {
               id="weight-management-heading"
               className="text-balance text-4xl font-semibold tracking-tight text-primary md:text-5xl"
             >
-              Weight Loss Management
+              Weight Management
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base font-medium leading-relaxed text-foreground md:text-lg">
-              Medical weight-loss and metabolic care built on transparency,
-              clinical appropriateness, and personalized support.
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
+              Personalized, medically guided care for sustainable results—not
+              just a number on the scale.
             </p>
             <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
-              Our weight-loss and metabolic health services are offered as
-              self-pay, non-membership care for patients who want medical
-              guidance without a monthly commitment. Pricing is structured as a
-              range to reflect differences in visit complexity, time, and
-              clinical decision-making.
-            </p>
-            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
-              Prescription medications, including GLP-1–based therapies, are not
-              included in visit pricing and are prescribed only when clinically
-              appropriate after evaluation.
-            </p>
-            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
-              Your final fee is always reviewed and agreed upon before your visit
-              begins.
+              We evaluate metabolism, lifestyle, hormones, and history to build
+              a plan that fits you. Choose membership for ongoing support, a
+              structured program, or flexible single visits.
             </p>
           </header>
 
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
-            {/* Left: care intro + pricing tiers */}
-            <div
-              className={cn(revealSection, "motion-safe:delay-75 lg:col-span-1")}
-            >
-              <h2 className="text-3xl font-semibold tracking-tight text-primary">
-                Weight Management Care
-              </h2>
-              <p className="mt-2 text-sm font-medium text-muted-foreground md:text-base">
-                Non-membership
-              </p>
-              <p className="mt-6 text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
-                Medical weight-loss and metabolic care for patients seeking
-                professional guidance without a monthly commitment.
-              </p>
-              <p className="mt-5 text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
-                These self-pay visits are ideal for individuals who want
-                evaluation, treatment planning, and follow-up on an as-needed
-                basis.
-              </p>
-
-              <div className="mt-10 flex flex-col gap-6 md:gap-7">
-                <PricingTierCard
-                  staggerIndex={0}
-                  title="Initial Weight Management Evaluation"
-                  price="$449"
-                  items={[
-                    "Review of medical history, medications, and weight-loss goals",
-                    "Evaluation of metabolic health and contributing factors",
-                    "Discussion of appropriate treatment options",
-                    "Individualized care plan and next-step recommendations",
-                  ]}
-                />
-                <PricingTierCard
-                  staggerIndex={1}
-                  title="Weight Management Follow-Up Visit"
-                  price="$199"
-                  items={[
-                    "Progress review",
-                    "Plan adjustments when indicated",
-                    "Ongoing education and support",
-                    "Medication review when clinically appropriate",
-                  ]}
-                />
-              </div>
+          {/* Membership weight management */}
+          <div className={cn(revealSection, "motion-safe:delay-75")}>
+            <Eyebrow>Best for ongoing support</Eyebrow>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-primary md:text-4xl">
+              Membership Weight Management
+            </h2>
+            <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+              Included with membership for long-term, continuous guidance.
+            </p>
+            <div className="mt-10">
+              <MembershipPlanNameStrip />
             </div>
+            <div className={cn("mt-10", revealCard)}>
+              <h3 className="sr-only">
+                {
+                  "Advanced Health + Weight Management — what's included"
+                }
+              </h3>
+              <FeatureCheckGrid variant="panel" items={membershipWeightFeatures} />
+            </div>
+          </div>
 
-            {/* Right: membership prompt + important notes */}
-            <div className="flex flex-col gap-10 lg:gap-12">
-              <div
-                className={cn(
-                  infoPanelClass,
-                  revealSection,
-                  "motion-safe:delay-100"
-                )}
-              >
-                <h2 className="text-2xl font-semibold tracking-tight text-primary md:text-3xl">
-                  Considering Ongoing Support?
-                </h2>
-                <p className="mt-5 text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
-                  If you are managing chronic conditions alongside weight loss or
-                  require ongoing follow-up and medication management, a LumaRose
-                  membership plan may provide more consistent support.
-                </p>
-                <p className="mt-5 text-pretty text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
-                  Membership options are designed for patients who benefit from
-                  continuity of care, regular follow-up, and a more proactive
-                  approach to health management.
-                </p>
-                <div className="mt-8">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="min-h-12 w-full rounded-full bg-primary px-8 font-semibold text-white shadow-md transition-colors duration-200 hover:bg-primary/90 hover:text-white sm:w-auto"
-                  >
-                    <Link
-                      href="/membership"
-                      className="text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    >
-                      View Membership Options
-                    </Link>
-                  </Button>
-                </div>
-              </div>
+          {/* Non-member program — layout matches membership block (no outer shell) */}
+          <div className={cn(revealSection, "motion-safe:delay-100 mt-16 md:mt-20")}>
+            <Eyebrow>One-time program</Eyebrow>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-primary md:text-4xl">
+              Non-Member Weight Loss Program
+            </h2>
+            
+            <p className="mt-2 flex flex-wrap items-baseline gap-x-1.5">
+              <span className="text-2xl font-bold tabular-nums tracking-tight text-foreground md:text-3xl">
+                $449
+              </span>
+            </p>
 
-              <div
-                className={cn(
-                  infoPanelClass,
-                  revealSection,
-                  "motion-safe:delay-150"
-                )}
-              >
-                <h2 className="text-2xl font-semibold tracking-tight text-primary md:text-3xl">
-                  Important Notes
+            <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+              A structured program to help you start safely and confidently — with everything you need for a strong foundation.
+            </p>
+            <div className={cn("mt-10", revealCard)}>
+              <FeatureCheckGrid
+                variant="panel"
+                items={nonMemberProgramFeatures}
+              />
+            </div>
+          </div>
+
+          {/* Single visit */}
+          <div className={cn(revealSection, "motion-safe:delay-100 mt-16 md:mt-20")}>
+            <Eyebrow>Flexible option</Eyebrow>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-primary md:text-4xl">
+              Single Visit Consultation
+            </h2>
+            <p className="mt-2 flex flex-wrap items-baseline gap-x-1.5">
+              <span className="text-2xl font-bold tabular-nums tracking-tight text-foreground md:text-3xl">
+                $225
+              </span>
+              <span className="text-sm font-normal text-muted-foreground md:text-base">
+                /visit
+              </span>
+            </p>
+            <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+              Ideal when you need a focused visit, a tune-up to an existing
+              plan, or a second opinion before committing to a longer path.
+            </p>
+            <div className={cn("mt-10", revealCard)}>
+              <FeatureCheckGrid variant="panel" items={singleVisitFeatures} />
+            </div>
+          </div>
+
+          {/* Follow-up */}
+          <div
+            className={cn(
+              revealSection,
+              "motion-safe:delay-150 mt-16 md:mt-20"
+            )}
+          >
+            <Eyebrow>CONTINUED CARE</Eyebrow>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-primary md:text-4xl">
+              Weight Management Follow-Up
+            </h2>
+            <p className="mt-2 flex flex-wrap items-baseline gap-x-1.5">
+              <span className="text-2xl font-bold tabular-nums tracking-tight text-foreground md:text-3xl">
+                $175
+              </span>
+              <span className="text-sm font-normal text-muted-foreground md:text-base">
+                /visit
+              </span>
+            </p>
+            <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+              For continued progress, plan adjustments, and ongoing support.
+            </p>
+            <div className={cn("mt-10", revealCard)}>
+              <FeatureCheckGrid variant="panel" items={followUpItems} />
+            </div>
+          </div>
+        </div>
+
+        {/* Medications — full-bleed gray band (matches site sections e.g. About, Trust) */}
+        <div className="relative mt-20 w-full">
+          <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2 bg-gray-100 px-6 py-16 md:px-8 md:py-20">
+            <div className="mx-auto max-w-7xl">
+              <div className={cn(revealSection)}>
+                <Eyebrow>When clinically appropriate</Eyebrow>
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight text-primary md:text-4xl">
+                  Medications May Include
                 </h2>
-                <ul className="mt-6 space-y-3.5">
-                  {[
-                    "All weight-loss services are self-pay and non-membership",
-                    "Medications, labs, supplements, and pharmacy fees are not included",
-                    "Prescriptions are provided only when clinically appropriate",
-                    "Weight-loss outcomes vary by individual",
-                    "Final pricing is confirmed prior to your visit",
-                  ].map((item) => (
-                    <NoteRow key={item}>{item}</NoteRow>
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                All medications are prescribed based on individual medical evaluation. Medication cost is separate from visit or membership pricing.
+                </p>
+                <ul
+                  className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+                  role="list"
+                >
+                  {medicationItems.map((line, i) => (
+                    <MedicationCell key={i}>{line}</MedicationCell>
                   ))}
                 </ul>
               </div>
             </div>
           </div>
+        </div>
 
-          <p
-            className={cn(
-              "mt-16 max-w-4xl border-t border-primary/70 pt-8 text-sm leading-relaxed text-muted-foreground md:mt-20",
-              revealFade,
-              "motion-safe:delay-100"
-            )}
-          >
-            LumaRose Health &amp; Wellness is a virtual, cash-based medical
-            practice. Insurance is not required. Laboratory testing, imaging,
-            and medications ordered through third-party providers are billed
-            separately unless otherwise stated.
-          </p>
+        <div className="relative mx-auto max-w-7xl px-6 md:px-8">
+          {/* Differentiators */}
+          <div className="mt-20 md:mt-24">
+            <div className={cn(revealSection, "text-left")}>
+              <Eyebrow>OUR APPROACH</Eyebrow>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-primary md:text-4xl">
+                What Makes LumaRose Different
+              </h2>
+              <p className="mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+                We believe lasting results come from personalized care, not
+                one-size-fits-all solutions.
+              </p>
+            </div>
+            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-7">
+              {differentiators.map((d, i) => (
+                <ApproachCard
+                  key={d.text}
+                  icon={d.icon}
+                  text={d.text}
+                  fullWidth={d.fullWidth}
+                  staggerIndex={i % 6}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* CTA — same primary band + white button as non-membership page */}
       <section
         className="relative isolate overflow-hidden bg-primary py-16"
         aria-labelledby="weight-management-cta-heading"
@@ -256,18 +416,17 @@ export default function Page() {
               id="weight-management-cta-heading"
               className="text-balance text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl md:leading-tight"
             >
-              Ready to Schedule a Visit?
+              Ready to Begin?
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-white/90 md:text-lg">
-              Book a non-membership weight-loss visit to see if this care option
-              is right for you.
+            Choose the option that fits your needs. Whether you're just starting out or ready for ongoing support, we're here to help you succeed.
             </p>
             <div className="mt-10 sm:mt-12">
               <Button
                 size="lg"
                 asChild
                 className={cn(
-                  "min-h-12 w-full rounded-full border-0 bg-white px-8 text-base font-semibold text-primary",
+                  "min-h-12 w-full rounded-full border-0 bg-white px-8 text-base font-semibold uppercase tracking-wide text-primary",
                   "shadow-md shadow-black/20 ring-1 ring-white/40",
                   "transition-[box-shadow,background-color] duration-300 motion-reduce:transition-none",
                   "hover:bg-white hover:text-primary hover:shadow-lg hover:shadow-black/25 motion-safe:hover:shadow-xl",
@@ -278,7 +437,7 @@ export default function Page() {
                   href="/book"
                   className="text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                 >
-                  Book a Weight Loss Visit
+                  Book a weight management visit
                 </Link>
               </Button>
             </div>
@@ -286,43 +445,5 @@ export default function Page() {
         </div>
       </section>
     </>
-  );
-}
-
-function PricingTierCard({
-  title,
-  price,
-  items,
-  staggerIndex,
-}: {
-  title: string;
-  price: string;
-  items: string[];
-  staggerIndex: number;
-}) {
-  return (
-    <div
-      className={cn(
-        premiumTierShell,
-        revealCard,
-        staggerClass(staggerIndex)
-      )}
-    >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-        <h3 className="text-lg font-semibold tracking-tight text-primary md:text-xl">
-          {title}
-        </h3>
-        <div className="flex shrink-0 items-baseline gap-1">
-          <span className="text-3xl font-bold tabular-nums tracking-tight text-foreground md:text-4xl">
-            {price}
-          </span>
-        </div>
-      </div>
-      <ul className="mt-6 space-y-3.5 border-t border-primary/70 pt-6">
-        {items.map((item) => (
-          <FeatureRow key={item}>{item}</FeatureRow>
-        ))}
-      </ul>
-    </div>
   );
 }
