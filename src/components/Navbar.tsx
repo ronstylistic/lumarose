@@ -12,8 +12,6 @@ import { cn } from "@/lib/utils";
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Membership", href: "/membership" },
-  { label: "College Care", href: "/college-care" },
-  { label: "Corporate Wellness", href: "/corporate-wellness" },
   { label: "Care Services", href: "/services" },
   { label: "Non-Membership", href: "/non-membership" },
   { label: "Weight Management", href: "/weight-management" },

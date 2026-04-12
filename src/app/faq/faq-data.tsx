@@ -65,59 +65,6 @@ export const FAQ_SECTIONS: FAQSection[] = [
     ],
   },
   {
-    id: "college-care",
-    title: "College Care Membership",
-    items: [
-      {
-        q: "Who qualifies for the College Care Membership?",
-        a:
-          "Patients ages 18–25 who are actively enrolled in an accredited college or university and can provide proof of enrollment.",
-      },
-      {
-        q: "What proof of enrollment is required?",
-        a:
-          "Accepted documentation includes a current class schedule, student ID with the current term, enrollment verification letter, or tuition receipt.",
-      },
-      {
-        q: "Can parents or guardians pay for the membership?",
-        a:
-          "Yes. Parents or guardians may pay on behalf of the student. The student remains the patient of record.",
-      },
-    ],
-  },
-  {
-    id: "corporate-wellness",
-    title: "Corporate Wellness",
-    items: [
-      {
-        q: "Do you offer services for businesses or employer groups?",
-        a: (
-          <>
-            Yes. LumaRose offers customized corporate wellness partnerships for
-            small to mid-size businesses in Texas. Learn more on our{" "}
-            <a
-              href="/corporate-wellness"
-              className="font-semibold text-primary underline-offset-2 transition-colors hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            >
-              Corporate Wellness
-            </a>{" "}
-            page.
-          </>
-        ),
-      },
-      {
-        q: "Are corporate wellness services billed through insurance?",
-        a:
-          "Corporate wellness partnerships are employer-sponsored services and are not billed through individual insurance plans. Customized proposals are provided based on company size and service needs.",
-      },
-      {
-        q: "Are services available outside of Houston?",
-        a:
-          "Yes. While LumaRose is based in Houston, many services are available virtually throughout Texas. On-site availability may vary by location.",
-      },
-    ],
-  },
-  {
     id: "insurance-labs",
     title: "Insurance, Labs & Medications",
     items: [
